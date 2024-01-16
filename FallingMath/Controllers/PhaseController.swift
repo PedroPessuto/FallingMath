@@ -37,30 +37,31 @@ import Foundation
             let quantityToUse: Int = Int.random(in: 0...aux)
             
             // Arrumar número repetidos e sorteados da lista
-            print(quantityToUse)
             for _ in 0...quantityToUse {
-                auxNumbers.append(freeNumbers[Int.random(in: 0...freeNumbers.count)].blockValue)
+                auxNumbers.append(freeNumbers[Int.random(in: 0...freeNumbers.count - 1)].blockValue)
             }
         }
         
         // Váriavel para definir o mínimo de números que serão gerados além dos já existentes
-//        var minGenerateWaveNumber: Int = 2
-//        
-//         Se utilizou números na tela
-//        if waveNumbers.count > 0 {
-//            minGenerateWaveNumber = 0
-//        }
-//        
-//         Escolhe quantos números são gerados por horda
-//        let quantityGenerateNumbers: Int = Int.random(in: minGenerateWaveNumber...5)
-//        
-//        var x: Int = 0
-//        if auxNumbers.count % 2 != 0 {
-//            x = 0
-//        } else {
-//            x = 1
-//        }
-//        
+        var minGenerateWaveNumber: Int = 2
+        
+        // Se utilizou números na tela
+        if waveNumbers.count > 0 {
+            minGenerateWaveNumber = 0
+        }
+        
+        // Escolhe quantos números são gerados por horda
+        let quantityGenerateNumbers: Int = Int.random(in: minGenerateWaveNumber...5)
+        
+        var x: Int = 0
+        if auxNumbers.count % 2 != 0 {
+            x = 0
+        } else {
+            x = 1
+        }
+        
+        // Fazer operações com os numeros selecionados que já estão na tela
+        // Corrigir Crash
 //        for count in 0...auxNumbers.count + x {
 //            
 //            print(auxNumbers[count])
@@ -108,6 +109,8 @@ import Foundation
 //    
 //        }
 //        
+        
+        // Fazer operações com os numeros da horda
         
     }
 
