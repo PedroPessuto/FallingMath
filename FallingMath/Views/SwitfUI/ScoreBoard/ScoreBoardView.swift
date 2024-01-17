@@ -11,7 +11,7 @@ struct ScoreBoardView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("230")
+                Text("240")
             }
             .padding(.top, 80)
             
