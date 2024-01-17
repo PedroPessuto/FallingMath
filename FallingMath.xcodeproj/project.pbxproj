@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64277E7B2B5755ED003055E1 /* NumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64277E7A2B5755ED003055E1 /* NumberGenerator.swift */; };
 		BF502F422B56D77B003E092A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F412B56D77B003E092A /* GameScene.swift */; };
 		BF502F442B56D8A0003E092A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F432B56D8A0003E092A /* ContentView.swift */; };
 		BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F4B2B56F027003E092A /* ScoreBoardView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		64277E7A2B5755ED003055E1 /* NumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGenerator.swift; sourceTree = "<group>"; };
 		BF502F412B56D77B003E092A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BF502F432B56D8A0003E092A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF502F4B2B56F027003E092A /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64277E792B5755A3003055E1 /* NumberGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				64277E7A2B5755ED003055E1 /* NumberGenerator.swift */,
+			);
+			path = NumberGenerator;
+			sourceTree = "<group>";
+		};
 		BF3850572B33DC5B00860DA5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +118,7 @@
 		BF9850712B3386B3004E26FE /* FallingMath */ = {
 			isa = PBXGroup;
 			children = (
+				64277E792B5755A3003055E1 /* NumberGenerator */,
 				BF81CB092B57000300F08D94 /* Models */,
 				BF502F4E2B56F05D003E092A /* Controllers */,
 				BF3850572B33DC5B00860DA5 /* Views */,
@@ -202,6 +213,7 @@
 				BF502F502B56F06E003E092A /* PhaseController.swift in Sources */,
 				BF81CB0B2B57005800F08D94 /* Block.swift in Sources */,
 				BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */,
+				64277E7B2B5755ED003055E1 /* NumberGenerator.swift in Sources */,
 				BF502F422B56D77B003E092A /* GameScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +348,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FallingMath/Preview Content\"";
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = UU65NF9U3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -365,7 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FallingMath/Preview Content\"";
-				DEVELOPMENT_TEAM = AV2QX4598Q;
+				DEVELOPMENT_TEAM = UU65NF9U3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
