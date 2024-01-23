@@ -7,61 +7,73 @@
 
 import Foundation
 
-func generator() -> Array<Int> {
-    var number: Int = 0
-    var numberArray: [Int] = []
+func generator() -> Array<Float> {
+    var number: Float = 0
+    var numberArray: [Float] = []
     
-    for _ in 1...10 {
-        number = Int.random(in: 1..<51)
+    for _ in 1...5 {
+        let intNumber = Int.random(in: 1..<51)
+        number = Float(intNumber)
         numberArray.append(number)
     }
     
     return numberArray
 }
 
-func operationGenerator() {
+func operationGenerator() -> [Float : [Float]] {
     // Chama o gerador de Array com números aleatórios
-    let array: [Int] = generator()
+    let array: [Float] = generator()
     
     // Variáveis de todas as operações separadas
-    var soma: [String] = []
-    var sub: [String] = []
-    var mult: [String] = []
-    var div: [String] = []
+    var soma: [Float] = []
+    var sub: [Float] = []
+    var mult: [Float] = []
+    var div: [Float] = []
     
     // Variáveis de transformação de Int -> Float
     var array1: Float = 0.0
     var array2: Float = 0.0
     
     // Array que salva todas as operações
-    var operations: [Array<String>] = []
-    
-    // Imprime o Array inicial que será usado para fazer as operações
-    print(array)
+    var operations: [String: [Float]] = [:]
+
     for i in 0...array.count - 1 {
         for j in 0...array.count - 1 {
             if(i != j) {
-                soma.append(String(array[i] + array[j]))
-                sub.append(String(array[i] - array[j]))
-                mult.append(String(array[i] * array[j]))
+                soma.append(array[i] + array[j])
+                sub.append(array[i] - array[j])
+                if(array[i] * array[j] < 1000) {
+                    mult.append(array[i] * array[j])
+                }
                 array1 = Float(array[i])
                 array2 = Float(array[j])
-                let num = array1 / array2
                 
+                let num = array1 / array2
+            
                 // Formata o Float para uma casa decimal
-                let formatted = String(format: "%.1f", num)
-                div.append(formatted)
+                let formatted = Float(String(format: "%.1f", num))
+                div.append(formatted!)
             }
         }
     }
     
-    operations.append(soma)
-    operations.append(sub)
-    operations.append(mult)
-    operations.append(div)
+    operations["div"] = div
+    operations["mult"] = mult
+    operations["sub"] = sub
+    operations["soma"] = soma
     
-    print(operations)
+    let operationNames = ["div", "mult", "sub", "soma"]
     
+    if let operationName = operationNames.randomElement() {
+        let value = operations[operationName]!.randomElement()
+//        print(operationName)
+//        print(value!)
+        
+        let operation: [Float: [Float]] = [value!: array]
+        
+        return operation
+    }
     
-//    return [1,2,3,4]
+    // Retorna vazio caso dê erro
+    return [0.0:[]]
 }
