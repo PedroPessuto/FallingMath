@@ -17,6 +17,10 @@ import Foundation
     var number2 : Float = 0
     var operacao: String = "+"
     
+    var newBlocks: [Float] = []
+    
+    var objective: Float = 0
+    
     func startBlock(){
         createBlock()
     }
