@@ -44,11 +44,6 @@ struct ContentView: View {
 //                    .lineLimit(1)
 //                    .truncationMode(.tail)
 //            }
-            
-            
-            
-            
-            
         }
         .ignoresSafeArea()
     }

@@ -13,7 +13,7 @@ class GameScene: SKScene {
     var number: Float = 0
     var gameData: GameData?
     var isCreatingBlock = 1
-    var calls: Int = 2
+    var calls: Float = 2
     var newValue: [Float:[Float]] = operationGenerator(call: 2)
 
     override func didMove(to view: SKView) {
@@ -94,7 +94,6 @@ class GameScene: SKScene {
                 let firstValue = newValue.keys.first
                 gameData?.objective = firstValue!
                 isCreatingBlock = 1
-                calls += 1
             }else{
                 gameData?.startBlock(number)
                 renderLast()
@@ -111,7 +110,7 @@ class GameScene: SKScene {
                 
             }
             isCreatingBlock = 0
-            calls += 1
+            calls += 0.5
         }
         
         count += 1
