@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ScoreBoardView: View {
+    var gameData: GameData
     var body: some View {
         VStack {
             HStack {
-                Text("240")
+                Text("\(gameData.objective)")
             }
-            .padding(.top, 80)
+            .padding(.top, 60)
             
             Spacer()
         }

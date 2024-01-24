@@ -11,8 +11,9 @@ import SpriteKit
 class GameScene: SKScene {
     var count: Int = 0
     var number: Float = 0
-    var result: Int = 0
     var gameData: GameData?
+    var isCreatingBlock = 1
+    var newValue: [Float:[Float]] = operationGenerator()
     
     override func didMove(to view: SKView) {
         createBackground()
@@ -20,6 +21,7 @@ class GameScene: SKScene {
         //        gameData?.start()
         
         render()
+        gameData?.objective = newValue.keys.first!
     }
     
     func createBackground(){
@@ -86,16 +88,31 @@ class GameScene: SKScene {
                 print("erro")
             }
             
-            if result == Int(number){
-                result = Int.random(in: 1...10)
+            if gameData?.objective == number{
+                newValue = operationGenerator()
+                let firstValue = newValue.keys.first
+                gameData?.objective = firstValue!
+                isCreatingBlock = 1
             }else{
                 gameData?.startBlock(number)
                 renderLast()
+                
             }
             
         }
+        
+        if isCreatingBlock == 1{
+            let values = newValue.values.first
+            for numbers in values!{
+                gameData?.startBlock(numbers)
+                renderLast()
+                
+            }
+            isCreatingBlock = 0
+        }
+        
         count += 1
-        if count >= 100{
+        if count >= 800{
             gameData?.startBlock()
             renderLast()
             count = 0

@@ -32,18 +32,18 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             OverlayView(gameData: gameData)
-            ScoreBoardView()
+            ScoreBoardView(gameData: gameData)
                 .onAppear {
                     phaseController.ganerateNewLevel()
                 }
             
             
-            if let targetNumber = phaseController.targetNumber {
-                Text("\(targetNumber)")
-                    .font(.system(size: 100))
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-            }
+//            if let targetNumber = phaseController.targetNumber {
+//                Text("\(targetNumber)")
+//                    .font(.system(size: 100))
+//                    .lineLimit(1)
+//                    .truncationMode(.tail)
+//            }
             
             
             
