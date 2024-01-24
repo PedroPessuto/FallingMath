@@ -10,8 +10,10 @@ import SpriteKit
 
 struct ContentView: View {
     
-    var scene: SKScene {
+    var gameData: GameData = GameData()
+    var scene: GameScene {
         let scene = GameScene()
+        scene.gameData = gameData
         scene.scaleMode = .resizeFill
         return scene
     }
@@ -27,20 +29,21 @@ struct ContentView: View {
         ZStack {
             
             SpriteView(scene: scene)
+                .ignoresSafeArea()
             
-            
-            ScoreBoardView()
+            OverlayView(gameData: gameData)
+            ScoreBoardView(gameData: gameData)
                 .onAppear {
                     phaseController.ganerateNewLevel()
                 }
             
             
-            if let targetNumber = phaseController.targetNumber {
-                Text("\(targetNumber)")
-                    .font(.system(size: 100))
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-            }
+//            if let targetNumber = phaseController.targetNumber {
+//                Text("\(targetNumber)")
+//                    .font(.system(size: 100))
+//                    .lineLimit(1)
+//                    .truncationMode(.tail)
+//            }
             
             
             
