@@ -49,10 +49,13 @@ func operationGenerator() -> [Float : [Float]] {
                 array2 = Float(array[j])
                 
                 let num = array1 / array2
-            
-                // Formata o Float para uma casa decimal
-                let formatted = Float(String(format: "%.1f", num))
-                div.append(formatted!)
+                
+                if(num > 1) {
+                    
+                    // Formata o Float para uma casa decimal
+                    let formatted = Float(String(format: "%.1f", num))
+                    div.append(formatted!)
+                }
             }
         }
     }
