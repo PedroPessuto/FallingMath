@@ -110,7 +110,7 @@ class GameScene: SKScene {
                 
             }
             isCreatingBlock = 0
-            calls += 0.5
+            calls += 0.2
         }
         
         count += 1
