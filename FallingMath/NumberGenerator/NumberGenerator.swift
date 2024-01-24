@@ -7,11 +7,12 @@
 
 import Foundation
 
-func generator() -> Array<Float> {
+func generator(amountOfNumbers: Float) -> Array<Float> {
     var number: Float = 0
     var numberArray: [Float] = []
+    let amountOfNumbersInt = Int(amountOfNumbers)
     
-    for _ in 1...5 {
+    for _ in 1...amountOfNumbersInt {
         let intNumber = Int.random(in: 1..<51)
         number = Float(intNumber)
         numberArray.append(number)
@@ -20,9 +21,16 @@ func generator() -> Array<Float> {
     return numberArray
 }
 
-func operationGenerator() -> [Float : [Float]] {
+func operationGenerator(call: Float) -> [Float : [Float]] {
     // Chama o gerador de Array com números aleatórios
-    let array: [Float] = generator()
+    var array: [Float] = []
+    
+    if call <= 7 {
+        array = generator(amountOfNumbers: call)
+    } else {
+        array = generator(amountOfNumbers: 7)
+    }
+    print(array)
     
     // Variáveis de todas as operações separadas
     var soma: [Float] = []
@@ -49,10 +57,13 @@ func operationGenerator() -> [Float : [Float]] {
                 array2 = Float(array[j])
                 
                 let num = array1 / array2
-            
-                // Formata o Float para uma casa decimal
-                let formatted = Float(String(format: "%.1f", num))
-                div.append(formatted!)
+                
+                if(num > 1) {
+                    
+                    // Formata o Float para uma casa decimal
+                    let formatted = Float(String(format: "%.1f", num))
+                    div.append(formatted!)
+                }
             }
         }
     }

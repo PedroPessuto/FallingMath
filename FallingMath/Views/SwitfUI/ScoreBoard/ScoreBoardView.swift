@@ -12,7 +12,7 @@ struct ScoreBoardView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("\(gameData.objective)")
+                Text("\(String(format: "%.1f", gameData.objective))")
             }
             .padding(.top, 60)
             

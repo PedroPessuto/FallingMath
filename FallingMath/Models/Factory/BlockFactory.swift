@@ -10,11 +10,6 @@ import Foundation
 class BlockFactory: GOFactory{
     
     func createGameObject() -> GameObject {
-        let operation = operationGenerator()
-        
-        let key: Float = operation.keys.first!
-        let values: [Float] = operation.values.first!
-        
         let block: BlockNode = BlockNode(position: CGPoint(x: CGFloat.random(in: 50...300), y: 950), number: Float.random(in: 1...99))
         return block
     }

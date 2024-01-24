@@ -35,7 +35,7 @@ class BlockNode: GameObject{
         //        let sequence = SKAction.sequence([action2, action])
         //        node.run(SKAction.repeatForever(sequence))
         var scoreLabel: SKLabelNode
-        scoreLabel = SKLabelNode(fontNamed: "Arial")
+        scoreLabel = SKLabelNode(fontNamed: "Mustica Pro")
         scoreLabel.fontSize = CGFloat(30)
         let randomNumber: Float = number
         scoreLabel.text = String(randomNumber.formatted(.number.precision(.fractionLength(0))))

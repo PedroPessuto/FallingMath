@@ -5,6 +5,8 @@
 //  Created by Pedro Pessuto on 16/01/24.
 //
 
+// TODO: O jogo não está aceitando resultados que tem resultado em decimal. Precisa corrigir isso
+
 import SwiftUI
 import SpriteKit
 
@@ -44,11 +46,6 @@ struct ContentView: View {
 //                    .lineLimit(1)
 //                    .truncationMode(.tail)
 //            }
-            
-            
-            
-            
-            
         }
         .ignoresSafeArea()
     }
