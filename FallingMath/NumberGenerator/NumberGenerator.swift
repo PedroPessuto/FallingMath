@@ -61,7 +61,7 @@ func operationGenerator(call: Float) -> [Float : [Float]] {
                 if(num > 1) {
                     
                     // Formata o Float para uma casa decimal
-                    let formatted = Float(String(format: "%.0f", num))
+                    let formatted = Float(String(format: "%.1f", num))
                     div.append(formatted!)
                 }
             }

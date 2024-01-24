@@ -97,9 +97,7 @@ class GameScene: SKScene {
             }else{
                 gameData?.startBlock(number)
                 renderLast()
-                
             }
-            
         }
         
         if isCreatingBlock == 1{
