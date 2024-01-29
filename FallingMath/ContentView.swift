@@ -27,9 +27,11 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            
-            SpriteView(scene: scene)
+            Color(.blue)
                 .ignoresSafeArea()
+            SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
+                .ignoresSafeArea()
+                
             
             OverlayView(gameData: gameData)
             ScoreBoardView()
@@ -38,13 +40,13 @@ struct ContentView: View {
                 }
             
             
-            if let targetNumber = phaseController.targetNumber {
-                Text("\(targetNumber)")
-                    .font(.system(size: 100))
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-            }
-            
+//            if let targetNumber = phaseController.targetNumber {
+//                Text("\(targetNumber)")
+//                    .font(.system(size: 100))
+//                    .lineLimit(1)
+//                    .truncationMode(.tail)
+//            }
+//            
             
             
             

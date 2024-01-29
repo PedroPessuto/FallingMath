@@ -22,6 +22,7 @@
 		E50FF69D2B6032490016513B /* BlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF69C2B6032490016513B /* BlockNode.swift */; };
 		E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF69E2B60326C0016513B /* BlockFactory.swift */; };
 		E50FF6A12B6033650016513B /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF6A02B6033650016513B /* OverlayView.swift */; };
+		E5B433602B68120100E09724 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4335F2B68120100E09724 /* WheelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		E50FF69C2B6032490016513B /* BlockNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNode.swift; sourceTree = "<group>"; };
 		E50FF69E2B60326C0016513B /* BlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockFactory.swift; sourceTree = "<group>"; };
 		E50FF6A02B6033650016513B /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		E5B4335F2B68120100E09724 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				BF9850722B3386B3004E26FE /* FallingMathApp.swift */,
 				BF502F432B56D8A0003E092A /* ContentView.swift */,
 				E50FF6A02B6033650016513B /* OverlayView.swift */,
+				E5B4335F2B68120100E09724 /* WheelView.swift */,
 				BF9850762B3386B4004E26FE /* Assets.xcassets */,
 				BF9850782B3386B4004E26FE /* Preview Content */,
 			);
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B433602B68120100E09724 /* WheelView.swift in Sources */,
 				BF502F442B56D8A0003E092A /* ContentView.swift in Sources */,
 				E50FF69D2B6032490016513B /* BlockNode.swift in Sources */,
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
