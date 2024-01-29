@@ -26,18 +26,19 @@ class GameScene: SKScene {
     }
     
     func createBackground(){
-        physicsWorld.gravity.dy = -1.62
-        backgroundColor = .white
+        physicsWorld.gravity.dy = -1.2
+        backgroundColor = SKColor.clear
         
-        let borda = SKPhysicsBody(edgeLoopFrom: CGRect(x: 25,y: 195,width: self.frame.size.width-50,height: self.frame.size.height))
+        
+        let borda = SKPhysicsBody(edgeLoopFrom: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height))
         borda.friction = 0.2
         self.physicsBody = borda
         
-        let background = SKShapeNode(rect: CGRect(x: 25,y: 195,width: self.frame.size.width-50,height: self.frame.size.height-284), cornerRadius: 13)
-        background.fillColor = UIColor(red: 253/255, green: 221/255, blue: 224/255, alpha: 1)
+        let background = SKShapeNode(rect: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height-331), cornerRadius: 13)
+        background.fillColor = SKColor(.clear)
         background.zPosition = -999
-        background.strokeColor = UIColor(red: 244/255, green: 110/255, blue: 124/255, alpha: 1)
-        background.lineWidth = 3
+        background.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+        background.lineWidth = 4
         addChild(background)
     }
     
@@ -132,29 +133,33 @@ class GameScene: SKScene {
         let touch = touches.first!
         if let objects = gameData?.objects {
             for (index,object) in objects.enumerated() {
-                if object.node.contains(touch.location(in: self)){
-                    object.node.physicsBody?.isDynamic = false
-                    object.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 1, height: 1))
-                    let nodeNumber = object.node.children.last?.name
-                    if gameData?.number1 == 0{
-                        gameData?.number1 = (nodeNumber! as NSString).floatValue
-                        let action1 = SKAction.move(to: CGPoint(x:100, y:100), duration: 0.2)
-                        let action2 = SKAction.fadeOut(withDuration: 0.1)
-                        let action3 = SKAction.removeFromParent()
-                        let sequence = SKAction.sequence([action1, action2, action3])
-                        object.node.run(sequence)
-                    }else{
-                        if gameData?.number2 == 0{
-                            gameData?.number2 = (nodeNumber! as NSString).floatValue
-                            let action1 = SKAction.move(to: CGPoint(x:300, y:100), duration: 0.2)
+                if object.node.name == "block"{
+                    if object.node.contains(touch.location(in: self)){
+                        object.node.physicsBody?.isDynamic = false
+                        object.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 1, height: 1))
+                        let nodeNumber = object.node.children.last?.name
+                        if gameData?.number1 == 0{
+                            gameData?.number1 = (nodeNumber! as NSString).floatValue
+                            let action1 = SKAction.scale(by: 0.01, duration: 0.4)
                             let action2 = SKAction.fadeOut(withDuration: 0.1)
                             let action3 = SKAction.removeFromParent()
                             let sequence = SKAction.sequence([action1, action2, action3])
                             object.node.run(sequence)
+                        }else{
+                            if gameData?.number2 == 0{
+                                gameData?.number2 = (nodeNumber! as NSString).floatValue
+                                let action1 = SKAction.scale(by: 0.01, duration: 0.4)
+                                let action2 = SKAction.fadeOut(withDuration: 0.1)
+                                let action3 = SKAction.removeFromParent()
+                                let sequence = SKAction.sequence([action1, action2, action3])
+                                object.node.run(sequence)
+                            }
                         }
+                        
+                        gameData?.objects.remove(at: index)
                     }
+                }else{
                     
-                    gameData?.objects.remove(at: index)
                 }
             }
         }

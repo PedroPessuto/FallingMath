@@ -5,8 +5,6 @@
 //  Created by Pedro Pessuto on 16/01/24.
 //
 
-// TODO: O jogo não está aceitando resultados que tem resultado em decimal. Precisa corrigir isso
-
 import SwiftUI
 import SpriteKit
 
@@ -29,12 +27,14 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            
-            SpriteView(scene: scene)
+            Color(.blue)
                 .ignoresSafeArea()
+            SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
+                .ignoresSafeArea()
+                
             
             OverlayView(gameData: gameData)
-            ScoreBoardView(gameData: gameData)
+            ScoreBoardView()
                 .onAppear {
                     phaseController.ganerateNewLevel()
                 }
@@ -46,6 +46,11 @@ struct ContentView: View {
 //                    .lineLimit(1)
 //                    .truncationMode(.tail)
 //            }
+//            
+            
+            
+            
+            
         }
         .ignoresSafeArea()
     }
