@@ -8,25 +8,21 @@
 import Foundation
 import SwiftUI
 
-struct OverlayView: View {
-    var gameData: GameData
+struct OperationsView: View {
+    var gameData: GameController
     @State var btnPadding: CGFloat = 15
     @State var btnHeight: CGFloat = 51
     @State var index: Int = 0
     @State var operacoes: [String] = ["+","/","x","-"]
+    
     var body: some View {
-        //        VStack{
-        //            HStack{
-        //                Spacer()
-        //            }
-        //            Text("\(gameData.score)")
-        //            Spacer()
-        //        }
-        VStack{
+        VStack {
             Spacer()
-            HStack(spacing: 0){
+            
+            HStack(spacing: 0) {
                 let s = String(format: "%.0f", gameData.number1)
                 let s2 = String(format: "%.0f", gameData.number2)
+                
                 Text(s == "0" ? "" : s)
                     .font(.system(size: 31.8))
                     .bold()
@@ -50,10 +46,10 @@ struct OverlayView: View {
                             btnHeight = 51
                             if index < operacoes.count - 1{
                                 index += 1
-                                gameData.operacao = operacoes[index]
+                                gameData.operation = operacoes[index]
                             }else{
                                 index = 0
-                                gameData.operacao = operacoes[index]
+                                gameData.operation = operacoes[index]
                                 
                             }
                         } else{
@@ -73,9 +69,6 @@ struct OverlayView: View {
                             .stroke(.white, lineWidth: 4)
                     )
                 
-            }
-            HStack{
-                Spacer()
             }
             
         }

@@ -11,7 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     var count: Int = 0
     var number: Float = 0
-    var gameData: GameData?
+    var gameData: GameController?
     var isCreatingBlock = 1
     var calls: Float = 2
     var newValue: [Float:[Float]] = operationGenerator(call: 2)
@@ -61,7 +61,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         
         if gameData?.number2 != 0{
-            switch gameData?.operacao {
+            switch gameData?.operation {
             case "+":
                 let num1: Float? = gameData?.number1
                 let num2: Float? = gameData?.number2

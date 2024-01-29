@@ -10,46 +10,28 @@ import SpriteKit
 
 struct ContentView: View {
     
-    var gameData: GameData = GameData()
+    var gameController: GameController = GameController()
+    
     var scene: GameScene {
         let scene = GameScene()
-        scene.gameData = gameData
+        scene.gameData = gameController
         scene.scaleMode = .resizeFill
         return scene
     }
     
-    var phaseController: PhaseController {
-        let phaseConstroller = PhaseController()
-        phaseConstroller.targetNumber = 2
-        return phaseConstroller
-    }
-    
-    
     var body: some View {
         ZStack {
-            Color(.blue)
-                .ignoresSafeArea()
+            // Background
+            BackgroundView(operation: gameController.operation)
+            
+            // Tela de pontuação
+            ScoreBoardView(gameData: gameController)
+            
+            // Frame do jogo
             SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
-                .ignoresSafeArea()
                 
-            
-            OverlayView(gameData: gameData)
-            ScoreBoardView(gameData: gameData)
-                .onAppear {
-                    phaseController.ganerateNewLevel()
-                }
-            
-            
-//            if let targetNumber = phaseController.targetNumber {
-//                Text("\(targetNumber)")
-//                    .font(.system(size: 100))
-//                    .lineLimit(1)
-//                    .truncationMode(.tail)
-//            }
-//            
-            
-            
-            
+            // Fazer operações
+            OperationsView(gameData: gameController)
             
         }
         .ignoresSafeArea()

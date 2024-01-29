@@ -8,17 +8,16 @@
 import Foundation
 
 
-@Observable class GameData {
-    var score: Int = 0
+@Observable class GameController {
+    
+    var score: Int = 0 // Pontuação
+    var operation: String = "+" // Operação Selecionada
     
     var objects: [GameObject] = []
-     
     var number1 : Float = 0
     var number2 : Float = 0
-    var operacao: String = "+"
     
     var newBlocks: [Float] = []
-    
     var objective: Float = 0
     
     func startBlock(){
@@ -28,7 +27,6 @@ import Foundation
     func startBlock(_ num: Float){
         createBlockNum(num)
     }
-    
     
     func createBlock(){
         create(factory: BlockFactory())
@@ -47,8 +45,4 @@ import Foundation
         let object: GameObject = factory.createGameObject()
         objects.append(object)
     }
-    
-    
-    
-    
 }

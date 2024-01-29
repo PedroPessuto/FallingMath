@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScoreBoardView: View {
-    var gameData: GameData
+    var gameData: GameController
     var body: some View {
         VStack {
             HStack {

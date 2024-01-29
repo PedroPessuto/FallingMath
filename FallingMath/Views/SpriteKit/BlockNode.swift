@@ -13,7 +13,6 @@ class BlockNode: GameObject{
     var node: SKNode
     var number: Float
     
-    
     func update() {
         let text = node
         if text.zRotation >= Double.pi/2 || text.zRotation <= -Double.pi/2 {
