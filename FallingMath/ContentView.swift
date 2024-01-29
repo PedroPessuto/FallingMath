@@ -34,7 +34,7 @@ struct ContentView: View {
                 
             
             OverlayView(gameData: gameData)
-            ScoreBoardView()
+            ScoreBoardView(gameData: gameData)
                 .onAppear {
                     phaseController.ganerateNewLevel()
                 }
