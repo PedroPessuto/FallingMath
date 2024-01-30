@@ -20,7 +20,7 @@ import Foundation
     var newBlocks: [Float] = []
     var objective: Float = 0
     
-    func startBlock(){
+    func startBlock() {
         createBlock()
     }
     

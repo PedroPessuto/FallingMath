@@ -85,6 +85,7 @@ func operationGenerator(call: Float) -> [Float : [Float]] {
         return operation
     }
     
+    print(soma)
     // Retorna vazio caso dê erro
     return [0.0:[]]
 }

@@ -10,7 +10,7 @@ import SpriteKit
 
 struct ContentView: View {
     
-    var gameController: GameController = GameController()
+    @State var gameController: GameController = GameController()
     
     var scene: GameScene {
         let scene = GameScene()
@@ -21,17 +21,19 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            
             // Background
-            BackgroundView(operation: gameController.operation)
+            BackgroundView(gameController: gameController)
             
             // Tela de pontuação
             ScoreBoardView(gameData: gameController)
-            
+           
             // Frame do jogo
             SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
-                
+            
             // Fazer operações
             OperationsView(gameData: gameController)
+            
             
         }
         .ignoresSafeArea()

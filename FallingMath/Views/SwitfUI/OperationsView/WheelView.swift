@@ -22,7 +22,7 @@ struct WheelView: View {
                         .rotationEffect(.degrees(90))
                 }
                 
-                Image("")
+                HStack {}
                     .frame(width: 60, height: 60)
                 
                 ZStack {

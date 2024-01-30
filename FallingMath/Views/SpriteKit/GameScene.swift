@@ -29,7 +29,6 @@ class GameScene: SKScene {
         physicsWorld.gravity.dy = -1.2
         backgroundColor = SKColor.clear
         
-        
         let borda = SKPhysicsBody(edgeLoopFrom: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height))
         borda.friction = 0.2
         self.physicsBody = borda
@@ -101,7 +100,7 @@ class GameScene: SKScene {
             }
         }
         
-        if isCreatingBlock == 1{
+        if isCreatingBlock == 1 {
             let values = newValue.values.first
             for numbers in values!{
                 gameData?.startBlock(numbers)
@@ -113,7 +112,7 @@ class GameScene: SKScene {
         }
         
         count += 1
-        if count >= 800{
+        if count >= 800 {
             gameData?.startBlock()
             renderLast()
             count = 0
