@@ -37,7 +37,7 @@ class GameScene: SKScene {
         let background = SKShapeNode(rect: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height-331), cornerRadius: 13)
         background.fillColor = SKColor(.clear)
         background.zPosition = -999
-        background.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+        background.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         background.lineWidth = 4
         addChild(background)
     }

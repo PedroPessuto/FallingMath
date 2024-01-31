@@ -26,12 +26,13 @@ class BlockNode: GameObject {
         
         // Cria objeto
         var parentNode: SKSpriteNode
-        parentNode = SKSpriteNode(color: .clear, size: CGSize(width: 76, height: 76))
+        parentNode = SKSpriteNode(color: .clear, size: CGSize(width: number >= 1000 ? 156 : 76, height: 76))
         parentNode.position = CGPoint(x: position.x, y: position.y)
         parentNode.zPosition = -2
         
         // Quadrado
-        let node = SKShapeNode(rectOf: CGSize(width: 76, height: 76), cornerRadius: 9)
+        let node = SKShapeNode(rectOf: CGSize(width: number >= 1000 ? 156 : 76, height: 76), cornerRadius: 9)
+        
         node.fillColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.3)
         node.lineWidth = 5
         node.zPosition = -1
@@ -56,7 +57,7 @@ class BlockNode: GameObject {
         scoreLabel.zPosition = 0
         
         // Para Renderizar
-        parentNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 83, height: 83))
+        parentNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: number >= 1000 ? 166 : 83, height: 83))
         parentNode.physicsBody?.isDynamic = true
         parentNode.addChild(node)
         parentNode.addChild(scoreLabel)
