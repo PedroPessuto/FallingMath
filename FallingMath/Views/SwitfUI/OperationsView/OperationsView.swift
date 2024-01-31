@@ -36,6 +36,12 @@ struct OperationsView: View {
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(.white, lineWidth: 4)
                     )
+                    .onTapGesture {
+                        if s != "0" {
+                            gameData.returnBlock = Float(s)!
+                            gameData.number1 = 0
+                        }
+                    }
                 
                 WheelView()
                     .offset(x:0, y:60)

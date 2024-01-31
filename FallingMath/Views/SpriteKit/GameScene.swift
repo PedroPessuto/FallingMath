@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var gameData: GameController?
     var isCreatingBlock = 1
     var calls: Float = 2
+    var attempts: Int = 0
     var newValue: [Float:[Float]] = operationGenerator(call: 2)
 
     override func didMove(to view: SKView) {
@@ -89,34 +90,83 @@ class GameScene: SKScene {
                 print("erro")
             }
             
-            if gameData?.objective == number{
-                newValue = operationGenerator(call: calls)
-                let firstValue = newValue.keys.first
-                gameData?.objective = firstValue!
+            
+            
+            if gameData?.objective == number {
+                
+                //                newValue = operationGenerator(call: calls)
+                //                let firstValue = newValue.keys.first
+                //                gameData?.objective = firstValue!
+                //                isCreatingBlock = 1
+                
                 isCreatingBlock = 1
-            }else{
+                attempts = 0
+                gameData?.maxAttempt = 0
+               
+                
+            }
+            // Se não acertar
+            else {
+               
+                attempts = attempts + 1
+                
+                if gameData?.maxAttempt == attempts {
+                    attempts = 0
+                    isCreatingBlock = 1
+                }
+                
+                
+//                print("Tentativas: \(attempts)")
+//                print("Blocks: \(String(describing: gameData?.blockQuantityOnScreen))")
+//                print(attempts)
                 gameData?.startBlock(number)
                 renderLast()
+               
             }
         }
         
         if isCreatingBlock == 1 {
-            let values = newValue.values.first
-            for numbers in values!{
-                gameData?.startBlock(numbers)
-                renderLast()
-                
-            }
+//            let values = newValue.values.first
+//            for numbers in values!{
+//                gameData?.startBlock(numbers)
+//                renderLast()
+//                
+//            }
+            gameData?.generateBlocks()
             isCreatingBlock = 0
-            calls += 0.2
+//            calls += 0.2
+        }
+       
+        // Renderiza Numeros
+        if !gameData!.useNumbers.isEmpty {
+            for num in gameData!.useNumbers {
+                gameData?.startBlock(num)
+                renderLast()
+            }
+            gameData?.useNumbers = []
         }
         
-        count += 1
-        if count >= 800 {
-            gameData?.startBlock()
+        // Renderiza Ruidos
+//        if !gameData!.noiseNumbers.isEmpty {
+//            for num in gameData!.noiseNumbers {
+//                gameData?.startBlock(num)
+//                renderLast()
+//            }
+//            gameData?.noiseNumbers = []
+//        }
+        
+        if gameData?.returnBlock != 0 {
+            gameData?.startBlock(gameData!.returnBlock)
             renderLast()
-            count = 0
+            gameData?.returnBlock = 0
         }
+        
+//        count += 1
+//        if count >= 800 {
+//            gameData?.startBlock()
+//            renderLast()
+//            count = 0
+//        }
         
         if let objects = gameData?.objects {
             for object in objects {
@@ -130,6 +180,7 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first!
+        
         if let objects = gameData?.objects {
             for (index,object) in objects.enumerated() {
                 if object.node.name == "block"{
@@ -137,14 +188,15 @@ class GameScene: SKScene {
                         object.node.physicsBody?.isDynamic = false
                         object.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 1, height: 1))
                         let nodeNumber = object.node.children.last?.name
-                        if gameData?.number1 == 0{
+                        if gameData?.number1 == 0 {
                             gameData?.number1 = (nodeNumber! as NSString).floatValue
                             let action1 = SKAction.scale(by: 0.01, duration: 0.4)
                             let action2 = SKAction.fadeOut(withDuration: 0.1)
                             let action3 = SKAction.removeFromParent()
                             let sequence = SKAction.sequence([action1, action2, action3])
                             object.node.run(sequence)
-                        }else{
+                        }
+                        else {
                             if gameData?.number2 == 0{
                                 gameData?.number2 = (nodeNumber! as NSString).floatValue
                                 let action1 = SKAction.scale(by: 0.01, duration: 0.4)

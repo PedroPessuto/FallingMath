@@ -74,9 +74,8 @@
 		BF502F492B56EFBB003E092A /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				BFF75CC02B6966D300FD8034 /* Models */,
 				E50FF6972B6032020016513B /* Factory */,
-				E50FF69A2B6032270016513B /* GameObject.swift */,
-				E50FF69C2B6032490016513B /* BlockNode.swift */,
 				BF502F412B56D77B003E092A /* GameScene.swift */,
 			);
 			path = SpriteKit;
@@ -161,6 +160,15 @@
 				BF9850792B3386B4004E26FE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BFF75CC02B6966D300FD8034 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E50FF69C2B6032490016513B /* BlockNode.swift */,
+				E50FF69A2B6032270016513B /* GameObject.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E50FF6972B6032020016513B /* Factory */ = {
