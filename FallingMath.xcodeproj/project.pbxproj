@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		64277E7B2B5755ED003055E1 /* NumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64277E7A2B5755ED003055E1 /* NumberGenerator.swift */; };
+		64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */; };
 		BF502F422B56D77B003E092A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F412B56D77B003E092A /* GameScene.swift */; };
 		BF502F442B56D8A0003E092A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F432B56D8A0003E092A /* ContentView.swift */; };
 		BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F4B2B56F027003E092A /* ScoreBoardView.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		64277E7A2B5755ED003055E1 /* NumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGenerator.swift; sourceTree = "<group>"; };
+		64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MusicaFallingMath.mp3; sourceTree = "<group>"; };
 		BF502F412B56D77B003E092A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BF502F432B56D8A0003E092A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF502F4B2B56F027003E092A /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				BF3850572B33DC5B00860DA5 /* Views */,
 				BF9850722B3386B3004E26FE /* FallingMathApp.swift */,
 				BF502F432B56D8A0003E092A /* ContentView.swift */,
+				64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */,
 				BF9850762B3386B4004E26FE /* Assets.xcassets */,
 				BF9850782B3386B4004E26FE /* Preview Content */,
 			);
@@ -238,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */,
 				BF98507A2B3386B4004E26FE /* Preview Assets.xcassets in Resources */,
 				BF9850772B3386B4004E26FE /* Assets.xcassets in Resources */,
 			);
