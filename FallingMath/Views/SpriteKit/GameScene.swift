@@ -102,7 +102,7 @@ class GameScene: SKScene {
                 isCreatingBlock = 1
                 attempts = 0
                 gameData?.maxAttempt = 0
-               
+                gameData?.score += 1
                 
             }
             // Se não acertar

@@ -34,7 +34,7 @@ struct BackgroundView: View {
             VStack{
                 RoundedRectangle(cornerRadius: 13)
                     .frame(width: 353, height: 520)
-                    .padding(.bottom, 115)
+                    .padding(.bottom, 113)
                     .foregroundStyle(Gradient(colors: [color1, .clear]))
             }
             
@@ -57,6 +57,7 @@ struct BackgroundView: View {
         .onAppear(){
             gradientColors = [gradient1, gradient2]
         }
+        .animation(.easeInOut(duration: 1), value: gradientColors)
     }
 }
 

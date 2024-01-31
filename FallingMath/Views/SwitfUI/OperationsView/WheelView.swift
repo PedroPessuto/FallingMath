@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct WheelView: View {
+    var gameData: GameController
     var degreess: [Double] = [0, 90, 180, 270]
+    @State var index1: Int = 0
+    @State var operacoes: [String] = ["+","-","x","/"]
     @State var index: Int = 0
     var body: some View {
         ZStack{
@@ -41,7 +44,18 @@ struct WheelView: View {
                         }else{
                             index += 1
                         }
+                        
+                        if index1 < operacoes.count - 1{
+                            index1 += 1
+                            gameData.operation = operacoes[index1]
+                            
+                        }else{
+                            index1 = 0
+                            gameData.operation = operacoes[index1]
+                            
+                        }
                     }
+                   
                 ZStack{
                     Image(degreess[index] == 180 ? "onDown" : "offDown")
                     Image(degreess[index] == 180 ? "multiplier" : "")
@@ -55,5 +69,8 @@ struct WheelView: View {
 }
 
 #Preview {
-    WheelView()
+    ZStack{
+        Color(.blue)
+        WheelView(gameData: GameController())
+    }
 }

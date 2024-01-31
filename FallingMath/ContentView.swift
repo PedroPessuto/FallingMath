@@ -29,7 +29,7 @@ struct ContentView: View {
             ScoreBoardView(gameData: gameController)
            
             // Frame do jogo
-            SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
+            SpriteView(scene: scene, options: [.allowsTransparency])
             
             // Fazer operações
             OperationsView(gameData: gameController)

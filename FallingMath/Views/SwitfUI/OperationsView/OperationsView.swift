@@ -12,8 +12,7 @@ struct OperationsView: View {
     var gameData: GameController
     @State var btnPadding: CGFloat = 15
     @State var btnHeight: CGFloat = 51
-    @State var index: Int = 0
-    @State var operacoes: [String] = ["+","-","x","/"]
+
     
     var azul = Color(red: 81/255, green: 127/255, blue: 221/255)
     var vermelho = Color(red: 1, green: 127/255, blue: 96/255)
@@ -40,6 +39,7 @@ struct OperationsView: View {
                     .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
                     .padding(.trailing)
             }
+            
             .padding(.top, 30)
             .ignoresSafeArea()
             Text("0")
@@ -107,26 +107,10 @@ struct OperationsView: View {
                 .onAppear(){
                     textColor = azul
                 }
-                WheelView()
-                    .offset(x:0, y:60)
+                WheelView(gameData: gameData)
+                    .offset(x:0, y:40)
                     .zIndex(-1)
-                    .onLongPressGesture(minimumDuration: .infinity, maximumDistance: .infinity, pressing: { pressing in
-                        if pressing{
-                            btnPadding = 0
-                            btnHeight = 51
-                            if index < operacoes.count - 1{
-                                index += 1
-                                gameData.operation = operacoes[index]
-                            }else{
-                                index = 0
-                                gameData.operation = operacoes[index]
-                                
-                            }
-                        } else{
-                            btnPadding = 15
-                            btnHeight = 61
-                        }
-                    }, perform: {})
+                    
                 
                 Text(num2 == "0.0" ? "" : num2)
                     .font(.system(size: 31.8))
