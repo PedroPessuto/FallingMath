@@ -1,55 +1,48 @@
 //
-//  WheelView.swift
-//  FallingMath
+//  SwiftUIView.swift
+//  TesteSpriteKit
 //
-//  Created by Rafael Carreira on 29/01/24.
+//  Created by Rafael Carreira on 23/01/24.
 //
 
-import Foundation
 import SwiftUI
 
 struct WheelView: View {
     var degreess: [Double] = [0, 90, 180, 270]
     @State var index: Int = 0
-    
     var body: some View {
-        ZStack {
+        ZStack{
             
-            HStack(spacing: 0) {
-                ZStack {
+            HStack(spacing: 0){
+                ZStack{
                     Image(degreess[index] == 90 ? "onLeft" : "offLeft")
-                    Image(degreess[index] == 90 ? "divide" : "")
+                    Image(degreess[index] == 90 ? "minus" : "")
                         .rotationEffect(.degrees(90))
                 }
+                Image("")
+                    .frame(width: 60,height: 60)
                 
-                HStack {}
-                    .frame(width: 60, height: 60)
-                
-                ZStack {
+                ZStack{
                     Image(degreess[index] == 270 ? "onRight" : "offRight")
-                    Image(degreess[index] == 270 ? "minus" : "")
+                    Image(degreess[index] == 270 ? "divide" : "")
                         .rotationEffect(.degrees(90))
                 }
             }
-            
-            VStack(spacing: 0) {
-                
-                ZStack {
+            VStack(spacing: 0){
+                ZStack{
                     Image(degreess[index] == 0 ? "onUp" : "offUp")
                     Image(degreess[index] == 0 ? "plus" : "")
-                    
+                        
                 }
-                
                 Image("Center")
                     .onTapGesture {
                         if Int(index) == degreess.count - 1{
                             index = 0
-                        } else {
+                        }else{
                             index += 1
                         }
                     }
-                
-                ZStack {
+                ZStack{
                     Image(degreess[index] == 180 ? "onDown" : "offDown")
                     Image(degreess[index] == 180 ? "multiplier" : "")
                         .rotationEffect(.degrees(90))
@@ -59,4 +52,8 @@ struct WheelView: View {
         .rotationEffect(.degrees(degreess[index]))
         .animation(.bouncy(duration: 0.5), value: index)
     }
+}
+
+#Preview {
+    WheelView()
 }

@@ -14,8 +14,11 @@ struct ScoreBoardView: View {
         VStack {
             HStack {
                 Text("\(String(format: "%.1f", gameData.objective))")
+                    .foregroundStyle(Color(uiColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)))
+                    .font(.system(size: 28))
+                    .fontWeight(.semibold)
             }
-            .padding(.top, 60)
+            .padding(.top, 75)
             
             Spacer()
         }
