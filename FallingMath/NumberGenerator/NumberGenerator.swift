@@ -30,7 +30,7 @@ func operationGenerator(call: Float) -> [Float : [Float]] {
     } else {
         array = generator(amountOfNumbers: 7)
     }
-    print(array)
+    
     
     // Variáveis de todas as operações separadas
     var soma: [Float] = []
@@ -85,7 +85,7 @@ func operationGenerator(call: Float) -> [Float : [Float]] {
         return operation
     }
     
-    print(soma)
+    
     // Retorna vazio caso dê erro
     return [0.0:[]]
 }

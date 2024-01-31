@@ -42,8 +42,13 @@ class BlockNode: GameObject {
         let scoreLabel: SKLabelNode = self.numberText
         scoreLabel.fontSize = CGFloat(33)
         let randomNumber: Float = number
-        scoreLabel.text = String(randomNumber.formatted(.number.precision(.fractionLength(0))))
-        scoreLabel.name = String(randomNumber.formatted(.number.precision(.fractionLength(0))))
+        if randomNumber / Float(Int(randomNumber)) == 1{
+            scoreLabel.text = String(randomNumber.formatted(.number.precision(.fractionLength(0))))
+            scoreLabel.name = String(randomNumber.formatted(.number.precision(.fractionLength(0))))
+        }else{
+            scoreLabel.text = String(randomNumber.formatted(.number.precision(.fractionLength(1))))
+            scoreLabel.name = String(randomNumber.formatted(.number.precision(.fractionLength(1))))
+        }
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
         scoreLabel.fontColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)

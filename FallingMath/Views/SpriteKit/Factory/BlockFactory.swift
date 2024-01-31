@@ -11,7 +11,7 @@ var position: [CGFloat] = [0,83,166,252]
 class BlockFactory: GOFactory{
     
     func createGameObject() -> GameObject {
-        let block: BlockNode = BlockNode(position: CGPoint(x: position.randomElement()! + 63.5, y: 950), number: Float.random(in: 1...99))
+        let block: BlockNode = BlockNode(position: CGPoint(x: position.randomElement()! + 63.5, y: 950), number: Float(Int.random(in: 1...99)))
         return block
     }
     
