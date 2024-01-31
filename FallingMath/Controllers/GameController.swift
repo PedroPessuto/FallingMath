@@ -16,6 +16,7 @@ import Foundation
     var objects: [GameObject] = []
     var number1 : Float = 0
     var number2 : Float = 0
+    var returnBlock: Float = 0
     
     var newBlocks: [Float] = []
     var objective: Float = 0

@@ -29,14 +29,14 @@ class GameScene: SKScene {
         physicsWorld.gravity.dy = -1.2
         backgroundColor = SKColor.clear
         
-        let borda = SKPhysicsBody(edgeLoopFrom: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height))
+        let borda = SKPhysicsBody(edgeLoopFrom: CGRect(x: 22,y: 221,width: self.frame.size.width-44,height: self.frame.size.height))
         borda.friction = 0.2
         self.physicsBody = borda
         
-        let background = SKShapeNode(rect: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height-331), cornerRadius: 13)
+        let background = SKShapeNode(rect: CGRect(x: 22,y: 221,width: self.frame.size.width-44,height: self.frame.size.height-331), cornerRadius: 13)
         background.fillColor = SKColor(.clear)
         background.zPosition = -999
-        background.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+        background.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         background.lineWidth = 4
         addChild(background)
     }
@@ -89,11 +89,12 @@ class GameScene: SKScene {
                 print("erro")
             }
             
-            if gameData?.objective == number{
+            if String(gameData!.objective.formatted(.number.precision(.fractionLength(1)))) == String(number.formatted(.number.precision(.fractionLength(1)))) {
                 newValue = operationGenerator(call: calls)
                 let firstValue = newValue.keys.first
                 gameData?.objective = firstValue!
                 isCreatingBlock = 1
+                gameData?.score += 1
             }else{
                 gameData?.startBlock(number)
                 renderLast()

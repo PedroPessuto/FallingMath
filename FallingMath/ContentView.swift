@@ -23,7 +23,7 @@ struct ContentView: View {
         ZStack {
             
             // Background
-            BackgroundView(gameController: gameController)
+            BackgroundView(gameData: gameController)
             
             // Tela de pontuação
             ScoreBoardView(gameData: gameController)
