@@ -18,6 +18,8 @@ import Foundation
     var maxAttempt: Int = 0
     var blockQuantityOnScreen: Int = 0
     
+    var isPaused: Bool = false
+    
     var objects: [GameObject] = []
     var number1 : Float = 0
     var number2 : Float = 0
@@ -33,6 +35,17 @@ import Foundation
     func startBlock(_ num: Float){
         createBlockNum(num)
        
+    }
+    
+    
+    //Creates
+    
+    func createPauseButtom() {
+        create(factory: PauseFactory())
+    }
+    
+    func createResumeButtom() {
+        create(factory: ResumeFactory())
     }
     
     func createBlock(){

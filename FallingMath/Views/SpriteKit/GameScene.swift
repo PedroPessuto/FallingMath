@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 class GameScene: SKScene {
     var count: Int = 0
@@ -16,7 +17,8 @@ class GameScene: SKScene {
     var calls: Float = 2
     var attempts: Int = 0
     var newValue: [Float:[Float]] = operationGenerator(call: 2)
-
+    
+    
     override func didMove(to view: SKView) {
         createBackground()
         
@@ -24,6 +26,19 @@ class GameScene: SKScene {
         
         render()
         gameData?.objective = newValue.keys.first!
+        createPauseButton()
+        createResumeButton()
+        self.view?.isPaused = gameData!.isPaused
+    }
+    
+    func createPauseButton(){
+        
+        gameData?.createPauseButtom()
+        renderLast()
+    }
+    func createResumeButton(){
+        gameData?.createResumeButtom()
+        renderLast()
     }
     
     func createBackground(){
@@ -107,7 +122,7 @@ class GameScene: SKScene {
             }
             // Se não acertar
             else {
-               
+                
                 attempts = attempts + 1
                 
                 if gameData?.maxAttempt == attempts {
@@ -116,27 +131,27 @@ class GameScene: SKScene {
                 }
                 
                 
-//                print("Tentativas: \(attempts)")
-//                print("Blocks: \(String(describing: gameData?.blockQuantityOnScreen))")
-//                print(attempts)
+                //                print("Tentativas: \(attempts)")
+                //                print("Blocks: \(String(describing: gameData?.blockQuantityOnScreen))")
+                //                print(attempts)
                 gameData?.startBlock(number)
                 renderLast()
-               
+                
             }
         }
         
         if isCreatingBlock == 1 {
-//            let values = newValue.values.first
-//            for numbers in values!{
-//                gameData?.startBlock(numbers)
-//                renderLast()
-//                
-//            }
+            //            let values = newValue.values.first
+            //            for numbers in values!{
+            //                gameData?.startBlock(numbers)
+            //                renderLast()
+            //
+            //            }
             gameData?.generateBlocks()
             isCreatingBlock = 0
-//            calls += 0.2
+            //            calls += 0.2
         }
-       
+        
         // Renderiza Numeros
         if !gameData!.useNumbers.isEmpty {
             for num in gameData!.useNumbers {
@@ -147,13 +162,13 @@ class GameScene: SKScene {
         }
         
         // Renderiza Ruidos
-//        if !gameData!.noiseNumbers.isEmpty {
-//            for num in gameData!.noiseNumbers {
-//                gameData?.startBlock(num)
-//                renderLast()
-//            }
-//            gameData?.noiseNumbers = []
-//        }
+        //        if !gameData!.noiseNumbers.isEmpty {
+        //            for num in gameData!.noiseNumbers {
+        //                gameData?.startBlock(num)
+        //                renderLast()
+        //            }
+        //            gameData?.noiseNumbers = []
+        //        }
         
         if gameData?.returnBlock != 0 {
             gameData?.startBlock(gameData!.returnBlock)
@@ -161,12 +176,12 @@ class GameScene: SKScene {
             gameData?.returnBlock = 0
         }
         
-//        count += 1
-//        if count >= 800 {
-//            gameData?.startBlock()
-//            renderLast()
-//            count = 0
-//        }
+        //        count += 1
+        //        if count >= 800 {
+        //            gameData?.startBlock()
+        //            renderLast()
+        //            count = 0
+        //        }
         
         if let objects = gameData?.objects {
             for object in objects {
@@ -209,8 +224,65 @@ class GameScene: SKScene {
                         
                         gameData?.objects.remove(at: index)
                     }
-                }else{
-                    
+                }
+                else if object.node.name == "pause"{
+                    if object.node.contains(touch.location(in: self)){
+                        print("pause button")
+                        if(self.isPaused == false){
+                            pauseGame()
+                            
+                        }
+                    }
+                }
+                else if object.node.name == "resume"{
+                    if object.node.contains(touch.location(in: self)){
+                        print("resume button")
+                        
+                        if(self.isPaused == true){
+                            resumeGame()
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+    func pauseGame() {
+        self.isPaused = true
+        for object in gameData!.objects{
+            if object.node.name == "resume"{
+                
+                if object.node.isHidden == true{
+                    object.node.isHidden = false
+                }
+                
+                
+            }
+            if object.node.name == "pause"{
+                if object.node.isHidden == false{
+                    object.node.isHidden = true
+                }
+            }
+        }
+    }
+    
+    func resumeGame() {
+        self.isPaused = false
+        
+        for object in gameData!.objects{
+            if object.node.name == "resume"{
+                
+                if object.node.isHidden == false{
+                    object.node.isHidden = true
+                }
+                
+                
+            }
+            if object.node.name == "pause"{
+                if object.node.isHidden == true{
+                    object.node.isHidden = false
                 }
             }
         }

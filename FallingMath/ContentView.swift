@@ -11,6 +11,7 @@ import SpriteKit
 struct ContentView: View {
     
     @State var gameController: GameController = GameController()
+    @State var pause: Bool = false
     
     var scene: GameScene {
         let scene = GameScene()
@@ -29,14 +30,13 @@ struct ContentView: View {
             ScoreBoardView(gameData: gameController)
            
             // Frame do jogo
-            SpriteView(scene: scene, options: [.allowsTransparency])
+            SpriteView(scene: scene, isPaused: pause, options: [.allowsTransparency])
             
             // Fazer operações
             OperationsView(gameData: gameController)
-            
-            
         }
         .ignoresSafeArea()
+        .persistentSystemOverlays(.hidden)
     }
 }
 
