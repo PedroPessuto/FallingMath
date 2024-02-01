@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 class ResumeFactory: GOFactory{
     
@@ -24,4 +25,8 @@ class ResumeFactory: GOFactory{
     }
     
     
+}
+
+#Preview {
+    ContentView()
 }
