@@ -65,6 +65,7 @@ class GameScene: SKScene {
     func teste() {
         print(self.isPaused)
         print("1")
+        gameData?.configIsPaused = true
         self.isPaused = true
         print("2")
         print(self.isPaused)
@@ -79,10 +80,9 @@ class GameScene: SKScene {
         render()
     }
     
-    
     // Função que é chamada para cada renderização
     override func update(_ currentTime: TimeInterval) {
-    
+        
         // Renderizar Numeros
         if !gameData!.useNumbers.isEmpty {
             for num in gameData!.useNumbers {
