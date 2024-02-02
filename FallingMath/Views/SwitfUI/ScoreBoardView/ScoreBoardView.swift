@@ -10,7 +10,6 @@ import SwiftUI
 struct ScoreBoardView: View {
     
     @Environment(GameController.self) private var gameController
-    
     var body: some View {
         VStack (spacing: 0) {
             HStack {
@@ -28,17 +27,22 @@ struct ScoreBoardView: View {
                 
                 Spacer()
                 
-                Image(systemName: "pause.fill")
-                    .font(.title)
-                    .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
+                Button (action: {
+                    gameController.configIsPaused.toggle()
+                }) {
+                    Image(systemName: "pause.fill")
+                        .font(.title)
+                        .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
+                }
                 
             }
             
             HStack {
                 
-                Text("\(String(format: "%.1f", gameController.objective))")
+                Text(gameController.formatNumber(gameController.objective))
+                    .frame(width: 135)
                     .overlay(
-                        Path(roundedRect: CGRect(x: -30, y: -3, width: 135, height: 36), cornerRadii: RectangleCornerRadii(
+                        Path(roundedRect: CGRect(x: 0, y: -3, width: 135, height: 36), cornerRadii: RectangleCornerRadii(
                             topLeading: 13,
                             bottomLeading: 2,
                             bottomTrailing: 2,
@@ -46,13 +50,14 @@ struct ScoreBoardView: View {
                         .stroke()
                         .stroke(lineWidth: 3)
                         .fill(Color(uiColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)))
+                        
+
                     )
                     .foregroundStyle(Color(uiColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)))
                     .font(.system(size: 28))
                     .fontWeight(.semibold)
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            
             
             
         }

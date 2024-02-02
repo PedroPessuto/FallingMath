@@ -17,9 +17,13 @@
 		78258DB62B6C369000CA252E /* OnboardingView7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DB52B6C369000CA252E /* OnboardingView7.swift */; };
 		78258DC92B6D64CC00CA252E /* MusticaPro-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78258DC82B6D64CC00CA252E /* MusticaPro-SemiBold.otf */; };
 		64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */; };
+		BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */; };
+		BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */; };
+		BF4DF6722B6D35DC001EE116 /* NumberBlockOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4DF6712B6D35DC001EE116 /* NumberBlockOperation.swift */; };
 		BF502F422B56D77B003E092A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F412B56D77B003E092A /* GameScene.swift */; };
 		BF502F442B56D8A0003E092A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F432B56D8A0003E092A /* ContentView.swift */; };
 		BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F4B2B56F027003E092A /* ScoreBoardView.swift */; };
+		BF7232DE2B6C2BA6006DCA42 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7232DD2B6C2BA6006DCA42 /* HomeView.swift */; };
 		BF8436B32B6826370061500A /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8436B22B6826370061500A /* BackgroundView.swift */; };
 		BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9850722B3386B3004E26FE /* FallingMathApp.swift */; };
 		BF9850772B3386B4004E26FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9850762B3386B4004E26FE /* Assets.xcassets */; };
@@ -45,9 +49,13 @@
 		78258DC32B6D614C00CA252E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		78258DC82B6D64CC00CA252E /* MusticaPro-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MusticaPro-SemiBold.otf"; sourceTree = "<group>"; };
 		64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MusicaFallingMath.mp3; sourceTree = "<group>"; };
+		BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		BF4DF6712B6D35DC001EE116 /* NumberBlockOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberBlockOperation.swift; sourceTree = "<group>"; };
 		BF502F412B56D77B003E092A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BF502F432B56D8A0003E092A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF502F4B2B56F027003E092A /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
+		BF7232DD2B6C2BA6006DCA42 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BF8436B22B6826370061500A /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BF98506F2B3386B3004E26FE /* FallingMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9850722B3386B3004E26FE /* FallingMathApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallingMathApp.swift; sourceTree = "<group>"; };
@@ -73,12 +81,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		64277E792B5755A3003055E1 /* NumberGenerator */ = {
+		BF0110CF2B6C30BE00A8D7D9 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				64277E7A2B5755ED003055E1 /* NumberGenerator.swift */,
+				BF7232DD2B6C2BA6006DCA42 /* HomeView.swift */,
 			);
-			path = NumberGenerator;
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		BF3850572B33DC5B00860DA5 /* Views */ = {
@@ -103,25 +111,28 @@
 		BF502F4A2B56EFC3003E092A /* SwitfUI */ = {
 			isa = PBXGroup;
 			children = (
-				BF8436B12B6826290061500A /* Background */,
+				BFF254B52B6C316D00C801D3 /* GameView */,
+				BF0110CF2B6C30BE00A8D7D9 /* HomeView */,
+				BF8436B12B6826290061500A /* BackgroundView */,
 				BF8436B02B68239F0061500A /* OperationsView */,
-				BF502F4D2B56F02A003E092A /* ScoreBoard */,
+				BF502F4D2B56F02A003E092A /* ScoreBoardView */,
 			);
 			path = SwitfUI;
 			sourceTree = "<group>";
 		};
-		BF502F4D2B56F02A003E092A /* ScoreBoard */ = {
+		BF502F4D2B56F02A003E092A /* ScoreBoardView */ = {
 			isa = PBXGroup;
 			children = (
 				BF502F4B2B56F027003E092A /* ScoreBoardView.swift */,
 			);
-			path = ScoreBoard;
+			path = ScoreBoardView;
 			sourceTree = "<group>";
 		};
 		BF502F4E2B56F05D003E092A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E50FF6952B6031DB0016513B /* GameController.swift */,
+				BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -131,11 +142,12 @@
 			children = (
 				E5B4335F2B68120100E09724 /* WheelView.swift */,
 				E50FF6A02B6033650016513B /* OperationsView.swift */,
+				BF4DF6712B6D35DC001EE116 /* NumberBlockOperation.swift */,
 			);
 			path = OperationsView;
 			sourceTree = "<group>";
 		};
-		BF8436B12B6826290061500A /* Background */ = {
+		BF8436B12B6826290061500A /* BackgroundView */ = {
 			isa = PBXGroup;
 			children = (
 				BF8436B22B6826370061500A /* BackgroundView.swift */,
@@ -147,7 +159,7 @@
 				78258DB32B6C2FEA00CA252E /* OnboardingView6.swift */,
 				78258DB52B6C369000CA252E /* OnboardingView7.swift */,
 			);
-			path = Background;
+			path = BackgroundView;
 			sourceTree = "<group>";
 		};
 		BF9850662B3386B3004E26FE = {
@@ -189,6 +201,14 @@
 				BF9850792B3386B4004E26FE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BFF254B52B6C316D00C801D3 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */,
+			);
+			path = GameView;
 			sourceTree = "<group>";
 		};
 		BFF75CC02B6966D300FD8034 /* Models */ = {
@@ -283,15 +303,19 @@
 			files = (
 				E5B433602B68120100E09724 /* WheelView.swift in Sources */,
 				78258DAE2B6C2AEF00CA252E /* OnboardingView3.swift in Sources */,
+				BF7232DE2B6C2BA6006DCA42 /* HomeView.swift in Sources */,
 				BF502F442B56D8A0003E092A /* ContentView.swift in Sources */,
 				BF8436B32B6826370061500A /* BackgroundView.swift in Sources */,
+				BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */,
 				E50FF69D2B6032490016513B /* BlockNode.swift in Sources */,
 				78258DAC2B6C299D00CA252E /* OnboardingView2.swift in Sources */,
 				78258DB62B6C369000CA252E /* OnboardingView7.swift in Sources */,
+				BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */,
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
 				BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */,
 				78258DB02B6C2BC700CA252E /* OnboardingView4.swift in Sources */,
 				E50FF69B2B6032270016513B /* GameObject.swift in Sources */,
+				BF4DF6722B6D35DC001EE116 /* NumberBlockOperation.swift in Sources */,
 				BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */,
 				78258DB22B6C2BD200CA252E /* OnboardingView5.swift in Sources */,
 				E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */,
