@@ -42,11 +42,11 @@ class GameScene: SKScene {
         rightBorder.physicsBody?.isDynamic = false
         addChild(rightBorder)
         
-        // Câmera para DEBUG
-        //         let camera = SKCameraNode()
-        //         camera.setScale(3)
-        //         addChild(camera)
-        //         scene!.camera = camera
+//         Câmera para DEBUG
+//                 let camera = SKCameraNode()
+//                 camera.setScale(3)
+//                 addChild(camera)
+//                 scene!.camera = camera
     }
     
     func render(){
@@ -81,11 +81,25 @@ class GameScene: SKScene {
     }
     
     
+    func lose(){
+        if let objects = gameData?.objects{
+            for object in objects {
+                if object.node.name == "block"{
+                    if object.node.physicsBody?.velocity == CGVector(dx: 0, dy: 0){
+                        if object.node.position.y >= CGFloat(object.node.frame.height * 5){
+                            print("perdeu")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     // Função que é chamada para cada renderização
     override func update(_ currentTime: TimeInterval) {
         
         var number: Float = 0
-
+        lose()
         // Faz a operação quando há (2 números selecionados)
         if let num2 = gameData?.number2 {
             if let num1 = gameData?.number1 {
@@ -175,6 +189,31 @@ class GameScene: SKScene {
                         if gameData?.number1 == nil {
                             gameData?.number1 = blockNode.number
                         }
+                        blockNode.node.physicsBody?.isDynamic = false
+                        
+                        let circle = SKShapeNode(circleOfRadius: 20)
+                        circle.fillColor = .clear
+                        circle.strokeColor = UIColor(white: 1, alpha: 0.7)
+                        circle.lineWidth = 2
+                        circle.position = blockNode.node.position
+                        let circleAction1 = SKAction.scale(by: 2, duration: 0.2)
+                        let circleAction2 = SKAction.fadeOut(withDuration: 0.1)
+                        let circleAction3 = SKAction.removeFromParent()
+                        let circleSequence = SKAction.sequence([circleAction1, circleAction2, circleAction3])
+                        addChild(circle)
+                        circle.run(circleSequence)
+                        
+                        let circle1 = SKShapeNode(circleOfRadius: 10)
+                        circle1.fillColor = .clear
+                        circle1.strokeColor = UIColor(white: 1, alpha: 0.5)
+                        circle1.lineWidth = 2
+                        circle1.position = blockNode.node.position
+                        let circle1Action1 = SKAction.scale(by: 2, duration: 0.4)
+                        let circle1Action2 = SKAction.fadeOut(withDuration: 0.1)
+                        let circle1Action3 = SKAction.removeFromParent()
+                        let circle1Sequence = SKAction.sequence([circle1Action1, circle1Action2, circle1Action3])
+                        addChild(circle1)
+                        circle1.run(circle1Sequence)
                         
                         let action1 = SKAction.scale(by: 0.01, duration: 0.4)
                         let action2 = SKAction.fadeOut(withDuration: 0.1)

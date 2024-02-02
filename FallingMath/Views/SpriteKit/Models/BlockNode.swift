@@ -62,6 +62,7 @@ class BlockNode: GameObject {
         parentNode.addChild(node)
         parentNode.addChild(scoreLabel)
         parentNode.name = "block"
+        
         self.node = parentNode
     }
 }

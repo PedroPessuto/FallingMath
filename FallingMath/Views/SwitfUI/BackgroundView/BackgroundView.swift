@@ -29,6 +29,7 @@ struct BackgroundView: View {
     var body: some View {
         // Fazer lógica para mudar imagem e cor de fundo de acordo com a operação
         ZStack {
+//            Color.black
             RadialGradient(colors: gradientColors, center: UnitPoint(x: 0, y: 0), startRadius: 100, endRadius: 800)
         }
         .ignoresSafeArea()

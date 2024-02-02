@@ -92,7 +92,7 @@ import Foundation
     func generateBlocks() {
         var resultNumber: Int = 0
         let operations: [String] = ["+", "-", "*", "/"]
-        let blockQuantity: Int = 2
+        let blockQuantity: Int = 3
         maxAttempt = blockQuantity - 1
         
         for count in 0...blockQuantity - 1 {
