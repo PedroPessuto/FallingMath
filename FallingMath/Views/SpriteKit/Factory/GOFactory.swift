@@ -10,4 +10,5 @@ import Foundation
 protocol GOFactory {
     func createGameObject() -> GameObject
     func createGameObject(number: Float) -> GameObject
+    func createGameObject(number: Float, screenSize: CGSize) -> GameObject
 }

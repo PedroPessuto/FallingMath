@@ -6,28 +6,27 @@
 //
 
 import Foundation
-
-var position: [CGFloat] = [0,83,166,252]
-var previousIndex: Int? = nil
-var index: Int = 0
+var position: [CGFloat] = [100]
 
 class BlockFactory: GOFactory{
-    func createIndex() -> Int{
-        while (index == previousIndex) {
-            index = Int.random(in: 0...3)
-        }
-        return index
-    }
+        
     func createGameObject() -> GameObject {
-        
-        let block: BlockNode = BlockNode(position: CGPoint(x: position[createIndex()] + 63.5, y: 950), number: Float(Int.random(in: 1...99)))
-        
-        
+        let block: BlockNode = BlockNode(position: CGPoint(x: position.randomElement()!, y: 400), number: Float(Int.random(in: 1...99)))
         return block
     }
     
     func createGameObject(number: Float) -> GameObject {
-        let block: BlockNode = BlockNode(position: CGPoint(x: position.randomElement()! + 63.5, y: 950), number: number)
+        let block: BlockNode = BlockNode(position: CGPoint(x: position.randomElement()!, y: 400), number: number)
+        return block
+    }
+    
+    
+    func createGameObject(number: Float, screenSize: CGSize) -> GameObject {
+        
+        let widthPostions: [CGFloat] = [1, screenSize.width/2,screenSize.width/3, screenSize.width - 1]
+        
+        let block: BlockNode = BlockNode(position: CGPoint(x: widthPostions.randomElement()!, y: screenSize.height * 1.3), number: number)
+        
         return block
     }
     

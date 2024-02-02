@@ -6,37 +6,25 @@
 //
 
 import SwiftUI
-import SpriteKit
+import AVKit
+import AVFoundation
 
 struct ContentView: View {
     
     @State var gameController: GameController = GameController()
-    @State var pause: Bool = false
-    
-    var scene: GameScene {
-        let scene = GameScene()
-        scene.gameData = gameController
-        scene.scaleMode = .resizeFill
-        return scene
-    }
+    @State var audioController: AudioController = AudioController()
     
     var body: some View {
-        ZStack {
-            
-            // Background
-            BackgroundView(gameData: gameController)
-            
-            // Tela de pontuação
-            ScoreBoardView(gameData: gameController)
-           
-            // Frame do jogo
-            SpriteView(scene: scene, isPaused: pause, options: [.allowsTransparency])
-            
-            // Fazer operações
-            OperationsView(gameData: gameController)
+        VStack {
+            if gameController.configScreenName == "home" {
+                HomeView()
+            }
+            else {
+                GameView()
+            }
         }
-        .ignoresSafeArea()
-        .persistentSystemOverlays(.hidden)
+        .environment(gameController)
+       
     }
 }
 

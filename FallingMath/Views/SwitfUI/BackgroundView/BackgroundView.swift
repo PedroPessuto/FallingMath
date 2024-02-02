@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BackgroundView: View {
     
-    var gameData: GameController
+    @Environment(GameController.self) private var gameController
+    
     let color1 = Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.3))
     //Azul
     let gradient1 = Color(red: 138/255, green: 208/255, blue: 228/255)
@@ -39,19 +40,22 @@ struct BackgroundView: View {
             }
             
         }
-        .onChange(of: gameData.operation){
+        .ignoresSafeArea()
+        .onChange(of: gameController.operation){
             
-            switch gameData.operation {
-            case "+":
-                gradientColors = [gradient1, gradient2]
-            case "-":
-                gradientColors = [gradient3, gradient4]
-            case "x":
-                gradientColors = [gradient5, gradient6]
-            case "/":
-                gradientColors = [gradient7, gradient8]
-            default:
-                print("Cor erro")
+            withAnimation {
+                switch gameController.operation {
+                case "+":
+                    gradientColors = [gradient1, gradient2]
+                case "-":
+                    gradientColors = [gradient3, gradient4]
+                case "x":
+                    gradientColors = [gradient5, gradient6]
+                case "/":
+                    gradientColors = [gradient7, gradient8]
+                default:
+                    print("Cor erro")
+                }
             }
         }
         .onAppear(){
@@ -59,8 +63,4 @@ struct BackgroundView: View {
         }
         .animation(.easeInOut(duration: 1), value: gradientColors)
     }
-}
-
-#Preview {
-    BackgroundView(gameData: GameController())
 }

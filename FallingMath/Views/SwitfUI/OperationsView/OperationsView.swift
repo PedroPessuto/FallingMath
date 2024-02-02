@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct OperationsView: View {
-    var gameData: GameController
+    
+    @Environment(GameController.self) private var gameController
     
     @State var btnPadding: CGFloat = 15
     @State var btnHeight: CGFloat = 51
@@ -21,133 +22,81 @@ struct OperationsView: View {
     var verde = Color(red: 221/255, green: 175/255, blue: 73/255)
     
     @State var textColor: Color = Color(.white)
+    
+    var formatedNumber1: String? {
+        var num: String? = nil
+        if gameController.number1 != nil  {
+            num = gameController.formatNumber(gameController.number1!)
+        }
+        return num
+    }
+    
+    var formatedNumber2: String? {
+        var num: String? = nil
+        if gameController.number2 != nil  {
+            num = gameController.formatNumber(gameController.number2!)
+            
+        }
+        return num
+    }
+    
     var body: some View {
-        VStack{
-            HStack{
-                VStack{
-                    Text("\(gameData.score)")
-                        .font(.system(size: 28))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
-                    Text("SCORE")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.4)))
-                }
-                .padding(.leading)
-                Spacer()
-//                Button(action: {
-//                    gameData.isPaused.toggle()
-//                    print(gameData.isPaused)
-//                }, label: {
-//                    Image(systemName: "pause.fill")
-//                        .font(.title)
-//                        .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
-//                        .padding(.trailing)
-//                })
-//                Image(systemName: "pause.fill")
-//                    .font(.title)
-//                    .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
-//                    .padding(.trailing)
-            }
-            
-            .padding(.top, 30)
-            .ignoresSafeArea()
-            Text("0")
-                .font(.system(size: 28))
-                .fontWeight(.semibold)
-                .foregroundStyle(.clear)
-                .overlay(
-                    Path(roundedRect: CGRect(x: -57, y: 0, width: 135, height: 36), cornerRadii: RectangleCornerRadii(
-                        topLeading: 13,
-                        bottomLeading: 2,
-                        bottomTrailing: 2,
-                        topTrailing: 13))
-                    .stroke()
-                    .stroke(lineWidth: 3)
-                    .fill(Color(uiColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)))
-                    
-                    
-                )
-                .offset(y: -15)
-            Spacer()
-        }
-         
         
-        VStack{
-            Spacer()
-            HStack(spacing: -10){
-                let num1 = String(gameData.number1)
-                let num2 = String(gameData.number2)
-                ZStack{
-                    Text(num1 == "0.0" ? "" : num1)
-                        .font(.system(size: 31.8))
-                        .foregroundStyle(textColor)
-                        .bold()
-                        .frame(width: 81, height: 81)
-                        .background(num1 == "0.0" ? Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.3)) :.white)
-                        .clipShape(
-                            RoundedRectangle(cornerRadius: 12)
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(.white, lineWidth: 4)
-                        )
-                        .onTapGesture {
-                            if num1 != "0.0"{
-                                gameData.returnBlock = Float(num1)!
-                                gameData.number1 = 0
+        VStack {
+            ZStack {
+                
+                // Roda das operacoes
+                WheelView()
+                    .onLongPressGesture(minimumDuration: .infinity, maximumDistance: .infinity, pressing: { pressing in
+                        if pressing {
+                            btnPadding = 0
+                            btnHeight = 51
+                            if index < operacoes.count - 1{
+                                index += 1
+                                gameController.operation = operacoes[index]
                             }
+                            else {
+                                index = 0
+                                gameController.operation = operacoes[index]
+                            }
+                        } else{
+                            btnPadding = 15
+                            btnHeight = 61
                         }
-                }
-                .onChange(of: gameData.operation){
-                    
-                    switch gameData.operation {
-                    case "+":
-                        textColor = azul
-                    case "-":
-                        textColor = vermelho
-                    case "/":
-                        textColor = verde
-                    case "x":
-                        textColor = ciano
-                    default:
-                        print("Cor erro")
+                    }, perform: {})
+                
+                // Local dos numeros
+                VStack {
+                    HStack {
+                        
+                        // Numero 1
+                        NumberBlockOperation(formatedNumber: formatedNumber1)
+                            .onTapGesture {
+                                if formatedNumber1 != nil {
+                                    gameController.returnBlock = gameController.number1!
+                                    gameController.number1 = nil
+                                }
+                            }
+                        
+                        Spacer()
+                        
+                        // Numero 2
+                        NumberBlockOperation(formatedNumber: formatedNumber2)
+                            .onTapGesture {
+                                if formatedNumber2 != nil {
+                                    gameController.returnBlock = gameController.number2!
+                                    gameController.number2 = nil
+                                }
+                            }
+                            .onChange(of: gameController.number2) { _, newValu_e in
+                                gameController.doOperation()
+                            }
                     }
+                    Spacer()
                 }
-                .onAppear(){
-                    textColor = azul
-                }
-                WheelView(gameData: gameData)
-                    .offset(x:0, y:40)
-                    .zIndex(-1)
-                    
-                
-                Text(num2 == "0.0" ? "" : num2)
-                    .font(.system(size: 31.8))
-                    .foregroundStyle(textColor)
-                    .bold()
-                    .frame(width: 81, height: 81)
-                    .background(num2 == "0.0" ? Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.3)) :.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(.white, lineWidth: 4)
-                    )
-                
             }
-            HStack{
-                Spacer()
-            }
-            
         }
+        .padding(.top)
+
     }
 }
-
-#Preview {
-    ZStack{
-        Color(.blue)
-            .ignoresSafeArea()
-        OperationsView(gameData: GameController())
-    }
-}
-

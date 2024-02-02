@@ -13,16 +13,18 @@ struct WheelView: View {
     @State var index1: Int = 0
     @State var operacoes: [String] = ["+","-","x","/"]
     @State var index: Int = 0
+    
     var body: some View {
-        ZStack{
+        ZStack {
             
-            HStack(spacing: 0){
+            HStack(spacing: 0) {
                 ZStack{
                     Image(degreess[index] == 90 ? "onLeft" : "offLeft")
                     Image(degreess[index] == 90 ? "minus" : "")
                         .rotationEffect(.degrees(90))
                 }
-                Image("")
+                
+                VStack{}
                     .frame(width: 60,height: 60)
                 
                 ZStack{
@@ -65,12 +67,5 @@ struct WheelView: View {
         }
         .rotationEffect(.degrees(degreess[index]))
         .animation(.bouncy(duration: 0.5), value: index)
-    }
-}
-
-#Preview {
-    ZStack{
-        Color(.blue)
-        WheelView(gameData: GameController())
     }
 }
