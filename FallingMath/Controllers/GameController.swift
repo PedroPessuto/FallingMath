@@ -14,7 +14,8 @@ import Foundation
     
     // Game
     var score: Int = 0 // Pontuação
-    var objective: Float = 0
+    var objective: Float = 0 // N[umero objetivo
+    var attempts: Int = 0 // Tentativas para atingir o  objetivo
     
     // Generation
     var useNumbers: [Float] = []
@@ -72,6 +73,65 @@ import Foundation
         self.returnBlock = nil
     }
     
+    func doOperation() {
+        var number: Float = 0
+
+        // Faz a operação quando há (2 números selecionados)
+        if let num2 = self.number2 {
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                
+                if let num1 = self.number1, let _ = self.number2 {
+                    switch self.operation {
+                    case "+":
+                        number = num1 + num2
+                    case "-":
+                        number = num1 - num2
+                    case "/":
+                        number = num1 / num2
+                    case "x":
+                        number = num1 * num2
+                    default:
+                        print("Operação inválida")
+                    }
+                    
+                    self.number1 = nil
+                    self.number2 = nil
+                    
+                    
+                    // Se ele acertou
+                    if self.objective == number {
+                        self.generateBlocks()
+                        self.attempts = 0
+                        self.maxAttempt = 0
+                        self.score = self.score + 1
+                    }
+                    // Se errou
+                    else {
+                        
+                        // Aumenta o numero de tentativas
+                        self.attempts = self.attempts + 1
+                        
+                        // Se atingiu o limite de tentativas
+                        if self.maxAttempt >= self.attempts {
+                            self.attempts = 0
+                            self.generateBlocks()
+                        }
+                        
+                        // gera bloco errado
+                        if number <= -1 || number > 0.009 {
+                            self.useNumbers.append(number)
+                        }
+                    }
+                    
+                }
+               
+            }
+            
+           
+        }
+    }
     
     // Função para iniciar o jogo
     func startGame() {

@@ -11,7 +11,6 @@ import SpriteKit
 class GameScene: SKScene {
     
     var gameData: GameController?
-    var attempts: Int = 0
     
     // Cria o cenario do jogo
     func createBackground(){
@@ -71,69 +70,19 @@ class GameScene: SKScene {
         print(self.isPaused)
     }
     
+    
     // Init
     override func didMove(to view: SKView) {
         createBackground()
         gameData?.gameScreenSize = self.frame.size
         gameData?.startGame()
-//        self.isPaused = true
         render()
     }
     
     
     // Função que é chamada para cada renderização
     override func update(_ currentTime: TimeInterval) {
-        
-        var number: Float = 0
-
-        // Faz a operação quando há (2 números selecionados)
-        if let num2 = gameData?.number2 {
-            if let num1 = gameData?.number1 {
-                switch gameData?.operation {
-                case "+":
-                    number = num1 + num2
-                case "-":
-                    number = num1 - num2
-                case "/":
-                    number = num1 / num2
-                case "x":
-                    number = num1 * num2
-                default:
-                    print("Operação inválida")
-                }
-                
-                gameData?.number1 = nil
-                gameData?.number2 = nil
-            }
-            
-            // Se ele acertou
-            if gameData?.objective == number {
-                gameData?.generateBlocks()
-                attempts = 0
-                gameData?.maxAttempt = 0
-                gameData?.score = gameData!.score + 1
-            }
-            // Se errou
-            else {
-                
-                // Aumenta o numero de tentativas
-                attempts = attempts + 1
-                
-                // Se atingiu o limite de tentativas
-                if gameData?.maxAttempt == attempts {
-                    attempts = 0
-                    gameData?.generateBlocks()
-                }
-                
-                // gera bloco errado
-                if number <= -1 || number > 0.009 {
-                    gameData?.startBlock(number)
-                    renderLast()
-                }
-                
-            }
-        }
-        
+    
         // Renderizar Numeros
         if !gameData!.useNumbers.isEmpty {
             for num in gameData!.useNumbers {

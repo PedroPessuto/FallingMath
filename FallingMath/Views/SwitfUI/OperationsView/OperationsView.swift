@@ -89,6 +89,9 @@ struct OperationsView: View {
                                     gameController.number2 = nil
                                 }
                             }
+                            .onChange(of: gameController.number2) { _, newValu_e in
+                                gameController.doOperation()
+                            }
                     }
                     Spacer()
                 }
