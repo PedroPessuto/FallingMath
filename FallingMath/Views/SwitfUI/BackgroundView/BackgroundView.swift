@@ -30,30 +30,23 @@ struct BackgroundView: View {
         // Fazer lógica para mudar imagem e cor de fundo de acordo com a operação
         ZStack {
             RadialGradient(colors: gradientColors, center: UnitPoint(x: 0, y: 0), startRadius: 100, endRadius: 800)
-                
-            
-//            VStack{
-//                RoundedRectangle(cornerRadius: 13)
-//                    .frame(width: 353, height: 520)
-//                    .padding(.bottom, 115)
-//                    .foregroundStyle(Gradient(colors: [color1, .clear]))
-//            }
-            
         }
         .ignoresSafeArea()
         .onChange(of: gameController.operation){
             
-            switch gameController.operation {
-            case "+":
-                gradientColors = [gradient1, gradient2]
-            case "-":
-                gradientColors = [gradient3, gradient4]
-            case "x":
-                gradientColors = [gradient5, gradient6]
-            case "/":
-                gradientColors = [gradient7, gradient8]
-            default:
-                print("Cor erro")
+            withAnimation {
+                switch gameController.operation {
+                case "+":
+                    gradientColors = [gradient1, gradient2]
+                case "-":
+                    gradientColors = [gradient3, gradient4]
+                case "x":
+                    gradientColors = [gradient5, gradient6]
+                case "/":
+                    gradientColors = [gradient7, gradient8]
+                default:
+                    print("Cor erro")
+                }
             }
         }
         .onAppear(){

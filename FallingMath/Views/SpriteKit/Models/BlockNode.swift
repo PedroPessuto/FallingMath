@@ -28,7 +28,6 @@ class BlockNode: GameObject {
         var parentNode: SKSpriteNode
         parentNode = SKSpriteNode(color: .clear, size: CGSize(width: number >= 1000 ? 156 : 76, height: 76))
         parentNode.position = CGPoint(x: position.x, y: position.y)
-        parentNode.zPosition = -2
         
         // Quadrado
         let node = SKShapeNode(rectOf: CGSize(width: number >= 1000 ? 156 : 76, height: 76), cornerRadius: 9)
@@ -38,18 +37,19 @@ class BlockNode: GameObject {
         node.zPosition = -1
         node.strokeColor = UIColor(red: 1, green:1, blue: 1, alpha: 0.7)
         
-        
         // Texto
         let scoreLabel: SKLabelNode = self.numberText
         scoreLabel.fontSize = CGFloat(33)
-        let randomNumber: Float = number
-        if randomNumber / Float(Int(randomNumber)) == 1{
-            scoreLabel.text = String(randomNumber.formatted(.number.precision(.fractionLength(0))))
-            scoreLabel.name = String(randomNumber.formatted(.number.precision(.fractionLength(0))))
-        }else{
-            scoreLabel.text = String(randomNumber.formatted(.number.precision(.fractionLength(1))))
-            scoreLabel.name = String(randomNumber.formatted(.number.precision(.fractionLength(1))))
+        
+        if number.truncatingRemainder(dividingBy: 1) == 0 {
+            scoreLabel.text = String(Int(number))
+            scoreLabel.name = String(Int(number))
         }
+        else {
+            scoreLabel.text = String(number.formatted(.number.precision(.fractionLength(2))))
+            scoreLabel.name = String(number.formatted(.number.precision(.fractionLength(2))))
+        }
+        
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
         scoreLabel.fontColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
