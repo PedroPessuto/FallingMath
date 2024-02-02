@@ -20,6 +20,7 @@ import Foundation
     // Generation
     var useNumbers: [Float] = []
     var maxAttempt: Int = 0
+    var isGenerating: Bool = false
     
     // Operation
     var operation: String = "+" // Operação Selecionada
@@ -40,7 +41,7 @@ import Foundation
     
     func startBlock(_ num: Float){
         createBlockNum(num)
-       
+        
     }
     
     func createBlock(){
@@ -74,63 +75,61 @@ import Foundation
     }
     
     func doOperation() {
-        var number: Float = 0
-
+       
+        
         // Faz a operação quando há (2 números selecionados)
-        if let num2 = self.number2 {
-            
+        if let num2 = self.number2, let num1 = self.number1  {
+            var number: Float = 0
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 
-                if let num1 = self.number1, let _ = self.number2 {
-                    switch self.operation {
-                    case "+":
-                        number = num1 + num2
-                    case "-":
-                        number = num1 - num2
-                    case "/":
-                        number = num1 / num2
-                    case "x":
-                        number = num1 * num2
-                    default:
-                        print("Operação inválida")
-                    }
-                    
-                    self.number1 = nil
-                    self.number2 = nil
-                    
-                    
-                    // Se ele acertou
-                    if self.objective == number {
-                        self.generateBlocks()
-                        self.attempts = 0
-                        self.maxAttempt = 0
-                        self.score = self.score + 1
-                    }
-                    // Se errou
-                    else {
-                        
-                        // Aumenta o numero de tentativas
-                        self.attempts = self.attempts + 1
-                        
-                        // Se atingiu o limite de tentativas
-                        if self.maxAttempt >= self.attempts {
-                            self.attempts = 0
-                            self.generateBlocks()
-                        }
-                        
-                        // gera bloco errado
-                        if number <= -1 || number > 0.009 {
-                            self.useNumbers.append(number)
-                        }
-                    }
-                    
+                switch self.operation {
+                case "+":
+                    number = num1 + num2
+                case "-":
+                    number = num1 - num2
+                case "/":
+                    number = num1 / num2
+                case "x":
+                    number = num1 * num2
+                default:
+                    print("Operação inválida")
                 }
-               
+
+                // Se ele acertou
+                if self.objective == number {
+                    self.attempts = 0
+                    self.maxAttempt = 0
+                    self.score = self.score + 1
+                    self.generateBlocks()
+                }
+                // Se errou
+                else {
+                    
+                    // Aumenta o numero de tentativas
+                    self.attempts = self.attempts + 1
+                    
+                    // Gera bloco errado
+                    if number <= -1 || number > 0.009 {
+                        self.useNumbers.append(number)
+                    }
+                    
+                    // Se atingiu o limite de tentativas
+                    if self.maxAttempt >= self.attempts {
+                        self.attempts = 0
+                        self.generateBlocks()
+                    }
+                    
+                   
+                }
+                    
+                
+                self.number1 = nil
+                self.number2 = nil
+                
             }
-            
-           
         }
+        
     }
     
     // Função para iniciar o jogo
@@ -144,7 +143,7 @@ import Foundation
         if number.truncatingRemainder(dividingBy: 1) == 0 {
             return "\(Int(number))"
         }
-       
+        
         return String(number.formatted(.number.precision(.fractionLength(2))))
     }
     
