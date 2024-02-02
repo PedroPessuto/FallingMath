@@ -21,7 +21,6 @@ class PauseNode: GameObject{
     init(position: CGPoint) {
         self.position = position
         
-//        let pauseNode = SKShapeNode(circleOfRadius: 30)
         let pauseNode = SKSpriteNode(imageNamed: "pause")
         pauseNode.name = "pause"
         pauseNode.zPosition = 10
@@ -30,7 +29,3 @@ class PauseNode: GameObject{
         self.node = pauseNode
     }
 }
-
-//#Preview {
-//    ContentView()
-//}
