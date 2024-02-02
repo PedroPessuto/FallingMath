@@ -14,11 +14,13 @@ struct WheelView: View {
     @State var operacoes: [String] = ["+","-","x","/"]
     @State var index: Int = 0
     var body: some View {
+        
         ZStack{
-            
             HStack(spacing: 0){
                 ZStack{
                     Image(degreess[index] == 90 ? "onLeft" : "offLeft")
+                        .resizable()
+                        .frame(width: 61, height: 118)
                     Image(degreess[index] == 90 ? "minus" : "")
                         .rotationEffect(.degrees(90))
                 }
@@ -27,6 +29,8 @@ struct WheelView: View {
                 
                 ZStack{
                     Image(degreess[index] == 270 ? "onRight" : "offRight")
+                        .resizable()
+                        .frame(width: 61, height: 118)
                     Image(degreess[index] == 270 ? "divide" : "")
                         .rotationEffect(.degrees(90))
                 }
@@ -34,10 +38,14 @@ struct WheelView: View {
             VStack(spacing: 0){
                 ZStack{
                     Image(degreess[index] == 0 ? "onUp" : "offUp")
+                        .resizable()
+                        .frame(width: 118, height: 61)
                     Image(degreess[index] == 0 ? "plus" : "")
                         
                 }
                 Image("Center")
+                    .resizable()
+                    .frame(width: 60, height: 60)
                     .onTapGesture {
                         if Int(index) == degreess.count - 1{
                             index = 0
@@ -54,18 +62,24 @@ struct WheelView: View {
                             gameData.operation = operacoes[index1]
                             
                         }
+                        
                     }
                    
                 ZStack{
                     Image(degreess[index] == 180 ? "onDown" : "offDown")
+                        .resizable()
+                        .frame(width: 118, height: 61)
                     Image(degreess[index] == 180 ? "multiplier" : "")
                         .rotationEffect(.degrees(90))
                 }
             }
+            
         }
         .rotationEffect(.degrees(degreess[index]))
         .animation(.bouncy(duration: 0.5), value: index)
+        
     }
+    
 }
 
 #Preview {

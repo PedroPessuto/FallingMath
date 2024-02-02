@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		64277E7B2B5755ED003055E1 /* NumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64277E7A2B5755ED003055E1 /* NumberGenerator.swift */; };
+		78258DAA2B6C12FA00CA252E /* OnboardingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DA92B6C12FA00CA252E /* OnboardingView1.swift */; };
+		78258DAC2B6C299D00CA252E /* OnboardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DAB2B6C299D00CA252E /* OnboardingView2.swift */; };
+		78258DAE2B6C2AEF00CA252E /* OnboardingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DAD2B6C2AEF00CA252E /* OnboardingView3.swift */; };
+		78258DB02B6C2BC700CA252E /* OnboardingView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DAF2B6C2BC700CA252E /* OnboardingView4.swift */; };
+		78258DB22B6C2BD200CA252E /* OnboardingView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DB12B6C2BD200CA252E /* OnboardingView5.swift */; };
+		78258DB42B6C2FEA00CA252E /* OnboardingView6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DB32B6C2FEA00CA252E /* OnboardingView6.swift */; };
+		78258DB62B6C369000CA252E /* OnboardingView7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78258DB52B6C369000CA252E /* OnboardingView7.swift */; };
+		78258DC92B6D64CC00CA252E /* MusticaPro-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78258DC82B6D64CC00CA252E /* MusticaPro-SemiBold.otf */; };
 		BF502F422B56D77B003E092A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F412B56D77B003E092A /* GameScene.swift */; };
 		BF502F442B56D8A0003E092A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F432B56D8A0003E092A /* ContentView.swift */; };
 		BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F4B2B56F027003E092A /* ScoreBoardView.swift */; };
@@ -26,6 +34,15 @@
 
 /* Begin PBXFileReference section */
 		64277E7A2B5755ED003055E1 /* NumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGenerator.swift; sourceTree = "<group>"; };
+		78258DA92B6C12FA00CA252E /* OnboardingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView1.swift; sourceTree = "<group>"; };
+		78258DAB2B6C299D00CA252E /* OnboardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView2.swift; sourceTree = "<group>"; };
+		78258DAD2B6C2AEF00CA252E /* OnboardingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView3.swift; sourceTree = "<group>"; };
+		78258DAF2B6C2BC700CA252E /* OnboardingView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView4.swift; sourceTree = "<group>"; };
+		78258DB12B6C2BD200CA252E /* OnboardingView5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView5.swift; sourceTree = "<group>"; };
+		78258DB32B6C2FEA00CA252E /* OnboardingView6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView6.swift; sourceTree = "<group>"; };
+		78258DB52B6C369000CA252E /* OnboardingView7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView7.swift; sourceTree = "<group>"; };
+		78258DC32B6D614C00CA252E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		78258DC82B6D64CC00CA252E /* MusticaPro-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MusticaPro-SemiBold.otf"; sourceTree = "<group>"; };
 		BF502F412B56D77B003E092A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BF502F432B56D8A0003E092A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF502F4B2B56F027003E092A /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
@@ -120,6 +137,13 @@
 			isa = PBXGroup;
 			children = (
 				BF8436B22B6826370061500A /* BackgroundView.swift */,
+				78258DA92B6C12FA00CA252E /* OnboardingView1.swift */,
+				78258DAB2B6C299D00CA252E /* OnboardingView2.swift */,
+				78258DAD2B6C2AEF00CA252E /* OnboardingView3.swift */,
+				78258DAF2B6C2BC700CA252E /* OnboardingView4.swift */,
+				78258DB12B6C2BD200CA252E /* OnboardingView5.swift */,
+				78258DB32B6C2FEA00CA252E /* OnboardingView6.swift */,
+				78258DB52B6C369000CA252E /* OnboardingView7.swift */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -143,11 +167,13 @@
 		BF9850712B3386B3004E26FE /* FallingMath */ = {
 			isa = PBXGroup;
 			children = (
+				78258DC32B6D614C00CA252E /* Info.plist */,
 				64277E792B5755A3003055E1 /* NumberGenerator */,
 				BF502F4E2B56F05D003E092A /* Controllers */,
 				BF3850572B33DC5B00860DA5 /* Views */,
 				BF9850722B3386B3004E26FE /* FallingMathApp.swift */,
 				BF502F432B56D8A0003E092A /* ContentView.swift */,
+				78258DC82B6D64CC00CA252E /* MusticaPro-SemiBold.otf */,
 				BF9850762B3386B4004E26FE /* Assets.xcassets */,
 				BF9850782B3386B4004E26FE /* Preview Content */,
 			);
@@ -238,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78258DC92B6D64CC00CA252E /* MusticaPro-SemiBold.otf in Resources */,
 				BF98507A2B3386B4004E26FE /* Preview Assets.xcassets in Resources */,
 				BF9850772B3386B4004E26FE /* Assets.xcassets in Resources */,
 			);
@@ -251,18 +278,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5B433602B68120100E09724 /* WheelView.swift in Sources */,
+				78258DAE2B6C2AEF00CA252E /* OnboardingView3.swift in Sources */,
 				BF502F442B56D8A0003E092A /* ContentView.swift in Sources */,
 				BF8436B32B6826370061500A /* BackgroundView.swift in Sources */,
 				E50FF69D2B6032490016513B /* BlockNode.swift in Sources */,
+				78258DAC2B6C299D00CA252E /* OnboardingView2.swift in Sources */,
+				78258DB62B6C369000CA252E /* OnboardingView7.swift in Sources */,
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
 				BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */,
+				78258DB02B6C2BC700CA252E /* OnboardingView4.swift in Sources */,
 				E50FF69B2B6032270016513B /* GameObject.swift in Sources */,
 				BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */,
+				78258DB22B6C2BD200CA252E /* OnboardingView5.swift in Sources */,
 				E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */,
 				E50FF6A12B6033650016513B /* OperationsView.swift in Sources */,
 				E50FF6962B6031DB0016513B /* GameController.swift in Sources */,
+				78258DB42B6C2FEA00CA252E /* OnboardingView6.swift in Sources */,
 				64277E7B2B5755ED003055E1 /* NumberGenerator.swift in Sources */,
 				BF502F422B56D77B003E092A /* GameScene.swift in Sources */,
+				78258DAA2B6C12FA00CA252E /* OnboardingView1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,13 +430,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FallingMath/Preview Content\"";
-				DEVELOPMENT_TEAM = UU65NF9U3M;
+				DEVELOPMENT_TEAM = D3QL34P3MQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FallingMath/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -425,13 +461,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FallingMath/Preview Content\"";
-				DEVELOPMENT_TEAM = UU65NF9U3M;
+				DEVELOPMENT_TEAM = D3QL34P3MQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FallingMath/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
