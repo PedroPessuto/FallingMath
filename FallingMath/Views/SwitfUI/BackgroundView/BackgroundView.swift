@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BackgroundView: View {
     
-    var gameData: GameController
+    @Environment(GameController.self) private var gameController
+    
     let color1 = Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.3))
     //Azul
     let gradient1 = Color(red: 138/255, green: 208/255, blue: 228/255)
@@ -29,19 +30,20 @@ struct BackgroundView: View {
         // Fazer lógica para mudar imagem e cor de fundo de acordo com a operação
         ZStack {
             RadialGradient(colors: gradientColors, center: UnitPoint(x: 0, y: 0), startRadius: 100, endRadius: 800)
-                .ignoresSafeArea()
+                
             
-            VStack{
-                RoundedRectangle(cornerRadius: 13)
-                    .frame(width: 353, height: 520)
-                    .padding(.bottom, 115)
-                    .foregroundStyle(Gradient(colors: [color1, .clear]))
-            }
+//            VStack{
+//                RoundedRectangle(cornerRadius: 13)
+//                    .frame(width: 353, height: 520)
+//                    .padding(.bottom, 115)
+//                    .foregroundStyle(Gradient(colors: [color1, .clear]))
+//            }
             
         }
-        .onChange(of: gameData.operation){
+        .ignoresSafeArea()
+        .onChange(of: gameController.operation){
             
-            switch gameData.operation {
+            switch gameController.operation {
             case "+":
                 gradientColors = [gradient1, gradient2]
             case "-":
@@ -58,8 +60,4 @@ struct BackgroundView: View {
             gradientColors = [gradient1, gradient2]
         }
     }
-}
-
-#Preview {
-    BackgroundView(gameData: GameController())
 }
