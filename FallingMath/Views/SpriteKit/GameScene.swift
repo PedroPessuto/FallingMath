@@ -32,7 +32,6 @@ class GameScene: SKScene {
     }
     
     func createPauseButton(){
-        
         gameData?.createPauseButtom()
         renderLast()
     }
@@ -262,7 +261,7 @@ class GameScene: SKScene {
             }
             if object.node.name == "pause"{
                 if object.node.isHidden == false{
-                    object.node.isHidden = true
+                    object.node.isHidden = false
                 }
             }
         }

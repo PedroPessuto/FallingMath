@@ -26,7 +26,3 @@ class ResumeFactory: GOFactory{
     
     
 }
-
-#Preview {
-    ContentView()
-}

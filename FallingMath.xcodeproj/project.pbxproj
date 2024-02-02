@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		64277E7B2B5755ED003055E1 /* NumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64277E7A2B5755ED003055E1 /* NumberGenerator.swift */; };
+		647EC0322B6D553D00E08D9C /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 647EC0312B6D553D00E08D9C /* pause.png */; };
 		64AD3D8A2B6C1603006479AE /* PauseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD3D892B6C1603006479AE /* PauseNode.swift */; };
 		64AD3D8C2B6C174C006479AE /* PauseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD3D8B2B6C174C006479AE /* PauseFactory.swift */; };
 		64AD3D8E2B6C249C006479AE /* ResumeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD3D8D2B6C249C006479AE /* ResumeNode.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		64277E7A2B5755ED003055E1 /* NumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGenerator.swift; sourceTree = "<group>"; };
+		647EC0312B6D553D00E08D9C /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		64AD3D892B6C1603006479AE /* PauseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseNode.swift; sourceTree = "<group>"; };
 		64AD3D8B2B6C174C006479AE /* PauseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseFactory.swift; sourceTree = "<group>"; };
 		64AD3D8D2B6C249C006479AE /* ResumeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeNode.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				BF9850722B3386B3004E26FE /* FallingMathApp.swift */,
 				BF502F432B56D8A0003E092A /* ContentView.swift */,
 				BF9850762B3386B4004E26FE /* Assets.xcassets */,
+				647EC0312B6D553D00E08D9C /* pause.png */,
 				BF9850782B3386B4004E26FE /* Preview Content */,
 			);
 			path = FallingMath;
@@ -252,6 +255,7 @@
 			files = (
 				BF98507A2B3386B4004E26FE /* Preview Assets.xcassets in Resources */,
 				BF9850772B3386B4004E26FE /* Assets.xcassets in Resources */,
+				647EC0322B6D553D00E08D9C /* pause.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

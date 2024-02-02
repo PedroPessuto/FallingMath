@@ -7,12 +7,13 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 class PauseFactory: GOFactory{
     
     func createGameObject() -> GameObject {
         
-        let pause: PauseNode = PauseNode(position: CGPoint(x: 250, y: 700))
+        let pause: PauseNode = PauseNode(position: CGPoint(x: 363, y: 800))
         
         
         return pause
@@ -22,6 +23,4 @@ class PauseFactory: GOFactory{
         let pause: PauseNode = PauseNode(position: CGPoint(x: 63.5, y: 950))
         return pause
     }
-    
-    
 }

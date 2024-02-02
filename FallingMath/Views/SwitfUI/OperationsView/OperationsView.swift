@@ -35,15 +35,15 @@ struct OperationsView: View {
                 }
                 .padding(.leading)
                 Spacer()
-                Button(action: {
-                    gameData.isPaused.toggle()
-                    print(gameData.isPaused)
-                }, label: {
-                    Image(systemName: "pause.fill")
-                        .font(.title)
-                        .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
-                        .padding(.trailing)
-                })
+//                Button(action: {
+//                    gameData.isPaused.toggle()
+//                    print(gameData.isPaused)
+//                }, label: {
+//                    Image(systemName: "pause.fill")
+//                        .font(.title)
+//                        .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
+//                        .padding(.trailing)
+//                })
 //                Image(systemName: "pause.fill")
 //                    .font(.title)
 //                    .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
