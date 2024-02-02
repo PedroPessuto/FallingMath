@@ -11,17 +11,17 @@
 		BF502F422B56D77B003E092A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F412B56D77B003E092A /* GameScene.swift */; };
 		BF502F442B56D8A0003E092A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F432B56D8A0003E092A /* ContentView.swift */; };
 		BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F4B2B56F027003E092A /* ScoreBoardView.swift */; };
-		BF502F502B56F06E003E092A /* PhaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F4F2B56F06E003E092A /* PhaseController.swift */; };
-		BF81CB0B2B57005800F08D94 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF81CB0A2B57005800F08D94 /* Block.swift */; };
+		BF8436B32B6826370061500A /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8436B22B6826370061500A /* BackgroundView.swift */; };
 		BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9850722B3386B3004E26FE /* FallingMathApp.swift */; };
 		BF9850772B3386B4004E26FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9850762B3386B4004E26FE /* Assets.xcassets */; };
 		BF98507A2B3386B4004E26FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9850792B3386B4004E26FE /* Preview Assets.xcassets */; };
-		E50FF6962B6031DB0016513B /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF6952B6031DB0016513B /* GameData.swift */; };
+		E50FF6962B6031DB0016513B /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF6952B6031DB0016513B /* GameController.swift */; };
 		E50FF6992B6032190016513B /* GOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF6982B6032190016513B /* GOFactory.swift */; };
 		E50FF69B2B6032270016513B /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF69A2B6032270016513B /* GameObject.swift */; };
 		E50FF69D2B6032490016513B /* BlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF69C2B6032490016513B /* BlockNode.swift */; };
 		E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF69E2B60326C0016513B /* BlockFactory.swift */; };
-		E50FF6A12B6033650016513B /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF6A02B6033650016513B /* OverlayView.swift */; };
+		E50FF6A12B6033650016513B /* OperationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF6A02B6033650016513B /* OperationsView.swift */; };
+		E5B433602B68120100E09724 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4335F2B68120100E09724 /* WheelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,18 +29,18 @@
 		BF502F412B56D77B003E092A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BF502F432B56D8A0003E092A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF502F4B2B56F027003E092A /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
-		BF502F4F2B56F06E003E092A /* PhaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseController.swift; sourceTree = "<group>"; };
-		BF81CB0A2B57005800F08D94 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		BF8436B22B6826370061500A /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BF98506F2B3386B3004E26FE /* FallingMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9850722B3386B3004E26FE /* FallingMathApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallingMathApp.swift; sourceTree = "<group>"; };
 		BF9850762B3386B4004E26FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF9850792B3386B4004E26FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E50FF6952B6031DB0016513B /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		E50FF6952B6031DB0016513B /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		E50FF6982B6032190016513B /* GOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOFactory.swift; sourceTree = "<group>"; };
 		E50FF69A2B6032270016513B /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		E50FF69C2B6032490016513B /* BlockNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNode.swift; sourceTree = "<group>"; };
 		E50FF69E2B60326C0016513B /* BlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockFactory.swift; sourceTree = "<group>"; };
-		E50FF6A02B6033650016513B /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		E50FF6A02B6033650016513B /* OperationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsView.swift; sourceTree = "<group>"; };
+		E5B4335F2B68120100E09724 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +74,8 @@
 		BF502F492B56EFBB003E092A /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				BFF75CC02B6966D300FD8034 /* Models */,
+				E50FF6972B6032020016513B /* Factory */,
 				BF502F412B56D77B003E092A /* GameScene.swift */,
 			);
 			path = SpriteKit;
@@ -82,6 +84,8 @@
 		BF502F4A2B56EFC3003E092A /* SwitfUI */ = {
 			isa = PBXGroup;
 			children = (
+				BF8436B12B6826290061500A /* Background */,
+				BF8436B02B68239F0061500A /* OperationsView */,
 				BF502F4D2B56F02A003E092A /* ScoreBoard */,
 			);
 			path = SwitfUI;
@@ -98,21 +102,26 @@
 		BF502F4E2B56F05D003E092A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF502F4F2B56F06E003E092A /* PhaseController.swift */,
+				E50FF6952B6031DB0016513B /* GameController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		BF81CB092B57000300F08D94 /* Models */ = {
+		BF8436B02B68239F0061500A /* OperationsView */ = {
 			isa = PBXGroup;
 			children = (
-				BF81CB0A2B57005800F08D94 /* Block.swift */,
-				E50FF6952B6031DB0016513B /* GameData.swift */,
-				E50FF6972B6032020016513B /* Factory */,
-				E50FF69A2B6032270016513B /* GameObject.swift */,
-				E50FF69C2B6032490016513B /* BlockNode.swift */,
+				E5B4335F2B68120100E09724 /* WheelView.swift */,
+				E50FF6A02B6033650016513B /* OperationsView.swift */,
 			);
-			path = Models;
+			path = OperationsView;
+			sourceTree = "<group>";
+		};
+		BF8436B12B6826290061500A /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				BF8436B22B6826370061500A /* BackgroundView.swift */,
+			);
+			path = Background;
 			sourceTree = "<group>";
 		};
 		BF9850662B3386B3004E26FE = {
@@ -135,12 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				64277E792B5755A3003055E1 /* NumberGenerator */,
-				BF81CB092B57000300F08D94 /* Models */,
 				BF502F4E2B56F05D003E092A /* Controllers */,
 				BF3850572B33DC5B00860DA5 /* Views */,
 				BF9850722B3386B3004E26FE /* FallingMathApp.swift */,
 				BF502F432B56D8A0003E092A /* ContentView.swift */,
-				E50FF6A02B6033650016513B /* OverlayView.swift */,
 				BF9850762B3386B4004E26FE /* Assets.xcassets */,
 				BF9850782B3386B4004E26FE /* Preview Content */,
 			);
@@ -153,6 +160,15 @@
 				BF9850792B3386B4004E26FE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BFF75CC02B6966D300FD8034 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E50FF69C2B6032490016513B /* BlockNode.swift */,
+				E50FF69A2B6032270016513B /* GameObject.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E50FF6972B6032020016513B /* Factory */ = {
@@ -234,17 +250,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B433602B68120100E09724 /* WheelView.swift in Sources */,
 				BF502F442B56D8A0003E092A /* ContentView.swift in Sources */,
+				BF8436B32B6826370061500A /* BackgroundView.swift in Sources */,
 				E50FF69D2B6032490016513B /* BlockNode.swift in Sources */,
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
 				BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */,
-				BF502F502B56F06E003E092A /* PhaseController.swift in Sources */,
 				E50FF69B2B6032270016513B /* GameObject.swift in Sources */,
-				BF81CB0B2B57005800F08D94 /* Block.swift in Sources */,
 				BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */,
 				E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */,
-				E50FF6A12B6033650016513B /* OverlayView.swift in Sources */,
-				E50FF6962B6031DB0016513B /* GameData.swift in Sources */,
+				E50FF6A12B6033650016513B /* OperationsView.swift in Sources */,
+				E50FF6962B6031DB0016513B /* GameController.swift in Sources */,
 				64277E7B2B5755ED003055E1 /* NumberGenerator.swift in Sources */,
 				BF502F422B56D77B003E092A /* GameScene.swift in Sources */,
 			);

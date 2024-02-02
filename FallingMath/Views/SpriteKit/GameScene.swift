@@ -11,10 +11,12 @@ import SpriteKit
 class GameScene: SKScene {
     var count: Int = 0
     var number: Float = 0
-    var gameData: GameData?
+    var gameData: GameController?
     var isCreatingBlock = 1
-    var newValue: [Float:[Float]] = operationGenerator()
-    
+    var calls: Float = 2
+    var attempts: Int = 0
+    var newValue: [Float:[Float]] = operationGenerator(call: 2)
+
     override func didMove(to view: SKView) {
         createBackground()
         
@@ -25,18 +27,18 @@ class GameScene: SKScene {
     }
     
     func createBackground(){
-        physicsWorld.gravity.dy = -1.62
-        backgroundColor = .white
+        physicsWorld.gravity.dy = -1.2
+        backgroundColor = SKColor.clear
         
-        let borda = SKPhysicsBody(edgeLoopFrom: CGRect(x: 25,y: 195,width: self.frame.size.width-50,height: self.frame.size.height))
+        let borda = SKPhysicsBody(edgeLoopFrom: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height))
         borda.friction = 0.2
         self.physicsBody = borda
         
-        let background = SKShapeNode(rect: CGRect(x: 25,y: 195,width: self.frame.size.width-50,height: self.frame.size.height-284), cornerRadius: 13)
-        background.fillColor = UIColor(red: 253/255, green: 221/255, blue: 224/255, alpha: 1)
+        let background = SKShapeNode(rect: CGRect(x: 21.5,y: 221,width: self.frame.size.width-44,height: self.frame.size.height-331), cornerRadius: 13)
+        background.fillColor = SKColor(.clear)
         background.zPosition = -999
-        background.strokeColor = UIColor(red: 244/255, green: 110/255, blue: 124/255, alpha: 1)
-        background.lineWidth = 3
+        background.strokeColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        background.lineWidth = 4
         addChild(background)
     }
     
@@ -59,7 +61,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         
         if gameData?.number2 != 0{
-            switch gameData?.operacao {
+            switch gameData?.operation {
             case "+":
                 let num1: Float? = gameData?.number1
                 let num2: Float? = gameData?.number2
@@ -88,35 +90,83 @@ class GameScene: SKScene {
                 print("erro")
             }
             
-            if gameData?.objective == number{
-                newValue = operationGenerator()
-                let firstValue = newValue.keys.first
-                gameData?.objective = firstValue!
+            
+            
+            if gameData?.objective == number {
+                
+                //                newValue = operationGenerator(call: calls)
+                //                let firstValue = newValue.keys.first
+                //                gameData?.objective = firstValue!
+                //                isCreatingBlock = 1
+                
                 isCreatingBlock = 1
-            }else{
+                attempts = 0
+                gameData?.maxAttempt = 0
+                gameData?.score += 1
+                
+            }
+            // Se não acertar
+            else {
+               
+                attempts = attempts + 1
+                
+                if gameData?.maxAttempt == attempts {
+                    attempts = 0
+                    isCreatingBlock = 1
+                }
+                
+                
+//                print("Tentativas: \(attempts)")
+//                print("Blocks: \(String(describing: gameData?.blockQuantityOnScreen))")
+//                print(attempts)
                 gameData?.startBlock(number)
                 renderLast()
-                
+               
             }
-            
         }
         
-        if isCreatingBlock == 1{
-            let values = newValue.values.first
-            for numbers in values!{
-                gameData?.startBlock(numbers)
-                renderLast()
-                
-            }
+        if isCreatingBlock == 1 {
+//            let values = newValue.values.first
+//            for numbers in values!{
+//                gameData?.startBlock(numbers)
+//                renderLast()
+//                
+//            }
+            gameData?.generateBlocks()
             isCreatingBlock = 0
+//            calls += 0.2
+        }
+       
+        // Renderiza Numeros
+        if !gameData!.useNumbers.isEmpty {
+            for num in gameData!.useNumbers {
+                gameData?.startBlock(num)
+                renderLast()
+            }
+            gameData?.useNumbers = []
         }
         
-        count += 1
-        if count >= 800{
-            gameData?.startBlock()
+        // Renderiza Ruidos
+//        if !gameData!.noiseNumbers.isEmpty {
+//            for num in gameData!.noiseNumbers {
+//                gameData?.startBlock(num)
+//                renderLast()
+//            }
+//            gameData?.noiseNumbers = []
+//        }
+        
+        if gameData?.returnBlock != 0 {
+            gameData?.startBlock(gameData!.returnBlock)
             renderLast()
-            count = 0
+            gameData?.returnBlock = 0
         }
+        
+//        count += 1
+//        if count >= 800 {
+//            gameData?.startBlock()
+//            renderLast()
+//            count = 0
+//        }
         
         if let objects = gameData?.objects {
             for object in objects {
@@ -130,31 +180,37 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first!
+        
         if let objects = gameData?.objects {
             for (index,object) in objects.enumerated() {
-                if object.node.contains(touch.location(in: self)){
-                    object.node.physicsBody?.isDynamic = false
-                    object.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 1, height: 1))
-                    let nodeNumber = object.node.children.last?.name
-                    if gameData?.number1 == 0{
-                        gameData?.number1 = (nodeNumber! as NSString).floatValue
-                        let action1 = SKAction.move(to: CGPoint(x:100, y:100), duration: 0.2)
-                        let action2 = SKAction.fadeOut(withDuration: 0.1)
-                        let action3 = SKAction.removeFromParent()
-                        let sequence = SKAction.sequence([action1, action2, action3])
-                        object.node.run(sequence)
-                    }else{
-                        if gameData?.number2 == 0{
-                            gameData?.number2 = (nodeNumber! as NSString).floatValue
-                            let action1 = SKAction.move(to: CGPoint(x:300, y:100), duration: 0.2)
+                if object.node.name == "block"{
+                    if object.node.contains(touch.location(in: self)){
+                        object.node.physicsBody?.isDynamic = false
+                        object.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 1, height: 1))
+                        let nodeNumber = object.node.children.last?.name
+                        if gameData?.number1 == 0 {
+                            gameData?.number1 = (nodeNumber! as NSString).floatValue
+                            let action1 = SKAction.scale(by: 0.01, duration: 0.4)
                             let action2 = SKAction.fadeOut(withDuration: 0.1)
                             let action3 = SKAction.removeFromParent()
                             let sequence = SKAction.sequence([action1, action2, action3])
                             object.node.run(sequence)
                         }
+                        else {
+                            if gameData?.number2 == 0{
+                                gameData?.number2 = (nodeNumber! as NSString).floatValue
+                                let action1 = SKAction.scale(by: 0.01, duration: 0.4)
+                                let action2 = SKAction.fadeOut(withDuration: 0.1)
+                                let action3 = SKAction.removeFromParent()
+                                let sequence = SKAction.sequence([action1, action2, action3])
+                                object.node.run(sequence)
+                            }
+                        }
+                        
+                        gameData?.objects.remove(at: index)
                     }
+                }else{
                     
-                    gameData?.objects.remove(at: index)
                 }
             }
         }
