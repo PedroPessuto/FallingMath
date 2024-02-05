@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct WheelView: View {
+    
+    @Environment(GameController.self) private var gameController
+    
     var degreess: [Double] = [0, 90, 180, 270]
     @State var index: Int = 0
+    @State var btnPadding: CGFloat = 15
+    @State var btnHeight: CGFloat = 51
+    @State var operacoes: [String] = ["+","-","x","/"]
+    @State var textColor: Color = Color(.white)
     
     var body: some View {
         ZStack {
@@ -37,13 +44,25 @@ struct WheelView: View {
                         
                 }
                 Image("Center")
-                    .onTapGesture {
-                        if Int(index) == degreess.count - 1{
-                            index = 0
-                        }else{
-                            index += 1
+                    .onLongPressGesture(minimumDuration: .infinity, maximumDistance: .infinity, pressing: { pressing in
+                        if pressing {
+                            btnPadding = 0
+                            btnHeight = 51
+                            if index < operacoes.count - 1{
+                                index += 1
+                                gameController.operation = operacoes[index]
+                            }
+                            else {
+                                index = 0
+                                gameController.operation = operacoes[index]
+                            }
+                            
+                        } else{
+                            btnPadding = 15
+                            btnHeight = 61
                         }
-                    }
+                    }, perform: {})
+                   
                 ZStack{
                     Image(degreess[index] == 180 ? "onDown" : "offDown")
                     Image(degreess[index] == 180 ? "multiplier" : "")

@@ -21,6 +21,7 @@ import Foundation
     var useNumbers: [Float] = []
     var maxAttempt: Int = 0
     var isGenerating: Bool = false
+    var valueTimer: CGFloat = 0
     
     // Operation
     var operation: String = "+" // Operação Selecionada
@@ -74,64 +75,75 @@ import Foundation
         self.returnBlock = nil
     }
     
+    // Função para fazer operações dos números escolhidos
     func doOperation() {
-       
-        
         // Faz a operação quando há (2 números selecionados)
-        if let num2 = self.number2, let num1 = self.number1  {
-            var number: Float = 0
+        if let _ = self.number2, let _ = self.number1 {
+            var timer: Timer?
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                
-                switch self.operation {
-                case "+":
-                    number = num1 + num2
-                case "-":
-                    number = num1 - num2
-                case "/":
-                    number = num1 / num2
-                case "x":
-                    number = num1 * num2
-                default:
-                    print("Operação inválida")
-                }
+            timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+                self.valueTimer = self.valueTimer + 0.01
 
-                // Se ele acertou
-                if self.objective == number {
-                    self.attempts = 0
-                    self.maxAttempt = 0
-                    self.score = self.score + 1
-                    self.generateBlocks()
-                }
-                // Se errou
-                else {
-                    
-                    // Aumenta o numero de tentativas
-                    self.attempts = self.attempts + 1
-                    
-                    // Gera bloco errado
-                    if number <= -1 || number > 0.009 {
-                        self.useNumbers.append(number)
+                // Fazer isso quando o timer chegar em 1 segundo
+                if self.valueTimer >= 1 {
+
+                    if let num2 = self.number2, let num1 = self.number1 {
+                        var number: Float = 0
+                        
+                        switch self.operation {
+                        case "+":
+                            number = num1 + num2
+                        case "-":
+                            number = num1 - num2
+                        case "/":
+                            number = num1 / num2
+                        case "x":
+                            number = num1 * num2
+                        default:
+                            print("Operação inválida")
+                        }
+                        
+                        // Se ele acertou
+                        if self.objective == number {
+                            self.attempts = 0
+                            self.maxAttempt = 0
+                            self.score = self.score + 1
+                            self.generateBlocks()
+                        }
+                        // Se errou
+                        else {
+                            
+                            // Aumenta o numero de tentativas
+                            self.attempts = self.attempts + 1
+                            
+                            // Gera bloco errado
+                            if number <= -1 || number > 0.009 {
+                                self.useNumbers.append(number)
+                            }
+                            
+                            // Se atingiu o limite de tentativas
+                            if self.maxAttempt >= self.attempts {
+                                self.attempts = 0
+                                self.generateBlocks()
+                            }
+                            
+                        }
+                        
+                        self.number1 = nil
+                        self.number2 = nil
+                        self.valueTimer = 0
+                        timer?.invalidate()
                     }
-                    
-                    // Se atingiu o limite de tentativas
-                    if self.maxAttempt >= self.attempts {
-                        self.attempts = 0
-                        self.generateBlocks()
+                    // Se tirou algum numero
+                    else {
+                        self.valueTimer = 0
+                        timer?.invalidate()
                     }
-                    
-                   
                 }
-                    
-                
-                self.number1 = nil
-                self.number2 = nil
-                
             }
         }
-        
     }
-    
+
     // Função para iniciar o jogo
     func startGame() {
         self.resetGame()
@@ -154,14 +166,14 @@ import Foundation
         let blockQuantity: Int = 2
         maxAttempt = blockQuantity - 1
         
-        for count in 0...blockQuantity - 1 {
+        for count in 0..<blockQuantity {
             
             // Na primeira vez vai escolher um número aleatório
             if count == 0 {
                 var chosenNumber: Int = Int.random(in: -20...20)
                 
                 // Verifica se o numero é diferente de zero (0)
-                while chosenNumber == 0 {
+                while chosenNumber == 0 || chosenNumber == 1 {
                     chosenNumber = Int.random(in: -20...20)
                 }
                 
@@ -177,7 +189,11 @@ import Foundation
             
             while true {
                 let operation: String = operations.randomElement()!
-                let chosenNumber: Int = Int.random(in: 1...20)
+                var chosenNumber: Int = Int.random(in: -20...20)
+                
+                while (chosenNumber == 0) {
+                    chosenNumber = Int.random(in: -20...20)
+                }
                 
                 if operation == "+" {
                     resultNumber = resultNumber + chosenNumber
@@ -186,9 +202,16 @@ import Foundation
                     resultNumber = resultNumber - chosenNumber
                 }
                 else if operation == "*" {
+                    while (chosenNumber == 1) {
+                        chosenNumber = Int.random(in: -20...20)
+                    }
                     resultNumber = resultNumber * chosenNumber
                 }
                 else {
+                    while (chosenNumber == 1) {
+                        chosenNumber = Int.random(in: -20...20)
+                    }
+                    
                     let aux: Float =  Float(resultNumber) / Float(chosenNumber)
                     
                     if aux.truncatingRemainder(dividingBy: 1) != 0 {
@@ -206,8 +229,6 @@ import Foundation
         
     }
 }
-
-
 
 //        let numbersToUseQuantity: Int = Int.random(in: 2...3)
 //
