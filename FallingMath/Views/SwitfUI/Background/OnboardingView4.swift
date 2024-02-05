@@ -12,9 +12,9 @@ import SwiftUI
 struct OnboardingView4: View {
     @State var textColor: Color = Color(.white)
     var gameData: GameController
-    var degreess: [Double] = [0, 90, 180, 270]
+    var degreess: [Double] = [0, 90]
     @State var index1: Int = 0
-    @State var operacoes: [String] = ["+","-","x","/"]
+    @State var operacoes: [String] = ["+","-"]
     @State var index: Int = 0
     
     var body: some View {
@@ -76,10 +76,10 @@ struct OnboardingView4: View {
                                 Image(degreess[index] == 270 ? "onRight" : "offRight")
                                     .resizable()
                                     .frame(width: 71, height: 138)
+
                                 Image(degreess[index] == 270 ? "divide" : "")
                                     .rotationEffect(.degrees(90))
-                            }
-                        }
+                            }                        }
                         VStack(spacing: 0){
                             ZStack{
                                 Image(degreess[index] == 0 ? "onUp" : "offUp")
@@ -115,6 +115,8 @@ struct OnboardingView4: View {
                                 Text("TAP")
                                     .font(.custom("MusticaPro-SemiBold", size: 24))
                                     .foregroundColor(Color(red: 87/255, green: 193/255, blue: 218/255))
+                                    .rotationEffect(.degrees(index == 0 ? 0 : -90))
+                                
                             }
                             
                             ZStack{

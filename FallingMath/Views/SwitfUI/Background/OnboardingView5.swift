@@ -10,9 +10,9 @@ import SwiftUI
 struct OnboardingView5: View {
     @State var textColor: Color = Color(.white)
     var gameData: GameController
-    var degreess: [Double] = [0, 90, 180, 270]
+    var degreess: [Double] = [0, 90]
     @State var index1: Int = 0
-    @State var operacoes: [String] = ["+","-","x","/"]
+    @State var operacoes: [String] = ["+","-"]
     @State var index: Int = 0
     
     var body: some View {
@@ -110,6 +110,8 @@ struct OnboardingView5: View {
                                 Text("TAP")
                                     .font(.custom("MusticaPro-SemiBold", size: 24))
                                     .foregroundColor(Color(red: 255/255, green: 102/255, blue: 102/255))
+                                    .rotationEffect(.degrees(index == 0 ? 0 : -90))
+
                                 
                             }
                             

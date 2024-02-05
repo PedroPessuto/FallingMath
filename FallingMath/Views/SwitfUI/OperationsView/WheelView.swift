@@ -10,6 +10,7 @@ import SwiftUI
 struct WheelView: View {
     var gameData: GameController
     var degreess: [Double] = [0, 90, 180, 270]
+    @State var angles: Double = 0
     @State var index1: Int = 0
     @State var operacoes: [String] = ["+","-","x","/"]
     @State var index: Int = 0
@@ -49,8 +50,10 @@ struct WheelView: View {
                     .onTapGesture {
                         if Int(index) == degreess.count - 1{
                             index = 0
+                            angles += 90
                         }else{
                             index += 1
+                            angles += 90
                         }
                         
                         if index1 < operacoes.count - 1{
@@ -75,8 +78,8 @@ struct WheelView: View {
             }
             
         }
-        .rotationEffect(.degrees(degreess[index]))
-        .animation(.bouncy(duration: 0.5), value: index)
+        .rotationEffect(.degrees(angles))
+        .animation(.bouncy(duration: 0.5), value: angles)
         
     }
     
