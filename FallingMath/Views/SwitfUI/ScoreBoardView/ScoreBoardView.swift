@@ -12,9 +12,13 @@ struct ScoreBoardView: View {
     @Environment(GameController.self) private var gameController
     
     var body: some View {
+        
         VStack (spacing: 0) {
+            
+            // Score e Botão de Menu
             HStack {
                 
+                // Score
                 VStack {
                     Text("\(gameController.score)")
                         .font(.system(size: 28))
@@ -28,16 +32,18 @@ struct ScoreBoardView: View {
                 
                 Spacer()
                 
+                // Botão de Menu
                 Button (action: {
                     gameController.configIsPaused.toggle()
                 }) {
-                    Image(systemName: "pause.fill")
+                    Image(systemName: gameController.configIsPaused ? "pause.fill" : "play.fill")
                         .font(.title)
                         .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
                 }
                 
             }
             
+            // Objetivo
             HStack {
                 
                 Text(gameController.formatNumber(gameController.objective))

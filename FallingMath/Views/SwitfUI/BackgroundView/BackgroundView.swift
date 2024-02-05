@@ -25,8 +25,9 @@ struct BackgroundView: View {
     let gradient8 = Color(red: 233/255, green: 161/255, blue: 56/255)
     
     @State var gradientColors: [Color] = []
+    
     var body: some View {
-        // Fazer lógica para mudar imagem e cor de fundo de acordo com a operação
+
         ZStack {
             RadialGradient(colors: gradientColors, center: UnitPoint(x: 0, y: 0), startRadius: 100, endRadius: 800)
                 .ignoresSafeArea()
@@ -54,7 +55,7 @@ struct BackgroundView: View {
                 print("Cor erro")
             }
         }
-        .onAppear(){
+        .onAppear {
             gradientColors = [gradient1, gradient2]
         }
         .animation(.easeInOut(duration: 1), value: gradientColors)

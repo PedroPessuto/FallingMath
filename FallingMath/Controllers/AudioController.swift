@@ -14,7 +14,8 @@ import AVFoundation
     
     var musicPlayer: AVAudioPlayer?
 
-    func startSound() {
+    // Inicia a música
+    func startMusic() {
         if let path = Bundle.main.path(forResource: "MusicaFallingMath", ofType: "mp3") {
             do {
                 musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
@@ -25,6 +26,7 @@ import AVFoundation
         }
     }
 
+    // Muta/Desmuta a música
     func toggleMuteMusic() {
         if let player = musicPlayer {
             if player.isPlaying {
@@ -37,6 +39,6 @@ import AVFoundation
     
     init() {
         // Inicia a música
-        // self.startSound()
+        // self.startMusic()
     }
 }

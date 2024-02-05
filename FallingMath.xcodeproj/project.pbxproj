@@ -113,11 +113,11 @@
 		BF502F4A2B56EFC3003E092A /* SwitfUI */ = {
 			isa = PBXGroup;
 			children = (
-				BFF254B52B6C316D00C801D3 /* GameView */,
-				BF0110CF2B6C30BE00A8D7D9 /* HomeView */,
-				BF8436B12B6826290061500A /* BackgroundView */,
-				BF8436B02B68239F0061500A /* OperationsView */,
 				BF502F4D2B56F02A003E092A /* ScoreBoardView */,
+				BF8436B02B68239F0061500A /* OperationsView */,
+				BF0110CF2B6C30BE00A8D7D9 /* HomeView */,
+				BFF254B52B6C316D00C801D3 /* GameView */,
+				BF8436B12B6826290061500A /* BackgroundView */,
 			);
 			path = SwitfUI;
 			sourceTree = "<group>";
