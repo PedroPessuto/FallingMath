@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import AVKit
-import AVFoundation
 
 struct ContentView: View {
     

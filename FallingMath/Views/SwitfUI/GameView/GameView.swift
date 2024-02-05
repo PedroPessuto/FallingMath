@@ -11,7 +11,6 @@ import SpriteKit
 struct GameView: View {
     
     @Environment(GameController.self) private var gameController
-//    @State var isPaused: Bool = false
     
     var scene: GameScene {
         let scene = GameScene()
@@ -38,8 +37,8 @@ struct GameView: View {
                         .foregroundStyle(Gradient(colors: [Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)), .clear]))
                     
                     // Frame do jogo
-                    // SpriteView(scene: scene, isPaused: isPaused,options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
-                    SpriteView(scene: scene, isPaused: gameController.configIsPaused, options: [.allowsTransparency])
+                    // SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
+                    SpriteView(scene: scene, options: [.allowsTransparency])
                         
    
                 }
@@ -53,19 +52,11 @@ struct GameView: View {
                 // Fazer operações
                 OperationsView()
                 
-                Spacer()
+                
             }
             
             .padding(22)
         }
-        .onChange(of: gameController.configIsPaused) { _, _ in
-//            print(scene.isPaused)
-            scene.teste()
-//            print(scene.isPaused)
-        }
-//        .onChange(of: gameController.configIsPaused) { oldValue, newValue in
-//            scene.teste()
-//        }
         
     }
 }

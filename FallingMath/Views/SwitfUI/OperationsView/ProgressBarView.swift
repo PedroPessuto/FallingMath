@@ -8,39 +8,33 @@
 import SwiftUI
 
 struct ProgressBarView: View {
-    
+
     @Environment(GameController.self) private var gameController
+//    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State var animatedValue: CGFloat = 0
     
-  @State var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-  let totalValue: Float = 1
-  @State var progressValue: CGFloat = 0
-  var color: [Color] = [.blue,.clear]
-  @State var index: Int = 0
-    
-  var body: some View {
-    ZStack(alignment: .leading){
-//      RoundedRectangle(cornerRadius: 100)
-//        .stroke()
-//        .frame(width: 350, height: 10)
-//        .foregroundStyle(.gray)
-//      RoundedRectangle(cornerRadius: 100)
-//        .frame(width: (progressValue/CGFloat(totalValue)) * 350, height: 10)
-//        .foregroundStyle(color[index])
-//        .onReceive(timer){ _ in
-//          if Float(progressValue) > totalValue{
-//            index = 1
-//            progressValue = 0
-//            timer.upstream.connect().cancel()
-//          }else{
-//            withAnimation{
-//              progressValue += 0.1
-//            }
-//          }
-//        }
+    var body: some View {
+        
+        GeometryReader { geometry in
+            
+            ZStack {
+                
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(uiColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)))
+            
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(.white)
+                    .frame(width: max(0, min(animatedValue * geometry.size.width, geometry.size.width)))
+                    .onChange(of: gameController.valueTimer) { _, newValue in
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            animatedValue = newValue
+                        }
+                    }
+                
+            }
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            .frame(height: 7)
+        }
+       
     }
-   
-//    .onAppear{
-//      timer.upstream.connect().cancel()
-//    }
-  }
 }

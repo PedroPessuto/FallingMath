@@ -10,6 +10,7 @@ import SwiftUI
 struct ScoreBoardView: View {
     
     @Environment(GameController.self) private var gameController
+    
     var body: some View {
         VStack (spacing: 0) {
             HStack {
