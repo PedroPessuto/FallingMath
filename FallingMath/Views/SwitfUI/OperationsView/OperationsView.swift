@@ -48,10 +48,12 @@ struct OperationsView: View {
                         // Numero 1
                         NumberBlockOperation(formatedNumber: formatedNumber1)
                             .onTapGesture {
-                                if gameController.number1 != nil {
-                                    if formatedNumber1 != nil {
-                                        gameController.returnBlock = gameController.number1!
-                                        gameController.number1 = nil
+                                if !gameController.configIsPaused {
+                                    if gameController.number1 != nil {
+                                        if formatedNumber1 != nil {
+                                            gameController.returnBlock = gameController.number1!
+                                            gameController.number1 = nil
+                                        }
                                     }
                                 }
                             }
@@ -64,10 +66,12 @@ struct OperationsView: View {
                         // Numero 2
                         NumberBlockOperation(formatedNumber: formatedNumber2)
                             .onTapGesture {
-                                if gameController.number2 != nil {
-                                    if formatedNumber2 != nil {
-                                        gameController.returnBlock = gameController.number2!
-                                        gameController.number2 = nil
+                                if !gameController.configIsPaused {
+                                    if gameController.number2 != nil {
+                                        if formatedNumber2 != nil {
+                                            gameController.returnBlock = gameController.number2!
+                                            gameController.number2 = nil
+                                        }
                                     }
                                 }
                             }

@@ -62,17 +62,6 @@ class GameScene: SKScene {
         }
     }
     
-    func teste() {
-        print(self.isPaused)
-        print("1")
-        gameData?.configIsPaused = true
-        self.isPaused = true
-        print("2")
-        print(self.isPaused)
-    }
-    
-    
-    // Init
     override func didMove(to view: SKView) {
         createBackground()
         gameData?.gameScreenSize = self.frame.size
@@ -83,55 +72,69 @@ class GameScene: SKScene {
     // Função que é chamada para cada renderização
     override func update(_ currentTime: TimeInterval) {
         
-        // Renderizar Numeros
-        if !gameData!.useNumbers.isEmpty {
-            for num in gameData!.useNumbers {
-                gameData?.startBlock(num)
+        // Função de Pausar
+        if let gameData = gameData {
+            self.physicsWorld.speed = gameData.configIsPaused ? 0.0 : 1.0
+        }
+        
+        if !isPaused {
+            
+            // Renderizar Numeros
+            if !gameData!.useNumbers.isEmpty {
+                for num in gameData!.useNumbers {
+                    gameData?.startBlock(num)
+                    renderLast()
+                }
+                gameData?.useNumbers = []
+            }
+            
+            // Renderiza o returnBlock
+            if let returnBlockNumber = gameData?.returnBlock {
+                gameData?.startBlock(returnBlockNumber)
                 renderLast()
+                gameData?.returnBlock = nil
             }
-            gameData?.useNumbers = []
+            
+            // Atualiza os objetos
+            if let objects = gameData?.objects {
+                for object in objects {
+                    object.update()
+                }
+            }
+            
         }
         
-        // Renderiza o returnBlock
-        if let returnBlockNumber = gameData?.returnBlock {
-            gameData?.startBlock(returnBlockNumber)
-            renderLast()
-            gameData?.returnBlock = nil
-        }
         
-        // Atualiza os objetos
-        if let objects = gameData?.objects {
-            for object in objects {
-                object.update()
-            }
-        }
     }
     
     // Verificar ao clicar na tela
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let touch = touches.first!
-        
-        if let objects = gameData?.objects {
-            for (index, object) in objects.enumerated() {
-                if let blockNode = object as? BlockNode {
-                    if blockNode.node.contains(touch.location(in: self)) {
-                        
-                        if gameData?.number1 != nil && gameData?.number2 == nil {
-                            gameData?.number2 = blockNode.number
+        if !gameData!.configIsPaused {
+           
+            let touch = touches.first!
+            
+            if let objects = gameData?.objects {
+                for (index, object) in objects.enumerated() {
+                    if let blockNode = object as? BlockNode {
+                        if blockNode.node.contains(touch.location(in: self)) {
+                            
+                            if gameData?.number1 != nil && gameData?.number2 == nil {
+                                gameData?.number2 = blockNode.number
+                            }
+                            
+                            if gameData?.number1 == nil {
+                                gameData?.number1 = blockNode.number
+                            }
+                            
+                            let action1 = SKAction.scale(by: 0.01, duration: 0.4)
+                            let action2 = SKAction.fadeOut(withDuration: 0.1)
+                            let action3 = SKAction.removeFromParent()
+                            let sequence = SKAction.sequence([action1, action2, action3])
+                            blockNode.node.run(sequence)
+                            gameData?.objects.remove(at: index)
+                            
                         }
-                        
-                        if gameData?.number1 == nil {
-                            gameData?.number1 = blockNode.number
-                        }
-                        
-                        let action1 = SKAction.scale(by: 0.01, duration: 0.4)
-                        let action2 = SKAction.fadeOut(withDuration: 0.1)
-                        let action3 = SKAction.removeFromParent()
-                        let sequence = SKAction.sequence([action1, action2, action3])
-                        blockNode.node.run(sequence)
-                        gameData?.objects.remove(at: index)
-                        
                     }
                 }
             }

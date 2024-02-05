@@ -129,6 +129,7 @@ import Foundation
                             
                         }
                         
+                        // Reseta variaveis
                         self.number1 = nil
                         self.number2 = nil
                         self.valueTimer = 0
@@ -187,14 +188,17 @@ import Foundation
                 continue
             }
             
+            // Loop para escolher numeros
             while true {
                 let operation: String = operations.randomElement()!
                 var chosenNumber: Int = Int.random(in: -20...20)
                 
+                // Garante que o número não seja zero
                 while (chosenNumber == 0) {
                     chosenNumber = Int.random(in: -20...20)
                 }
                 
+                // Faz a operação
                 if operation == "+" {
                     resultNumber = resultNumber + chosenNumber
                 }
@@ -202,16 +206,19 @@ import Foundation
                     resultNumber = resultNumber - chosenNumber
                 }
                 else if operation == "*" {
+                    // Garante que o número não seja 0
                     while (chosenNumber == 1) {
                         chosenNumber = Int.random(in: -20...20)
                     }
                     resultNumber = resultNumber * chosenNumber
                 }
                 else {
+                    // Garante que o número não seja 0
                     while (chosenNumber == 1) {
                         chosenNumber = Int.random(in: -20...20)
                     }
                     
+                    // Garante que o número não seja quebrado
                     let aux: Float =  Float(resultNumber) / Float(chosenNumber)
                     
                     if aux.truncatingRemainder(dividingBy: 1) != 0 {

@@ -24,8 +24,11 @@ struct WheelView: View {
             HStack(spacing: 0) {
                 ZStack{
                     Image(degreess[index] == 90 ? "onLeft" : "offLeft")
-                    Image(degreess[index] == 90 ? "minus" : "")
-                        .rotationEffect(.degrees(90))
+                    if degreess[index] == 90 {
+                        Image("minus")
+                            .rotationEffect(.degrees(90))
+                    }
+                   
                 }
                 
                 VStack{}
@@ -33,14 +36,19 @@ struct WheelView: View {
                 
                 ZStack{
                     Image(degreess[index] == 270 ? "onRight" : "offRight")
-                    Image(degreess[index] == 270 ? "divide" : "")
-                        .rotationEffect(.degrees(90))
+                    if degreess[index] == 270 {
+                        Image("divide")
+                            .rotationEffect(.degrees(90))
+                    }
+                   
                 }
             }
             VStack(spacing: 0){
                 ZStack{
                     Image(degreess[index] == 0 ? "onUp" : "offUp")
-                    Image(degreess[index] == 0 ? "plus" : "")
+                    if degreess[index] == 0 {
+                        Image("plus")
+                    }
                         
                 }
                 Image("Center")
@@ -65,8 +73,11 @@ struct WheelView: View {
                    
                 ZStack{
                     Image(degreess[index] == 180 ? "onDown" : "offDown")
-                    Image(degreess[index] == 180 ? "multiplier" : "")
-                        .rotationEffect(.degrees(90))
+                    if degreess[index] == 180 {
+                        Image("multiplier")
+                            .rotationEffect(.degrees(90))
+                    }
+                    
                 }
             }
         }
