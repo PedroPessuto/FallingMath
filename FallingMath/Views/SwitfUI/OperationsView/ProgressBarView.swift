@@ -10,7 +10,6 @@ import SwiftUI
 struct ProgressBarView: View {
 
     @Environment(GameController.self) private var gameController
-//    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State var animatedValue: CGFloat = 0
     
     var body: some View {

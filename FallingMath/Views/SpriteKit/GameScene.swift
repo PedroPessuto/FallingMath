@@ -42,10 +42,10 @@ class GameScene: SKScene {
         addChild(rightBorder)
         
         // Câmera para DEBUG
-        //         let camera = SKCameraNode()
-        //         camera.setScale(3)
-        //         addChild(camera)
-        //         scene!.camera = camera
+//         let camera = SKCameraNode()
+//         camera.setScale(3)
+//         addChild(camera)
+//         scene!.camera = camera
     }
     
     func render(){
@@ -110,7 +110,7 @@ class GameScene: SKScene {
     // Verificar ao clicar na tela
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if !gameData!.configIsPaused {
+        if !gameData!.configIsPaused && (gameData?.number1 == nil || gameData?.number2 == nil ) {
            
             let touch = touches.first!
             

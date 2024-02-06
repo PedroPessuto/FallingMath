@@ -53,21 +53,23 @@ struct WheelView: View {
                 }
                 Image("Center")
                     .onLongPressGesture(minimumDuration: .infinity, maximumDistance: .infinity, pressing: { pressing in
-                        if pressing {
-                            btnPadding = 0
-                            btnHeight = 51
-                            if index < operacoes.count - 1{
-                                index += 1
-                                gameController.operation = operacoes[index]
+                        if !gameController.configIsPaused {
+                            if pressing {
+                                btnPadding = 0
+                                btnHeight = 51
+                                if index < operacoes.count - 1{
+                                    index += 1
+                                    gameController.operation = operacoes[index]
+                                }
+                                else {
+                                    index = 0
+                                    gameController.operation = operacoes[index]
+                                }
+                                
+                            } else{
+                                btnPadding = 15
+                                btnHeight = 61
                             }
-                            else {
-                                index = 0
-                                gameController.operation = operacoes[index]
-                            }
-                            
-                        } else{
-                            btnPadding = 15
-                            btnHeight = 61
                         }
                     }, perform: {})
                    
