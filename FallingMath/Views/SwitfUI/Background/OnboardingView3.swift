@@ -63,7 +63,7 @@ struct OnboardingView3: View {
                                 
                                 HStack{
                                     
-                                    NavigationLink(destination: OnboardingView4(gameData: GameController()), label: {
+                                    NavigationLink(destination: OnboardingView6(gameData: GameController()), label: {
                                         HStack {
                                             Text("SKIP")
                                                 .font(Font.custom("MusticaPro-SemiBold", size: 18))

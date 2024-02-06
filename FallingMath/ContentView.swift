@@ -20,23 +20,27 @@ struct ContentView: View {
     }
     
     var body: some View {
-        ZStack {
-            
-            // Background
-            BackgroundView(gameData: gameController)
-            
-            // Tela de pontuação
-            ScoreBoardView(gameData: gameController)
-           
-            // Frame do jogo
-            SpriteView(scene: scene, options: [.allowsTransparency])
-            
-            // Fazer operações
-            OperationsView(gameData: gameController)
-            
-            
-        }
-        .ignoresSafeArea()
+        NavigationStack{
+            ZStack {
+                
+                // Background
+                BackgroundView(gameData: gameController)
+                
+                // Tela de pontuação
+                ScoreBoardView(gameData: gameController)
+                
+                // Frame do jogo
+                SpriteView(scene: scene, options: [.allowsTransparency])
+                
+                // Fazer operações
+                OperationsView(gameData: gameController)
+                
+                
+            }
+            .ignoresSafeArea()
+        }        
+        .navigationBarBackButtonHidden(true)
+
     }
 }
 

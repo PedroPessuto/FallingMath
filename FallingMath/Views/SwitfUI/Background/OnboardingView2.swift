@@ -47,55 +47,63 @@ struct OnboardingView2: View {
                                 .blur(radius: 9)
                             })
                     Spacer()
-                    Image("flora2")
-                        .padding(.leading, 150)
-
-
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.white, lineWidth: 4)
-                            .shadow(color: .white, radius: 30)
-                            .frame(width: 346, height: 120)
+                    VStack{
+                        Image("flora2")
+                            .padding(.leading, 150)
+                            .padding(.bottom, 20)
+                        
+                        
+                        
+                        
                         VStack{
                             Text("This is the number you should reach.")
                                 .foregroundStyle(Color.white)
                                 .fontWeight(.semibold)
                                 .font(Font.custom("MusticaPro-SemiBold", size: 22))
                                 .frame(width: 290, height: 71)
-                            HStack{
-                               
-                                NavigationLink(destination: OnboardingView3(), label: {
-                                    HStack {
-                                        Text("SKIP")
-                                            .font(Font.custom("MusticaPro-SemiBold", size: 18))
-                                            .fontWeight(.semibold)
-                                        Image(systemName: "chevron.right")
-                                            .font(.system(size: 13))
-                                            .fontWeight(.semibold)
+                                .overlay{
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.white, lineWidth: 4)
+                                        .shadow(color: .white, radius: 30)
+                                        .frame(width: 346, height: 120)
+                                    HStack{
+                                        
+                                        NavigationLink(destination: OnboardingView3(), label: {
+                                            HStack {
+                                                Text("SKIP")
+                                                    .font(Font.custom("MusticaPro-SemiBold", size: 18))
+                                                    .fontWeight(.semibold)
+                                                Image(systemName: "chevron.right")
+                                                    .font(.system(size: 13))
+                                                    .fontWeight(.semibold)
+                                                
+                                                
+                                            }
+                                        })
                                         
                                         
                                     }
-                                })
-                                
-                                
-                            }
-                            .padding(.leading, 250)
-                            .foregroundColor(Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.4)))
+                                    .padding(.leading, 250)
+                                    .padding(.top, 70)
+                                    .foregroundColor(Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.4)))
+                                }
                         }
+                        .padding(.bottom, 250)
+                        
+                        
+                        
                     }
-                    Spacer()
                     
                 }
-                
-            }
-            .ignoresSafeArea()
+            }                .ignoresSafeArea()
+            
+                .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true)
     }
     
     
 }
-    #Preview {
-        OnboardingView2()
-    }
+#Preview {
+    OnboardingView2()
+}
 

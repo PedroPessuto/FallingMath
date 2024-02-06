@@ -15,6 +15,7 @@ struct OnboardingView1: View {
             ZStack{
                 Image("onboarding1")
                     .resizable()
+                
                 VStack{
                     Image("flora1")
                         .padding(.leading, 150)
@@ -23,46 +24,49 @@ struct OnboardingView1: View {
                             .stroke(.white, lineWidth: 4)
                             .shadow(color: .white, radius: 30)
                             .frame(width: 346, height: 120)
-                        VStack{
-                                Text("Hi, I'm Flora! Come on, we need your help!")
-                                    .foregroundStyle(Color.white)
-                                    .fontWeight(.semibold)
-                                    .font(Font.custom("MusticaPro-SemiBold", size: 22))
-                                    .frame(width: 290, height: 63)
-                            
-                            HStack{
-                                NavigationLink(destination: OnboardingView2(), label: {
-                                    HStack {
-                                        Text("SKIP")
-                                            .fontWeight(.semibold)
-                                            .font(Font.custom("MusticaPro-SemiBold", size: 18))
-                                        Image(systemName: "chevron.right")
-                                            .font(.system(size: 13))
-                                            .fontWeight(.semibold)
-                                        
-                                        
+                            .overlay{
+                                VStack{
+                                    Text("Hi, I'm Flora! Come on, we need your help!")
+                                        .foregroundStyle(Color.white)
+                                        .fontWeight(.semibold)
+                                        .font(Font.custom("MusticaPro-SemiBold", size: 22))
+                                        .frame(width: 290, height: 63)
+                                    
+                                    HStack{
+                                        NavigationLink(destination: OnboardingView4(gameData: GameController()), label: {
+                                            HStack {
+                                                Text("SKIP")
+                                                    .fontWeight(.semibold)
+                                                    .font(Font.custom("MusticaPro-SemiBold", size: 18))
+                                                Image(systemName: "chevron.right")
+                                                    .font(.system(size: 13))
+                                                    .fontWeight(.semibold)
+                                                
+                                                
+                                            }
+                                        })
                                     }
-                                })
+                                    
+                                    .padding(.leading, 250)
+                                    .foregroundColor(Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.4)))
+                                }
                             }
-                            
-                            .padding(.leading, 250)
-                            
-                            .foregroundColor(Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.4)))
-                        }
                     }
                     
                 }
+                .padding(.bottom, 200)
 
+                
             }
             .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden(true)
-
+        
     }
     
     
 }
-    #Preview {
-        OnboardingView1()
-    }
+#Preview {
+    OnboardingView1()
+}
 

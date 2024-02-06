@@ -10,9 +10,9 @@ import SwiftUI
 struct OnboardingView5: View {
     @State var textColor: Color = Color(.white)
     var gameData: GameController
-    var degreess: [Double] = [0, 90]
+    var degreess: [Double] = [90]
     @State var index1: Int = 0
-    @State var operacoes: [String] = ["+","-"]
+    @State var operacoes: [String] = ["-"]
     @State var index: Int = 0
     
     var body: some View {
@@ -22,39 +22,44 @@ struct OnboardingView5: View {
                     .resizable()
                 VStack{
                     Spacer()
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.white, lineWidth: 4)
-                            .shadow(color: .white, radius: 30)
-                            .frame(width: 346, height: 120)
-                        VStack{
-                            Text("Perfect")
-                                .foregroundStyle(Color.white)
-                                .fontWeight(.semibold)
-                                .font(Font.custom("MusticaPro-SemiBold", size: 22))
-                                .frame(width: 290, height: 71,alignment: .leading)
-                            HStack{
+                    VStack{
+                        Image("celsius1")
+                            .padding(.leading, 150)
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.white, lineWidth: 4)
+                                .shadow(color: .white, radius: 30)
+                                .frame(width: 346, height: 120)
+                            VStack{
+                                Text("Perfect")
+                                    .foregroundStyle(Color.white)
+                                    .fontWeight(.semibold)
+                                    .font(Font.custom("MusticaPro-SemiBold", size: 22))
+                                    .frame(width: 290, height: 71,alignment: .leading)
+                                HStack{
+                                    
+                                    NavigationLink(destination: OnboardingView2(), label: {
+                                        HStack {
+                                            Text("SKIP")
+                                                .font(Font.custom("MusticaPro-SemiBold", size: 18))
+                                                .fontWeight(.semibold)
+                                            Image(systemName: "chevron.right")
+                                                .font(.system(size: 13))
+                                                .fontWeight(.semibold)
+                                            
+                                            
+                                        }
+                                    })
+                                    
+                                    
+                                }
+                                .padding(.leading, 250)
                                 
-                                NavigationLink(destination: OnboardingView6(gameData: GameController()), label: {
-                                    HStack {
-                                        Text("SKIP")
-                                            .font(Font.custom("MusticaPro-SemiBold", size: 18))
-                                            .fontWeight(.semibold)
-                                        Image(systemName: "chevron.right")
-                                            .font(.system(size: 13))
-                                            .fontWeight(.semibold)
-                                        
-                                        
-                                    }
-                                })
-                                
-                                
+                                .foregroundColor(Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.4)))
                             }
-                            .padding(.leading, 250)
-                            
-                            .foregroundColor(Color(uiColor: UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 0.4)))
                         }
                     }
+                    .padding(.top, 150)
                     Spacer()
                     ZStack{
                         HStack(spacing: 0){
@@ -110,7 +115,7 @@ struct OnboardingView5: View {
                                 Text("TAP")
                                     .font(.custom("MusticaPro-SemiBold", size: 24))
                                     .foregroundColor(Color(red: 255/255, green: 102/255, blue: 102/255))
-                                    .rotationEffect(.degrees(index == 0 ? 0 : -90))
+                                    .rotationEffect(.degrees(index == 90 ? 90 : -90))
 
                                 
                             }
