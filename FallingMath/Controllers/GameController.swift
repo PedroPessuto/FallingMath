@@ -82,69 +82,79 @@ import Foundation
             var timer: Timer?
             
             timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
-                self.valueTimer = self.valueTimer + 0.01
-
-                // Fazer isso quando o timer chegar em 1 segundo
-                if self.valueTimer >= 1 {
-
-                    if let num2 = self.number2, let num1 = self.number1 {
-                        var number: Float = 0
-                        
-                        switch self.operation {
-                        case "+":
-                            number = num1 + num2
-                        case "-":
-                            number = num1 - num2
-                        case "/":
-                            number = num1 / num2
-                        case "x":
-                            number = num1 * num2
-                        default:
-                            print("Operação inválida")
-                        }
-                        
-                        // Se ele acertou
-                        if self.objective == number {
-                            self.attempts = 0
-                            self.maxAttempt = 0
-                            self.score = self.score + 1
-                            self.generateBlocks()
-                        }
-                        // Se errou
-                        else {
-                            
-                            // Aumenta o numero de tentativas
-                            self.attempts = self.attempts + 1
-                            
-                            // Gera bloco errado
-                            if number <= -1 || number > 0.009 {
-                                self.useNumbers.append(number)
-                            }
-                            
-                            // Se atingiu o limite de tentativas
-                            if self.maxAttempt >= self.attempts {
-                                self.attempts = 0
-                                self.generateBlocks()
-                            }
-                            
-                        }
-                        
-                        // Reseta variaveis
-                        self.number1 = nil
-                        self.number2 = nil
+                
+                if !self.configIsPaused {
+                    
+                    self.valueTimer = self.valueTimer + 0.01
+                    
+                    if self.number2 == nil || self.number1 == nil {
                         self.valueTimer = 0
                         timer?.invalidate()
                     }
-                    // Se tirou algum numero
-                    else {
-                        self.valueTimer = 0
-                        timer?.invalidate()
+                    
+                    
+                    // Fazer isso quando o timer chegar em 1 segundo
+                    if self.valueTimer >= 1 {
+                        
+                        if let num2 = self.number2, let num1 = self.number1 {
+                            var number: Float = 0
+                            
+                            switch self.operation {
+                            case "+":
+                                number = num1 + num2
+                            case "-":
+                                number = num1 - num2
+                            case "/":
+                                number = num1 / num2
+                            case "x":
+                                number = num1 * num2
+                            default:
+                                print("Operação inválida")
+                            }
+                            
+                            // Se ele acertou
+                            if self.objective == number {
+                                self.attempts = 0
+                                self.maxAttempt = 0
+                                self.score = self.score + 1
+                                self.generateBlocks()
+                            }
+                            // Se errou
+                            else {
+                                
+                                // Aumenta o numero de tentativas
+                                self.attempts = self.attempts + 1
+                                
+                                // Gera bloco errado
+                                if number <= -1 || number > 0.009 {
+                                    self.useNumbers.append(number)
+                                }
+                                
+                                // Se atingiu o limite de tentativas
+                                if self.maxAttempt >= self.attempts {
+                                    self.attempts = 0
+                                    self.generateBlocks()
+                                }
+                                
+                            }
+                            
+                            // Reseta variaveis
+                            self.number1 = nil
+                            self.number2 = nil
+                            self.valueTimer = 0
+                            timer?.invalidate()
+                        }
+                        // Se tirou algum numero
+                        else {
+                            self.valueTimer = 0
+                            timer?.invalidate()
+                        }
                     }
                 }
             }
         }
     }
-
+    
     // Função para iniciar o jogo
     func startGame() {
         self.resetGame()
@@ -206,15 +216,15 @@ import Foundation
                     resultNumber = resultNumber - chosenNumber
                 }
                 else if operation == "*" {
-                    // Garante que o número não seja 0
-                    while (chosenNumber == 1) {
+                    // Garante que o número não seja 1 e -1
+                    while (chosenNumber == 1 || chosenNumber == -1) {
                         chosenNumber = Int.random(in: -20...20)
                     }
                     resultNumber = resultNumber * chosenNumber
                 }
                 else {
-                    // Garante que o número não seja 0
-                    while (chosenNumber == 1) {
+                    // Garante que o número não seja 1 e -1
+                    while (chosenNumber == 1 || chosenNumber == -1) {
                         chosenNumber = Int.random(in: -20...20)
                     }
                     
