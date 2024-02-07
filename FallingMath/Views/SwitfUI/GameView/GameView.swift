@@ -56,6 +56,10 @@ struct GameView: View {
             }
             
             .padding(22)
+            
+            if(gameController.configIsPaused) {
+                PauseMenu(sound: true)
+            }
         }
         
     }

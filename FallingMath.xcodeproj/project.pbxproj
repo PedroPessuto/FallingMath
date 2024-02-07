@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */; };
+		64C039EF2B7421BE002D066F /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C039EE2B7421BE002D066F /* PauseMenu.swift */; };
 		BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */; };
 		BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */; };
 		BF4DF6722B6D35DC001EE116 /* NumberBlockOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4DF6712B6D35DC001EE116 /* NumberBlockOperation.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MusicaFallingMath.mp3; sourceTree = "<group>"; };
+		64C039EE2B7421BE002D066F /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PauseMenu.swift; path = "../../../../../../../../.Trash/falling-math/FallingMath/Views/SwitfUI/PauseMenu/PauseMenu.swift"; sourceTree = "<group>"; };
 		BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		BF4DF6712B6D35DC001EE116 /* NumberBlockOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberBlockOperation.swift; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64C039ED2B7421AB002D066F /* PauseMenu */ = {
+			isa = PBXGroup;
+			children = (
+				64C039EE2B7421BE002D066F /* PauseMenu.swift */,
+			);
+			path = PauseMenu;
+			sourceTree = "<group>";
+		};
 		BF0110CF2B6C30BE00A8D7D9 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 		BF502F4A2B56EFC3003E092A /* SwitfUI */ = {
 			isa = PBXGroup;
 			children = (
+				64C039ED2B7421AB002D066F /* PauseMenu */,
 				BF502F4D2B56F02A003E092A /* ScoreBoardView */,
 				BF8436B02B68239F0061500A /* OperationsView */,
 				BF0110CF2B6C30BE00A8D7D9 /* HomeView */,
@@ -279,6 +290,7 @@
 				BF502F442B56D8A0003E092A /* ContentView.swift in Sources */,
 				BF8436B32B6826370061500A /* BackgroundView.swift in Sources */,
 				BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */,
+				64C039EF2B7421BE002D066F /* PauseMenu.swift in Sources */,
 				E50FF69D2B6032490016513B /* BlockNode.swift in Sources */,
 				BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */,
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
