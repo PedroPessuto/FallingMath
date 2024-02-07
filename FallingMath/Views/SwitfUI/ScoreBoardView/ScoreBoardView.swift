@@ -36,7 +36,7 @@ struct ScoreBoardView: View {
                 Button (action: {
                     gameController.configIsPaused.toggle()
                 }) {
-                    Image(systemName: gameController.configIsPaused ? "pause.fill" : "play.fill")
+                    Image(systemName: gameController.configIsPaused ? "play.fill" : "pause.fill")
                         .font(.title)
                         .foregroundStyle(Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)))
                 }
