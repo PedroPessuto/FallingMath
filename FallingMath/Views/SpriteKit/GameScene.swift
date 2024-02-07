@@ -42,11 +42,11 @@ class GameScene: SKScene {
         rightBorder.physicsBody?.isDynamic = false
         addChild(rightBorder)
         
-//         Câmera para DEBUG
-//                 let camera = SKCameraNode()
-//                 camera.setScale(3)
-//                 addChild(camera)
-//                 scene!.camera = camera
+//        Câmera para DEBUG
+//        let camera = SKCameraNode()
+//        camera.setScale(3)
+//        addChild(camera)
+//        scene!.camera = camera
     }
     
     func render(){
@@ -76,7 +76,7 @@ class GameScene: SKScene {
         createBackground()
         gameData?.gameScreenSize = self.frame.size
         gameData?.startGame()
-//        self.isPaused = true
+        //        self.isPaused = true
         render()
     }
     
@@ -170,12 +170,16 @@ class GameScene: SKScene {
                 object.update()
             }
         }
+        
     }
+    
+    
     
     // Verificar ao clicar na tela
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first!
+        
         
         if let objects = gameData?.objects {
             for (index, object) in objects.enumerated() {
@@ -222,6 +226,17 @@ class GameScene: SKScene {
                         blockNode.node.run(sequence)
                         gameData?.objects.remove(at: index)
                         
+                    }else{
+                        if let objectss = gameData?.objects {
+                            for (_, objecto) in objectss.enumerated() {
+                                
+                                if let blockNode1 = objecto as? BlockNode {
+                                    
+                                    blockNode1.node.physicsBody?.velocity = CGVectorMake(0, 0)
+                                    blockNode1.node.physicsBody?.applyImpulse(CGVector(dx: 190, dy: 60))
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -14,15 +14,19 @@ class BlockNode: GameObject {
     var number: Float
     var numberText: SKLabelNode = SKLabelNode(fontNamed: "Arial")
     
+    
     func update() {
         let block = node
         let text = numberText
         text.zRotation = -CGFloat(block.zRotation)
+        
+     
     }
     
     init(position: CGPoint, number: Float) {
         self.position = position
         self.number = number
+
         
         // Cria objeto
         var parentNode: SKSpriteNode
