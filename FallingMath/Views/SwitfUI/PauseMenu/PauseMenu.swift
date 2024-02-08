@@ -72,18 +72,11 @@ struct PauseMenu: View {
                     isHaptic = gameController.configHaptics
                 }
                 
-//                Text("VIBRATION")
-                
-//                Button {
-//                    gameController.configHaptics.toggle()
-//                } label: {
-//                    Image(systemName: gameController.configHaptics ? "checkmark.square" : "square")
-//                }
             }
             .padding(.horizontal, 70)
             
             Button {
-//                gameController.configIsPaused.toggle()
+                gameController.configIsPaused.toggle()
             } label: {
                 HStack {
                     Image(systemName: "play.fill")
@@ -116,7 +109,3 @@ struct PauseMenu: View {
         }
     }
 }
-
-//#Preview {
-//    PauseMenu()
-//}
