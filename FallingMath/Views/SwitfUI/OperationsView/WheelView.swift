@@ -70,6 +70,10 @@ struct WheelView: View {
                                 btnPadding = 15
                                 btnHeight = 61
                             }
+                            
+                            if gameController.configHaptics {
+                                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                            }
                         }
                         
                         UIImpactFeedbackGenerator(style: .soft).impactOccurred()

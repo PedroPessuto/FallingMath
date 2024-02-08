@@ -12,6 +12,7 @@ struct PauseMenu: View {
     @State var sound: Bool
     
     @Environment(GameController.self) var gameController
+    @State var isHaptic: Bool = true
     
     var body: some View {
         VStack {
@@ -33,7 +34,9 @@ struct PauseMenu: View {
                 .foregroundStyle(.white)
                 .tint(.clear)
             }
-            .padding(.horizontal, 90)
+            .padding(.horizontal, 70)
+            .padding(.top, 50)
+            .padding(.bottom, 30)
             
             HStack {
                 Image(systemName: "music.note")
@@ -45,11 +48,42 @@ struct PauseMenu: View {
                 .foregroundStyle(.white)
                 .tint(.clear)
             }
-            .padding(.horizontal, 90)
+            .padding(.horizontal, 70)
+            .padding(.bottom, 30)
+            
+            HStack {
+                Image(systemName: "iphone.gen3.radiowaves.left.and.right")
+                    .foregroundStyle(.white)
+                
+                Toggle(isOn: $isHaptic, label: {
+                    Text("VIBRATION")
+                })
+                .foregroundStyle(.white)
+                .tint(.clear)
+                .onChange(of: gameController.configHaptics) { _, newValue in
+                    isHaptic = newValue
+                }
+                .onChange(of: isHaptic) { _, newValue in
+                  
+                    gameController.configHaptics = newValue
+                }
+                .onAppear {
+                    isHaptic = !gameController.configHaptics
+                    isHaptic = gameController.configHaptics
+                }
+                
+//                Text("VIBRATION")
+                
+//                Button {
+//                    gameController.configHaptics.toggle()
+//                } label: {
+//                    Image(systemName: gameController.configHaptics ? "checkmark.square" : "square")
+//                }
+            }
+            .padding(.horizontal, 70)
             
             Button {
-                print("Teste")
-                gameController.configIsPaused.toggle()
+//                gameController.configIsPaused.toggle()
             } label: {
                 HStack {
                     Image(systemName: "play.fill")
@@ -82,3 +116,7 @@ struct PauseMenu: View {
         }
     }
 }
+
+//#Preview {
+//    PauseMenu()
+//}
