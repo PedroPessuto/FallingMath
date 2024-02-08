@@ -16,6 +16,7 @@ import Foundation
     var score: Int = 0 // Pontuação
     var objective: Float = 0 // N[umero objetivo
     var attempts: Int = 0 // Tentativas para atingir o  objetivo
+    var hasLose: Bool = true
     
     // Generation
     var useNumbers: [Float] = []
@@ -73,6 +74,7 @@ import Foundation
         self.number1 = nil
         self.number2 = nil
         self.returnBlock = nil
+        self.hasLose = false
     }
     
     // Função para fazer operações dos números escolhidos
