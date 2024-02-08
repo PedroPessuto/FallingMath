@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640753932B75330100986830 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640753922B75330100986830 /* PauseMenu.swift */; };
 		64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */; };
 		78DAEFC42B73F70E00FAF6BF /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */; };
 		BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		640753922B75330100986830 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
 		64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MusicaFallingMath.mp3; sourceTree = "<group>"; };
 		78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		78DAEFC52B73F7E700FAF6BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		640753912B7532F100986830 /* PauseMenu */ = {
+			isa = PBXGroup;
+			children = (
+				640753922B75330100986830 /* PauseMenu.swift */,
+			);
+			path = PauseMenu;
+			sourceTree = "<group>";
+		};
 		BF0110CF2B6C30BE00A8D7D9 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		BF502F4A2B56EFC3003E092A /* SwitfUI */ = {
 			isa = PBXGroup;
 			children = (
+				640753912B7532F100986830 /* PauseMenu */,
 				BF502F4D2B56F02A003E092A /* ScoreBoardView */,
 				BF8436B02B68239F0061500A /* OperationsView */,
 				BF0110CF2B6C30BE00A8D7D9 /* HomeView */,
@@ -285,6 +296,7 @@
 				78DAEFC42B73F70E00FAF6BF /* TutorialView.swift in Sources */,
 				BF8436B32B6826370061500A /* BackgroundView.swift in Sources */,
 				BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */,
+				640753932B75330100986830 /* PauseMenu.swift in Sources */,
 				E50FF69D2B6032490016513B /* BlockNode.swift in Sources */,
 				BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */,
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
