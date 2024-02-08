@@ -23,39 +23,41 @@ struct GameView: View {
         ZStack {
             
             // Background
-            BackgroundView()
+//            BackgroundView()
             
             VStack (spacing: 0)  {
                 
                 // Tela de pontuação
-                ScoreBoardView()
+                // ScoreBoardView()
                 
                 ZStack {
                     
                     // Background Gradiente Na Área do Jogo
-                    RoundedRectangle(cornerRadius: 13)
-                        .foregroundStyle(Gradient(colors: [Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)), .clear]))
-                    
+//                    RoundedRectangle(cornerRadius: 13)
+//                        .foregroundStyle(Gradient(colors: [Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)), .clear]))
+//                    
                     // Frame do jogo
                     // SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
                     SpriteView(scene: scene, options: [.allowsTransparency])
                         
    
                 }
-                .frame(width: .infinity)
-                .frame(height: 490)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.white, lineWidth: 4)
-                )
+            
+//                .frame(width: .infinity)
+//                .frame(height: 490)
+//                .background(
+//                    RoundedRectangle(cornerRadius: 10)
+//                        .stroke(Color.white, lineWidth: 4)
+//                )
                 
                 // Fazer operações
-                OperationsView()
+//                OperationsView()
                 
                 
             }
+            .ignoresSafeArea()
             
-            .padding(22)
+//            .padding(22)
             
             if(gameController.configIsPaused) {
                 PauseMenu(sound: true)

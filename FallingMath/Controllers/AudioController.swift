@@ -9,8 +9,6 @@ import Foundation
 import AVFoundation
 
 @Observable class AudioController {
-
-    var musicEnabled: Bool = true
     
     var musicPlayer: AVAudioPlayer?
 
