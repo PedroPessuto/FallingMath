@@ -27,7 +27,9 @@ struct ProgressBarView: View {
                     .onChange(of: gameController.valueTimer) { _, newValue in
                         withAnimation(.easeInOut(duration: 0.1)) {
                             animatedValue = newValue
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            if gameController.configHaptics {
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            }
                         }
                     }
                 
