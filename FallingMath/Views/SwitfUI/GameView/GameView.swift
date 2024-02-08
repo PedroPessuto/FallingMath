@@ -25,46 +25,40 @@ struct GameView: View {
             // Background
             BackgroundView()
             
-            if !gameController.hasLose {
-                VStack (spacing: 0)  {
-                    
-                    // Tela de pontuação
-                    ScoreBoardView()
-                    
-                    ZStack {
-                        
-                        // Background Gradiente Na Área do Jogo
-                        RoundedRectangle(cornerRadius: 13)
-                            .foregroundStyle(Gradient(colors: [Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)), .clear]))
-                        
-                        // Frame do jogo
-                        // SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
-                        SpriteView(scene: scene, options: [.allowsTransparency])
-                        
-                        
-                    }
-                    .frame(width: .infinity)
-                    .frame(height: 490)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.white, lineWidth: 4)
-                    )
-                    
-                    // Fazer operações
-                    OperationsView()
-                    
-                    
-                }
+            VStack (spacing: 0)  {
                 
-                .padding(22)
+                // Tela de pontuação
+                ScoreBoardView()
+                
+                ZStack {
+                    
+                    // Background Gradiente Na Área do Jogo
+                    RoundedRectangle(cornerRadius: 13)
+                        .foregroundStyle(Gradient(colors: [Color(uiColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)), .clear]))
+                    
+                    // Frame do jogo
+                    // SpriteView(scene: scene, options: [.allowsTransparency], debugOptions: [.showsFPS, .showsNodeCount])
+                    SpriteView(scene: scene, options: [.allowsTransparency])
+                        
+   
+                }
+                .frame(width: .infinity)
+                .frame(height: 490)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.white, lineWidth: 4)
+                )
+                
+                // Fazer operações
+                OperationsView()
+                
+                
             }
             
-            if (gameController.configIsPaused) {
-                PauseMenu()
-            }
+            .padding(22)
             
-            if (gameController.hasLose) {
-                LoseView()
+            if(gameController.configIsPaused) {
+                PauseMenu(sound: true)
             }
         }
         
