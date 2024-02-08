@@ -10,6 +10,7 @@
 		640753932B75330100986830 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640753922B75330100986830 /* PauseMenu.swift */; };
 		640753962B75689600986830 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640753952B75689600986830 /* SwiftData.swift */; };
 		64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */; };
+		786578BA2B75454D00D84897 /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786578B92B75454D00D84897 /* LoseView.swift */; };
 		78DAEFC42B73F70E00FAF6BF /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */; };
 		BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */; };
 		BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */; };
@@ -36,6 +37,8 @@
 		640753922B75330100986830 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
 		640753952B75689600986830 /* SwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MusicaFallingMath.mp3; sourceTree = "<group>"; };
+		786578B92B75454D00D84897 /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
+		786578BB2B75635100D84897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		78DAEFC52B73F7E700FAF6BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -79,6 +82,12 @@
 			path = PauseMenu;
 			sourceTree = "<group>";
 		};
+		786578B82B75453200D84897 /* LoseView */ = {
+			isa = PBXGroup;
+			children = (
+				786578B92B75454D00D84897 /* LoseView.swift */,
+			);
+			path = LoseView;
 		640753942B75688A00986830 /* SwiftData */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +126,7 @@
 		BF502F4A2B56EFC3003E092A /* SwitfUI */ = {
 			isa = PBXGroup;
 			children = (
+				786578B82B75453200D84897 /* LoseView */,
 				640753912B7532F100986830 /* PauseMenu */,
 				BF502F4D2B56F02A003E092A /* ScoreBoardView */,
 				BF8436B02B68239F0061500A /* OperationsView */,
@@ -183,6 +193,7 @@
 		BF9850712B3386B3004E26FE /* FallingMath */ = {
 			isa = PBXGroup;
 			children = (
+				786578BB2B75635100D84897 /* Info.plist */,
 				78DAEFC52B73F7E700FAF6BF /* Info.plist */,
 				640753942B75688A00986830 /* SwiftData */,
 				BF502F4E2B56F05D003E092A /* Controllers */,
@@ -313,6 +324,7 @@
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
 				BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */,
 				E50FF69B2B6032270016513B /* GameObject.swift in Sources */,
+				786578BA2B75454D00D84897 /* LoseView.swift in Sources */,
 				BF4DF6722B6D35DC001EE116 /* NumberBlockOperation.swift in Sources */,
 				BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */,
 				E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */,
