@@ -11,7 +11,7 @@ struct PauseMenu: View {
     
     @State var sound: Bool
     
-//    @Environment(GameController.self) var gameController
+    @Environment(GameController.self) var gameController
     
     var body: some View {
         VStack {
@@ -49,6 +49,7 @@ struct PauseMenu: View {
             
             Button {
                 print("Teste")
+                gameController.configIsPaused.toggle()
             } label: {
                 HStack {
                     Image(systemName: "play.fill")
@@ -80,8 +81,4 @@ struct PauseMenu: View {
                 .stroke(.white, lineWidth: 4, antialiased: true)
         }
     }
-}
-
-#Preview {
-    PauseMenu(sound: true)
 }
