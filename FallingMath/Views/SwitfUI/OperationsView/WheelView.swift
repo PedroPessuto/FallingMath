@@ -75,6 +75,8 @@ struct WheelView: View {
                                 UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                             }
                         }
+                        
+                        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                     }, perform: {})
                    
                 ZStack{

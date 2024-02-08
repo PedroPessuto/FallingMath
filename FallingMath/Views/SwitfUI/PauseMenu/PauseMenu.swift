@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PauseMenu: View {
     
+    @State var sound: Bool
+    
     @Environment(GameController.self) var gameController
     @State var isHaptic: Bool = true
     
@@ -88,7 +90,7 @@ struct PauseMenu: View {
                         .padding(.horizontal, 10)
                         .font(.title)
                     
-                    Text("RESUME")
+                    Text("PLAY")
                         .padding(.horizontal, 10)
                         .font(.title)
                         .fontWeight(.semibold)
@@ -100,7 +102,7 @@ struct PauseMenu: View {
                     Capsule()
                         .stroke(.white, lineWidth: 4, antialiased: true)
                 }
-                .padding(.top, 50)
+                .padding(.top, 90)
                 .tint(.white)
             }
             
