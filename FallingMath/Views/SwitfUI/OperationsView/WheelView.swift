@@ -10,11 +10,9 @@ import SwiftUI
 struct WheelView: View {
     
     @Environment(GameController.self) private var gameController
-    
+    @State var degreessInfinity: Double = 0
     var degreess: [Double] = [0, 90, 180, 270]
     @State var index: Int = 0
-    @State var btnPadding: CGFloat = 15
-    @State var btnHeight: CGFloat = 51
     @State var operacoes: [String] = ["+","-","x","/"]
     @State var textColor: Color = Color(.white)
     
@@ -32,7 +30,7 @@ struct WheelView: View {
                 }
                 
                 VStack{}
-                    .frame(width: 60,height: 60)
+                    .frame(width: 80,height: 0)
                 
                 ZStack{
                     Image(degreess[index] == 270 ? "onRight" : "offRight")
@@ -51,32 +49,33 @@ struct WheelView: View {
                     }
                         
                 }
-                Image("Center")
-                    .onLongPressGesture(minimumDuration: .infinity, maximumDistance: .infinity, pressing: { pressing in
-                        if !gameController.configIsPaused {
-                            if pressing {
-                                btnPadding = 0
-                                btnHeight = 51
-                                if index < operacoes.count - 1{
-                                    index += 1
-                                    gameController.operation = operacoes[index]
+                
+                ZStack{
+                    Image("Center")
+                        .onLongPressGesture(minimumDuration: .infinity, maximumDistance: .infinity, pressing: { pressing in
+                            if !gameController.configIsPaused {
+                                if pressing {
+                                    if index < operacoes.count - 1{
+                                        index += 1
+                                        degreessInfinity += 90
+                                        gameController.operation = operacoes[index]
+                                    }
+                                    else {
+                                        index = 0
+                                        degreessInfinity += 90
+                                        gameController.operation = operacoes[index]
+                                    }
+                                    
                                 }
-                                else {
-                                    index = 0
-                                    gameController.operation = operacoes[index]
-                                }
-                                
-                            } else{
-                                btnPadding = 15
-                                btnHeight = 61
                             }
-                            
-                            UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-                        }
-                    }, perform: {})
-                   
+                        }, perform: {})
+                    Text("TAP")
+                        .font(.custom("MusticaPro-SemiBold", size: 25))
+                        .rotationEffect(.degrees(-degreessInfinity))
+                }
                 ZStack{
                     Image(degreess[index] == 180 ? "onDown" : "offDown")
+                        
                     if degreess[index] == 180 {
                         Image("multiplier")
                             .rotationEffect(.degrees(90))
@@ -85,7 +84,12 @@ struct WheelView: View {
                 }
             }
         }
-        .rotationEffect(.degrees(degreess[index]))
+        .rotationEffect(.degrees(degreessInfinity))
         .animation(.bouncy(duration: 0.5), value: index)
     }
+}
+
+#Preview {
+    WheelView()
+        .environment(GameController())
 }

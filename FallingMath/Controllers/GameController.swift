@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 @Observable class GameController {
@@ -36,6 +37,7 @@ import Foundation
     // Config
     var configScreenName: String = "game"
     var configIsPaused: Bool = false
+    var configHaptics: Bool = true
     
     func startBlock() {
         createBlock()

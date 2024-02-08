@@ -9,7 +9,10 @@ import SwiftUI
 
 struct PauseMenu: View {
     
+    @State var sound: Bool
+    
     @Environment(GameController.self) var gameController
+    @State var isHaptic: Bool = true
     
     var body: some View {
         VStack {
@@ -31,8 +34,9 @@ struct PauseMenu: View {
                 .foregroundStyle(.white)
                 .tint(.clear)
             }
-            .padding(.horizontal, 90)
+            .padding(.horizontal, 70)
             .padding(.top, 50)
+            .padding(.bottom, 30)
             
             HStack {
                 Image(systemName: "music.note")
@@ -44,10 +48,34 @@ struct PauseMenu: View {
                 .foregroundStyle(.white)
                 .tint(.clear)
             }
-            .padding(.horizontal, 90)
+            .padding(.horizontal, 70)
+            .padding(.bottom, 30)
+            
+            HStack {
+                Image(systemName: "iphone.gen3.radiowaves.left.and.right")
+                    .foregroundStyle(.white)
+                
+                Toggle(isOn: $isHaptic, label: {
+                    Text("VIBRATION")
+                })
+                .foregroundStyle(.white)
+                .tint(.clear)
+                .onChange(of: gameController.configHaptics) { _, newValue in
+                    isHaptic = newValue
+                }
+                .onChange(of: isHaptic) { _, newValue in
+                  
+                    gameController.configHaptics = newValue
+                }
+                .onAppear {
+                    isHaptic = !gameController.configHaptics
+                    isHaptic = gameController.configHaptics
+                }
+                
+            }
+            .padding(.horizontal, 70)
             
             Button {
-                print("Teste")
                 gameController.configIsPaused.toggle()
             } label: {
                 HStack {
@@ -55,7 +83,7 @@ struct PauseMenu: View {
                         .padding(.horizontal, 10)
                         .font(.title)
                     
-                    Text("RESUME")
+                    Text("PLAY")
                         .padding(.horizontal, 10)
                         .font(.title)
                         .fontWeight(.semibold)
@@ -67,7 +95,7 @@ struct PauseMenu: View {
                     Capsule()
                         .stroke(.white, lineWidth: 4, antialiased: true)
                 }
-                .padding(.top, 50)
+                .padding(.top, 90)
                 .tint(.white)
             }
             
