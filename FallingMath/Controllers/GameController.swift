@@ -17,6 +17,7 @@ import SwiftUI
     var score: Int = 0 // Pontuação
     var objective: Float = 0 // N[umero objetivo
     var attempts: Int = 0 // Tentativas para atingir o  objetivo
+    var hasLose: Bool = false
     
     // Generation
     var useNumbers: [Float] = []
@@ -67,6 +68,7 @@ import SwiftUI
     
     // Função para resetar as variáveis
     func resetGame() {
+        self.objects = []
         self.score = 0
         self.objective = 0
         self.useNumbers = []
@@ -75,6 +77,7 @@ import SwiftUI
         self.number1 = nil
         self.number2 = nil
         self.returnBlock = nil
+        self.hasLose = false
     }
     
     // Função para fazer operações dos números escolhidos

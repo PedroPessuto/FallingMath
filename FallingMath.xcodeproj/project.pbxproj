@@ -20,6 +20,7 @@
 		BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF502F4B2B56F027003E092A /* ScoreBoardView.swift */; };
 		BF7232DE2B6C2BA6006DCA42 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7232DD2B6C2BA6006DCA42 /* HomeView.swift */; };
 		BF8436B32B6826370061500A /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8436B22B6826370061500A /* BackgroundView.swift */; };
+		BF8864792B7577FE00DC2074 /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8864782B7577FE00DC2074 /* LoseView.swift */; };
 		BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9850722B3386B3004E26FE /* FallingMathApp.swift */; };
 		BF9850772B3386B4004E26FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9850762B3386B4004E26FE /* Assets.xcassets */; };
 		BF98507A2B3386B4004E26FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9850792B3386B4004E26FE /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		BF502F4B2B56F027003E092A /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
 		BF7232DD2B6C2BA6006DCA42 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BF8436B22B6826370061500A /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		BF8864782B7577FE00DC2074 /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
 		BF98506F2B3386B3004E26FE /* FallingMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9850722B3386B3004E26FE /* FallingMathApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallingMathApp.swift; sourceTree = "<group>"; };
 		BF9850762B3386B4004E26FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		BF502F4A2B56EFC3003E092A /* SwitfUI */ = {
 			isa = PBXGroup;
 			children = (
+				BF8864772B7577F500DC2074 /* LoseView */,
 				640753912B7532F100986830 /* PauseMenu */,
 				BF502F4D2B56F02A003E092A /* ScoreBoardView */,
 				BF8436B02B68239F0061500A /* OperationsView */,
@@ -162,6 +165,14 @@
 				78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */,
 			);
 			path = BackgroundView;
+			sourceTree = "<group>";
+		};
+		BF8864772B7577F500DC2074 /* LoseView */ = {
+			isa = PBXGroup;
+			children = (
+				BF8864782B7577FE00DC2074 /* LoseView.swift */,
+			);
+			path = LoseView;
 			sourceTree = "<group>";
 		};
 		BF9850662B3386B3004E26FE = {
@@ -315,6 +326,7 @@
 				E50FF69B2B6032270016513B /* GameObject.swift in Sources */,
 				BF4DF6722B6D35DC001EE116 /* NumberBlockOperation.swift in Sources */,
 				BF502F4C2B56F027003E092A /* ScoreBoardView.swift in Sources */,
+				BF8864792B7577FE00DC2074 /* LoseView.swift in Sources */,
 				E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */,
 				E50FF6A12B6033650016513B /* OperationsView.swift in Sources */,
 				E50FF6962B6031DB0016513B /* GameController.swift in Sources */,

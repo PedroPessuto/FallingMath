@@ -62,6 +62,7 @@ class BlockNode: GameObject {
         parentNode.addChild(node)
         parentNode.addChild(scoreLabel)
         parentNode.name = "block"
+        parentNode.physicsBody?.velocity = CGVector(dx: 0, dy: 0.1)
         self.node = parentNode
     }
 }
