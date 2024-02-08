@@ -30,7 +30,6 @@ struct BackgroundView: View {
     var body: some View {
 
         ZStack {
-//            Color.black
             RadialGradient(colors: gradientColors, center: UnitPoint(x: 0, y: 0), startRadius: 100, endRadius: 800)
         }
         .ignoresSafeArea()

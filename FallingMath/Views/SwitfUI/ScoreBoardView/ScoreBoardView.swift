@@ -63,26 +63,10 @@ struct ScoreBoardView: View {
                     .foregroundStyle(Color(uiColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)))
                     .font(.system(size: 28))
                     .fontWeight(.semibold)
-                    .animation(.easeInOut(duration: 1))
-                    .modifier(Glow(text: gameController.formatNumber(gameController.objective)))
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             
             
-        }
-    }
-}
-
-struct Glow: ViewModifier{
-    @State var text: String
-    func body(content: Content) -> some View {
-        var timer: CGFloat = 5
-        ZStack{
-            content.blur(radius: timer)
-            content
-        }
-        .onChange(of: text){
-            timer = 0
         }
     }
 }
