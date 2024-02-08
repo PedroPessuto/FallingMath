@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PauseMenu: View {
     
-//    @Environment(GameController.self) var gameController
+    @Environment(GameController.self) var gameController
     
     var body: some View {
         VStack {
@@ -48,7 +48,7 @@ struct PauseMenu: View {
             
             Button {
                 print("Teste")
-//                gameController.configIsPaused.toggle()
+                gameController.configIsPaused.toggle()
             } label: {
                 HStack {
                     Image(systemName: "play.fill")
