@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		640753932B75330100986830 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640753922B75330100986830 /* PauseMenu.swift */; };
+		640753962B75689600986830 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640753952B75689600986830 /* SwiftData.swift */; };
 		64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */; };
 		BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */; };
 		BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		640753922B75330100986830 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		640753952B75689600986830 /* SwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MusicaFallingMath.mp3; sourceTree = "<group>"; };
 		BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 				640753922B75330100986830 /* PauseMenu.swift */,
 			);
 			path = PauseMenu;
+			sourceTree = "<group>";
+		};
+		640753942B75688A00986830 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				640753952B75689600986830 /* SwiftData.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 		BF0110CF2B6C30BE00A8D7D9 /* HomeView */ = {
@@ -169,6 +179,7 @@
 		BF9850712B3386B3004E26FE /* FallingMath */ = {
 			isa = PBXGroup;
 			children = (
+				640753942B75688A00986830 /* SwiftData */,
 				BF502F4E2B56F05D003E092A /* Controllers */,
 				BF3850572B33DC5B00860DA5 /* Views */,
 				BF9850722B3386B3004E26FE /* FallingMathApp.swift */,
@@ -303,6 +314,7 @@
 				E50FF6962B6031DB0016513B /* GameController.swift in Sources */,
 				BF502F422B56D77B003E092A /* GameScene.swift in Sources */,
 				BF4DF6742B6D63AF001EE116 /* ProgressBarView.swift in Sources */,
+				640753962B75689600986830 /* SwiftData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
