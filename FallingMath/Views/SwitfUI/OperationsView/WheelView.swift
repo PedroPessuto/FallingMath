@@ -70,9 +70,9 @@ struct WheelView: View {
                                 btnPadding = 15
                                 btnHeight = 61
                             }
+                            
+                            UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                         }
-                        
-                        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                     }, perform: {})
                    
                 ZStack{

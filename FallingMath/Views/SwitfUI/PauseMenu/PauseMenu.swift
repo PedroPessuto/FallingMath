@@ -9,8 +9,6 @@ import SwiftUI
 
 struct PauseMenu: View {
     
-    @State var sound: Bool
-    
     @Environment(GameController.self) var gameController
     
     var body: some View {
@@ -34,6 +32,7 @@ struct PauseMenu: View {
                 .tint(.clear)
             }
             .padding(.horizontal, 90)
+            .padding(.top, 50)
             
             HStack {
                 Image(systemName: "music.note")
@@ -56,7 +55,7 @@ struct PauseMenu: View {
                         .padding(.horizontal, 10)
                         .font(.title)
                     
-                    Text("PLAY")
+                    Text("RESUME")
                         .padding(.horizontal, 10)
                         .font(.title)
                         .fontWeight(.semibold)
@@ -68,7 +67,7 @@ struct PauseMenu: View {
                     Capsule()
                         .stroke(.white, lineWidth: 4, antialiased: true)
                 }
-                .padding(.top, 90)
+                .padding(.top, 50)
                 .tint(.white)
             }
             
