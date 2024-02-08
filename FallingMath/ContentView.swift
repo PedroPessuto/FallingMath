@@ -22,10 +22,13 @@ struct ContentView: View {
             }
         }
         .environment(gameController)
-       
+        
     }
 }
 
 #Preview {
     ContentView()
 }
+
+
+

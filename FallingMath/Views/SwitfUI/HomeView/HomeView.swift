@@ -19,5 +19,7 @@ struct HomeView: View {
         }) {
             Text("Play")
         }
+        
     }
+        
 }
