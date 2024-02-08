@@ -10,6 +10,7 @@
 		640753932B75330100986830 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640753922B75330100986830 /* PauseMenu.swift */; };
 		640753962B75689600986830 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640753952B75689600986830 /* SwiftData.swift */; };
 		64AD3D862B6AD516006479AE /* MusicaFallingMath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */; };
+		78DAEFC42B73F70E00FAF6BF /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */; };
 		BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */; };
 		BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */; };
 		BF4DF6722B6D35DC001EE116 /* NumberBlockOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4DF6712B6D35DC001EE116 /* NumberBlockOperation.swift */; };
@@ -35,6 +36,8 @@
 		640753922B75330100986830 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
 		640753952B75689600986830 /* SwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		64AD3D852B6AD516006479AE /* MusicaFallingMath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MusicaFallingMath.mp3; sourceTree = "<group>"; };
+		78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		78DAEFC52B73F7E700FAF6BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BF00BCD72B6C2C5E00EFDD58 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BF00BCD92B6C2D3100EFDD58 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		BF4DF6712B6D35DC001EE116 /* NumberBlockOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberBlockOperation.swift; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				BF8436B22B6826370061500A /* BackgroundView.swift */,
+				78DAEFC32B73F70E00FAF6BF /* TutorialView.swift */,
 			);
 			path = BackgroundView;
 			sourceTree = "<group>";
@@ -179,6 +183,7 @@
 		BF9850712B3386B3004E26FE /* FallingMath */ = {
 			isa = PBXGroup;
 			children = (
+				78DAEFC52B73F7E700FAF6BF /* Info.plist */,
 				640753942B75688A00986830 /* SwiftData */,
 				BF502F4E2B56F05D003E092A /* Controllers */,
 				BF3850572B33DC5B00860DA5 /* Views */,
@@ -299,6 +304,7 @@
 				E5B433602B68120100E09724 /* WheelView.swift in Sources */,
 				BF7232DE2B6C2BA6006DCA42 /* HomeView.swift in Sources */,
 				BF502F442B56D8A0003E092A /* ContentView.swift in Sources */,
+				78DAEFC42B73F70E00FAF6BF /* TutorialView.swift in Sources */,
 				BF8436B32B6826370061500A /* BackgroundView.swift in Sources */,
 				BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */,
 				640753932B75330100986830 /* PauseMenu.swift in Sources */,
@@ -448,13 +454,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FallingMath/Preview Content\"";
-				DEVELOPMENT_TEAM = UU65NF9U3M;
+				DEVELOPMENT_TEAM = D3QL34P3MQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FallingMath/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,13 +483,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FallingMath/Preview Content\"";
-				DEVELOPMENT_TEAM = UU65NF9U3M;
+				DEVELOPMENT_TEAM = D3QL34P3MQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FallingMath/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
