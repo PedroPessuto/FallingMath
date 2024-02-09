@@ -68,10 +68,12 @@ struct WheelView: View {
                                     
                                 }
                             }
+                            UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                         }, perform: {})
                     Text("TAP")
                         .font(.custom("MusticaPro-SemiBold", size: 25))
                         .rotationEffect(.degrees(-degreessInfinity))
+                        .foregroundStyle(Color("DarkMode"))
                 }
                 ZStack{
                     Image(degreess[index] == 180 ? "onDown" : "offDown")
