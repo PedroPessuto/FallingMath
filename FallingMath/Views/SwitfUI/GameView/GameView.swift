@@ -7,10 +7,14 @@
 
 import SwiftUI
 import SpriteKit
+import SwiftData
 
 struct GameView: View {
     
     @Environment(GameController.self) private var gameController
+    @Environment(\.modelContext) private var context
+    
+    @Query private var items: [SavedData]
     
     var scene: GameScene {
         let scene = GameScene()
@@ -63,4 +67,25 @@ struct GameView: View {
         }
         
     }
+    
+    // Vai no botão de play
+    func firstPlay() {
+        if items.isEmpty {
+            addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+        }
+    }
+    
+    func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
+        
+        let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
+        
+        context.insert(item)
+    }
+    
+    // Rodado toda vez que terminar o jogo
+    func updateItem(_ item: SavedData) {
+            item.onBoarding = false
+            try? context.save()
+        }
+    
 }
