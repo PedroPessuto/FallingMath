@@ -68,7 +68,7 @@ struct WheelView: View {
                                     
                                 }
                             }
-                            if gameController.configHaptics {
+                            if (gameController.configHaptics) {
                                 UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                             }
                         }, perform: {})

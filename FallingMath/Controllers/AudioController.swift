@@ -39,6 +39,8 @@ import AVFoundation
     
     init() {
         // Inicia a música
-        // self.startMusic()
+        if musicEnabled {
+            self.startMusic()
+        }
     }
 }

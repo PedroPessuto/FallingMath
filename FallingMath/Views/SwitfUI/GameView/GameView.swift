@@ -57,14 +57,15 @@ struct GameView: View {
                 .padding(.bottom, 20)
             
             
-        
+            
             if(gameController.configIsPaused) {
-//                PauseMenu()
+                PauseMenu()
             }
             
             if gameController.hasLose {
                 LoseView()
             }
+            
         }
         .onAppear {
             startGame()
