@@ -75,7 +75,7 @@ struct PauseMenu: View {
                 })
                 .foregroundStyle(.white)
                 .tint(.clear)
-                .onChange(of: gameController.configHaptics) { _, newValue in
+                .onChange(of: items[0].haptics) { _, newValue in
                     isHaptic = newValue
                 }
                 .onChange(of: isHaptic) { _, newValue in
@@ -84,8 +84,8 @@ struct PauseMenu: View {
                     try? context.save()
                 }
                 .onAppear {
-                    isHaptic = !gameController.configHaptics
-                    isHaptic = gameController.configHaptics
+                    isHaptic = !items[0].haptics
+                    isHaptic = items[0].haptics
                 }
                 
             }

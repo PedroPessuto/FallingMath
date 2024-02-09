@@ -47,7 +47,6 @@ struct GameView: View {
                         
                         
                     }
-                    .frame(width: .infinity)
                     .frame(height: 490)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
@@ -71,7 +70,9 @@ struct GameView: View {
                 LoseView()
             }
         }
-        
+        .onAppear {
+            startGame()
+        }
     }
     
     func startGame() {

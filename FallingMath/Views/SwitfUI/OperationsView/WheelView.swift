@@ -68,7 +68,9 @@ struct WheelView: View {
                                     
                                 }
                             }
-                            UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                            if gameController.configHaptics {
+                                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                            }
                         }, perform: {})
                     Text("TAP")
                         .font(.custom("MusticaPro-SemiBold", size: 25))
