@@ -69,6 +69,20 @@ class GameScene: SKScene {
         render()
     }
     
+    func lose(){
+        if let objects = gameData?.objects {
+          for object in objects {
+              if object.node.name == "block"{
+                  if object.node.physicsBody?.velocity == CGVector(dx: 0, dy: 0){
+                      if object.node.position.y >= object.node.frame.height * 5 {
+                          gameData?.hasLose = true
+                      }
+                  }
+            }
+          }
+        }
+      }
+    
     // Função que é chamada para cada renderização
     override func update(_ currentTime: TimeInterval) {
         
@@ -101,6 +115,8 @@ class GameScene: SKScene {
                     object.update()
                 }
             }
+            
+            lose()
             
         }
         
