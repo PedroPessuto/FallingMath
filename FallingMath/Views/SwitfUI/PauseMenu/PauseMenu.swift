@@ -10,7 +10,10 @@ import SwiftUI
 struct PauseMenu: View {
     
     @Environment(GameController.self) var gameController
+    @Environment(AudioController.self) var audioController
     @State var isHaptic: Bool = true
+    @State var musicEnabled: Bool = true
+    
     
     var body: some View {
         VStack {
@@ -26,28 +29,40 @@ struct PauseMenu: View {
                 Image(systemName: "music.note")
                     .foregroundStyle(.white)
                 
-                Toggle(isOn: .constant(true), label: {
+                Toggle(isOn: $musicEnabled, label: {
                     Text("MUSIC")
                 })
                 .foregroundStyle(.white)
                 .tint(.clear)
+                .onChange(of: audioController.musicEnabled) { _, newValue in
+                    musicEnabled = newValue
+                }
+                .onChange(of: musicEnabled) { _, newValue in
+                  
+                    audioController.musicEnabled = newValue
+                }
+                .onAppear {
+                    musicEnabled = !audioController.musicEnabled
+                    musicEnabled = audioController.musicEnabled
+                }
             }
             .padding(.horizontal, 70)
             .padding(.top, 30)
             .padding(.bottom, 30)
             
-            HStack {
-                Image(systemName: "music.note")
-                    .foregroundStyle(.white)
-                
-                Toggle(isOn: .constant(true), label: {
-                    Text("SOUND")
-                })
-                .foregroundStyle(.white)
-                .tint(.clear)
-            }
-            .padding(.horizontal, 70)
-            .padding(.bottom, 30)
+//            HStack {
+//                Image(systemName: "music.note")
+//                    .foregroundStyle(.white)
+//                
+//                Toggle(isOn: .constant(true), label: {
+//                    Text("SOUND")
+//                })
+//                .foregroundStyle(.white)
+//                .tint(.clear)
+//                
+//            }
+//            .padding(.horizontal, 70)
+//            .padding(.bottom, 30)
             
             HStack {
                 Image(systemName: "iphone.gen3.radiowaves.left.and.right")
@@ -108,6 +123,3 @@ struct PauseMenu: View {
     }
 }
 
-#Preview {
-    PauseMenu()
-}

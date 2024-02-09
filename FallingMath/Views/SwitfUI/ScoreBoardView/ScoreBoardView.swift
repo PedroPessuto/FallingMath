@@ -34,7 +34,9 @@ struct ScoreBoardView: View {
                 
                 // Botão de Menu
                 Button (action: {
-                    gameController.configIsPaused.toggle()
+                    if !gameController.configIsPaused {
+                        gameController.configIsPaused.toggle()
+                    }
                 }) {
                     Image(systemName: gameController.configIsPaused ? "play.fill" : "pause.fill")
                         .font(.title)
@@ -68,5 +70,7 @@ struct ScoreBoardView: View {
             
             
         }
+        .padding(.top)
+        
     }
 }

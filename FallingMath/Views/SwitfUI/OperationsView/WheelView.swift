@@ -71,6 +71,9 @@ struct WheelView: View {
                             UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                         }, perform: {})
                     Text("TAP")
+                        .foregroundColor(
+                            gameController.operation == "+" ? Color(red: 81/255, green: 127/255, blue: 221/255) : gameController.operation == "-" ? Color(red: 1, green: 127/255, blue: 96/255) : gameController.operation == "x" ? Color(red: 79/255, green: 200/255, blue: 187/255) : Color(red: 221/255, green: 175/255, blue: 73/255)
+                        )
                         .font(.custom("MusticaPro-SemiBold", size: 25))
                         .rotationEffect(.degrees(-degreessInfinity))
                         .foregroundStyle(Color("DarkMode"))
@@ -89,9 +92,4 @@ struct WheelView: View {
         .rotationEffect(.degrees(degreessInfinity))
         .animation(.bouncy(duration: 0.5), value: index)
     }
-}
-
-#Preview {
-    WheelView()
-        .environment(GameController())
 }
