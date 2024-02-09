@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct OnboardingView: View {
+    
+    @Environment(\.modelContext) private var context
+    @Query private var items: [SavedData]
     
     var texts: [String] = ["Oi, sou a Flora! Vamos lá, nós precisamos da sua ajuda!", "Esse é o número que você precisa chegar.", "Você pode escolher os blocos caindo tocando neles.", "E tocar no botão circular para trocar a operação.", "Perfeito!", "O equilíbrio dos 4 elementos está perdendo o controle", "Não deixe os blocos completarem a tela e proteja nossa terra do desequilíbrio!"]
     
@@ -49,6 +53,7 @@ struct OnboardingView: View {
                                         if index < characters.count - 1{
                                             index += 1
                                         }
+                                        items[0].onBoarding = false
                                     }, label: {
                                         Text(index == 6 ? "JOGAR" : index == 3 || index == 2 ? "" : "PULAR")
                                             .font(.custom("MusticaPro-SemiBold", size: 14))

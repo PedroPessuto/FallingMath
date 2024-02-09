@@ -47,7 +47,6 @@ struct GameView: View {
                         
                         
                     }
-//                    .frame(width: .infinity)
                     .frame(height: 490)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
@@ -71,7 +70,16 @@ struct GameView: View {
                 LoseView()
             }
         }
-        
+        .onAppear {
+            startGame()
+        }
+    }
+    
+    func startGame() {
+        if(items.isEmpty) {
+            let item = SavedData(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+            context.insert(item)
+        }
     }
     
 }

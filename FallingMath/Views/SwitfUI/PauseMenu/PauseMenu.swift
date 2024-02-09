@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PauseMenu: View {
     
     @Environment(GameController.self) var gameController
-    @Environment(AudioController.self) var audioController
-    @State var isHaptic: Bool = true
-    @State var musicEnabled: Bool = true
+    @Environment(\.modelContext) private var context
     
+    @Query private var items: [SavedData]
+    
+    @State var isHaptic: Bool = true
+    @State var music: Bool = true
     
     var body: some View {
         VStack {
@@ -29,21 +32,21 @@ struct PauseMenu: View {
                 Image(systemName: "music.note")
                     .foregroundStyle(.white)
                 
-                Toggle(isOn: $musicEnabled, label: {
+                Toggle(isOn: $music, label: {
                     Text("MUSIC")
                 })
                 .foregroundStyle(.white)
                 .tint(.clear)
-                .onChange(of: audioController.musicEnabled) { _, newValue in
-                    musicEnabled = newValue
+                .onChange(of: items[0].music) { _, newValue in
+                    music = newValue
                 }
-                .onChange(of: musicEnabled) { _, newValue in
-                  
-                    audioController.musicEnabled = newValue
+                .onChange(of: music) { _, newValue in
+                    items[0].music = newValue
+                    try? context.save()
                 }
                 .onAppear {
-                    musicEnabled = !audioController.musicEnabled
-                    musicEnabled = audioController.musicEnabled
+                    music = !items[0].music
+                    music = items[0].music
                 }
             }
             .padding(.horizontal, 70)
@@ -59,7 +62,6 @@ struct PauseMenu: View {
 //                })
 //                .foregroundStyle(.white)
 //                .tint(.clear)
-//                
 //            }
 //            .padding(.horizontal, 70)
 //            .padding(.bottom, 30)
@@ -73,16 +75,17 @@ struct PauseMenu: View {
                 })
                 .foregroundStyle(.white)
                 .tint(.clear)
-                .onChange(of: gameController.configHaptics) { _, newValue in
+                .onChange(of: items[0].haptics) { _, newValue in
                     isHaptic = newValue
                 }
                 .onChange(of: isHaptic) { _, newValue in
-                  
                     gameController.configHaptics = newValue
+                    items[0].haptics = newValue
+                    try? context.save()
                 }
                 .onAppear {
-                    isHaptic = !gameController.configHaptics
-                    isHaptic = gameController.configHaptics
+                    isHaptic = !items[0].haptics
+                    isHaptic = items[0].haptics
                 }
                 
             }
