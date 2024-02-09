@@ -30,6 +30,8 @@
 		E50FF69D2B6032490016513B /* BlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF69C2B6032490016513B /* BlockNode.swift */; };
 		E50FF69F2B60326C0016513B /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF69E2B60326C0016513B /* BlockFactory.swift */; };
 		E50FF6A12B6033650016513B /* OperationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FF6A02B6033650016513B /* OperationsView.swift */; };
+		E563B7E42B769A3A005DDB36 /* WheelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E563B7E32B769A3A005DDB36 /* WheelNode.swift */; };
+		E563B7E62B769CE3005DDB36 /* WheelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E563B7E52B769CE3005DDB36 /* WheelFactory.swift */; };
 		E5B433602B68120100E09724 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4335F2B68120100E09724 /* WheelView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		E50FF69C2B6032490016513B /* BlockNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNode.swift; sourceTree = "<group>"; };
 		E50FF69E2B60326C0016513B /* BlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockFactory.swift; sourceTree = "<group>"; };
 		E50FF6A02B6033650016513B /* OperationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsView.swift; sourceTree = "<group>"; };
+		E563B7E32B769A3A005DDB36 /* WheelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelNode.swift; sourceTree = "<group>"; };
+		E563B7E52B769CE3005DDB36 /* WheelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelFactory.swift; sourceTree = "<group>"; };
 		E5B4335F2B68120100E09724 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				E50FF69C2B6032490016513B /* BlockNode.swift */,
+				E563B7E32B769A3A005DDB36 /* WheelNode.swift */,
 				E50FF69A2B6032270016513B /* GameObject.swift */,
 			);
 			path = Models;
@@ -237,6 +242,7 @@
 			children = (
 				E50FF6982B6032190016513B /* GOFactory.swift */,
 				E50FF69E2B60326C0016513B /* BlockFactory.swift */,
+				E563B7E52B769CE3005DDB36 /* WheelFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 				BF00BCD82B6C2C5E00EFDD58 /* GameView.swift in Sources */,
 				640753932B75330100986830 /* PauseMenu.swift in Sources */,
 				E50FF69D2B6032490016513B /* BlockNode.swift in Sources */,
+				E563B7E62B769CE3005DDB36 /* WheelFactory.swift in Sources */,
 				BF00BCDA2B6C2D3100EFDD58 /* AudioController.swift in Sources */,
 				E50FF6992B6032190016513B /* GOFactory.swift in Sources */,
 				BF9850732B3386B3004E26FE /* FallingMathApp.swift in Sources */,
@@ -333,6 +340,7 @@
 				BF502F422B56D77B003E092A /* GameScene.swift in Sources */,
 				BF4DF6742B6D63AF001EE116 /* ProgressBarView.swift in Sources */,
 				640753962B75689600986830 /* SwiftData.swift in Sources */,
+				E563B7E42B769A3A005DDB36 /* WheelNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

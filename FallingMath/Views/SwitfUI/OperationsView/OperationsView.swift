@@ -35,15 +35,16 @@ struct OperationsView: View {
             
             // ProgressBar
             ProgressBarView()
+                .padding(.top, 650)
             
             ZStack {
                 
                 // Roda das operacoes
-                WheelView()
+//                WheelView()
                 
                 // Local dos numeros
-                VStack {
-                    HStack {
+                VStack{
+                    HStack{
                         
                         // Numero 1
                         NumberBlockOperation(formatedNumber: formatedNumber1)
@@ -79,11 +80,18 @@ struct OperationsView: View {
                                 gameController.doOperation()
                             }
                     }
-                    Spacer()
+                    
                 }
             }
         }
-        .padding(.top)
+        
+//        .background(.blue)
+        
 
     }
+}
+
+#Preview {
+    OperationsView()
+        .environment(GameController())
 }

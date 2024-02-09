@@ -23,7 +23,7 @@ class BlockFactory: GOFactory{
     
     func createGameObject(number: Float, screenSize: CGSize) -> GameObject {
         
-        let widthPostions: [CGFloat] = [1, screenSize.width/2,screenSize.width/3, screenSize.width - 1]
+        let widthPostions: [CGFloat] = [29, screenSize.width/2,screenSize.width/3, screenSize.width - 30]
         
         let block: BlockNode = BlockNode(position: CGPoint(x: widthPostions.randomElement()!, y: screenSize.height * 1.3), number: number)
         

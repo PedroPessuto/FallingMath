@@ -15,11 +15,12 @@ class GameScene: SKScene {
     // Cria o cenario do jogo
     func createBackground(){
         physicsWorld.gravity.dy = -1.2
-        backgroundColor = SKColor.clear
+        backgroundColor = .clear
+        
         
         // Chão
         let bottomBorder: SKSpriteNode = SKSpriteNode(color: UIColor.clear, size: CGSize(width: frame.width, height: 4))
-        bottomBorder.position = CGPoint(x: frame.width / 2, y: 0)
+        bottomBorder.position = CGPoint(x: frame.width / 2, y: 240)
         bottomBorder.physicsBody = SKPhysicsBody(rectangleOf: bottomBorder.size)
         bottomBorder.physicsBody?.affectedByGravity = false
         bottomBorder.physicsBody?.isDynamic = false
@@ -27,7 +28,7 @@ class GameScene: SKScene {
         
         // Borda Esquerda
         let leftBorder: SKSpriteNode = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 4, height: frame.height * 2))
-        leftBorder.position = CGPoint(x: 0, y: frame.height)
+        leftBorder.position = CGPoint(x: 28, y: frame.height + 240)
         leftBorder.physicsBody = SKPhysicsBody(rectangleOf: leftBorder.size)
         leftBorder.physicsBody?.affectedByGravity = false
         leftBorder.physicsBody?.isDynamic = false
@@ -35,7 +36,7 @@ class GameScene: SKScene {
         
         // Borda Direita
         let rightBorder: SKSpriteNode = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 4, height: frame.height * 2))
-        rightBorder.position = CGPoint(x: frame.width, y: frame.height)
+        rightBorder.position = CGPoint(x: frame.width - 28, y: frame.height + 240)
         rightBorder.physicsBody = SKPhysicsBody(rectangleOf: leftBorder.size)
         rightBorder.physicsBody?.affectedByGravity = false
         rightBorder.physicsBody?.isDynamic = false
@@ -66,6 +67,7 @@ class GameScene: SKScene {
         createBackground()
         gameData?.gameScreenSize = self.frame.size
         gameData?.startGame()
+        gameData?.createWheel()
         render()
     }
     
@@ -132,8 +134,11 @@ class GameScene: SKScene {
             
             if let objects = gameData?.objects {
                 for (index, object) in objects.enumerated() {
+                    
                     if let blockNode = object as? BlockNode {
-                        if blockNode.node.contains(touch.location(in: self)) {
+
+                        if blockNode.node.contains(touch.location(in: self))
+                        {
                             
                             if gameData?.number1 != nil && gameData?.number2 == nil {
                                 gameData?.number2 = blockNode.number
@@ -149,6 +154,87 @@ class GameScene: SKScene {
                             let sequence = SKAction.sequence([action1, action2, action3])
                             blockNode.node.run(sequence)
                             gameData?.objects.remove(at: index)
+                            
+                        }
+                    }
+                    
+                    else if let wheel = object as? WheelNode {
+                        
+                        if ((wheel.node.childNode(withName: "center")!.contains(touch.location(in: wheel.node.self)))) {
+                            
+                            let AnimDuration = 0.3
+                            let rotation = SKAction.rotate(byAngle: (-Double.pi / 2) - 0.3, duration: AnimDuration)
+                            let calma = SKAction.rotate(byAngle: 0.35, duration: 0.2)
+                            let calma1 = SKAction.rotate(byAngle: -0.05, duration: 0.25)
+                            let animationRoullete = SKAction.sequence([rotation,calma, calma1])
+                            let rotation1 = SKAction.rotate(toAngle: -Double.pi / 2, duration: 0)
+                            // faz a troca do plus
+                            
+                            if (gameData?.operation == "+"){
+                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                              
+                                wheel.node.childNode(withName: "onUp")?.run(hideOn)
+                                wheel.node.childNode(withName: "plus")?.run(hideOn)
+                                
+                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                
+                                wheel.node.childNode(withName: "offUp")?.run(showOff)
+                                
+                                wheel.node.childNode(withName: "onLeft")?.run(showOff)
+                                wheel.node.childNode(withName: "minus")?.run(rotation1)
+                                wheel.node.childNode(withName: "minus")?.run(showOff)
+                                wheel.node.childNode(withName: "offLeft")?.run(hideOn)
+                                
+                                gameData?.operation = "-"
+                            }
+                            else if (gameData?.operation == "-") {
+                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                              
+                                wheel.node.childNode(withName: "onLeft")?.run(hideOn)
+                                wheel.node.childNode(withName: "minus")?.run(hideOn)
+                                
+                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                
+                                wheel.node.childNode(withName: "offLeft")?.run(showOff)
+                                
+                                wheel.node.childNode(withName: "onDown")?.run(showOff)
+                                wheel.node.childNode(withName: "multiplier")?.run(showOff)
+                                wheel.node.childNode(withName: "offDown")?.run(hideOn)
+                                gameData?.operation = "x"
+                            }
+                            else if (gameData?.operation == "x") {
+                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                              
+                                wheel.node.childNode(withName: "onDown")?.run(hideOn)
+                                wheel.node.childNode(withName: "multiplier")?.run(hideOn)
+                                
+                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                
+                                wheel.node.childNode(withName: "offDown")?.run(showOff)
+                                
+                                wheel.node.childNode(withName: "onRight")?.run(showOff)
+                                wheel.node.childNode(withName: "divide")?.run(rotation1)
+                                wheel.node.childNode(withName: "divide")?.run(showOff)
+                                wheel.node.childNode(withName: "offRight")?.run(hideOn)
+                                gameData?.operation = "/"
+                            }
+                            else if (gameData?.operation == "/"){
+                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                              
+                                wheel.node.childNode(withName: "onRight")?.run(hideOn)
+                                wheel.node.childNode(withName: "divide")?.run(hideOn)
+                                
+                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                
+                                wheel.node.childNode(withName: "offRight")?.run(showOff)
+                                
+                                wheel.node.childNode(withName: "onUp")?.run(showOff)
+                                wheel.node.childNode(withName: "plus")?.run(showOff)
+                                wheel.node.childNode(withName: "offUp")?.run(hideOn)
+                                gameData?.operation = "+"
+                            }
+                            
+                            wheel.node.run(animationRoullete)
                             
                         }
                     }
