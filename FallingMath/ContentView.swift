@@ -22,7 +22,8 @@ struct ContentView: View {
             }
         }
         .environment(gameController)
-       
+        .statusBar(hidden: true)
+        .persistentSystemOverlays(.hidden)
     }
 }
 
