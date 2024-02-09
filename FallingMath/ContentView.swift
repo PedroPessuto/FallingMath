@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     
     @State var gameController: GameController = GameController()
     @State var audioController: AudioController = AudioController()
+    
+    @Query private var items: [SavedData]
     
     var body: some View {
         VStack {
@@ -25,6 +28,9 @@ struct ContentView: View {
         .environment(audioController)
         .statusBar(hidden: true)
         .persistentSystemOverlays(.hidden)
+        .onAppear {
+            gameController.configHaptics = items[0].haptics
+        }
     }
 }
 

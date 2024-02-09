@@ -162,6 +162,10 @@ class GameScene: SKScene {
                         
                         if ((wheel.node.childNode(withName: "center")!.contains(touch.location(in: wheel.node.self)))) {
                             
+                            if(gameData?.configHaptics == true) {
+                                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                            }
+                            
                             let AnimDuration = 0.3
                             let rotation = SKAction.rotate(byAngle: (-Double.pi / 2) - 0.3, duration: AnimDuration)
                             let calma = SKAction.rotate(byAngle: 0.35, duration: 0.2)
