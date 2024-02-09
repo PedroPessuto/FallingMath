@@ -48,6 +48,14 @@ import SwiftUI
         
     }
     
+    func startWheel(){
+        createWheel()
+    }
+    
+    func createWheel(){
+        create(factory: WheelFactory())
+    }
+    
     func createBlock(){
         create(factory: BlockFactory())
     }

@@ -66,11 +66,15 @@ struct ScoreBoardView: View {
                     .font(.system(size: 28))
                     .fontWeight(.semibold)
             }
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            .frame(maxWidth: .infinity)
             
             
         }
-        .padding(.top)
         
     }
+}
+
+#Preview {
+    ScoreBoardView()
+        .environment(GameController())
 }
