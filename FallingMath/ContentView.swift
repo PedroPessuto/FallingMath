@@ -22,6 +22,7 @@ struct ContentView: View {
             }
         }
         .environment(gameController)
+        .environment(audioController)
         .statusBar(hidden: true)
         .persistentSystemOverlays(.hidden)
     }

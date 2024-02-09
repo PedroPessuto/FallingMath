@@ -12,7 +12,7 @@ import SwiftData
 struct GameView: View {
     
     @Environment(GameController.self) private var gameController
-    @Environment(\.modelContext) var context
+    @Environment(\.modelContext) private var context
     
     @Query private var items: [SavedData]
     

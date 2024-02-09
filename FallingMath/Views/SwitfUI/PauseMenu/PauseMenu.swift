@@ -126,6 +126,3 @@ struct PauseMenu: View {
     }
 }
 
-#Preview {
-    PauseMenu()
-}
