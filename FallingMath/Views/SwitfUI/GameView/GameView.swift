@@ -7,10 +7,14 @@
 
 import SwiftUI
 import SpriteKit
+import SwiftData
 
 struct GameView: View {
     
     @Environment(GameController.self) private var gameController
+    @Environment(\.modelContext) var context
+    
+    @Query private var items: [SavedData]
     
     var scene: GameScene {
         let scene = GameScene()
@@ -69,4 +73,12 @@ struct GameView: View {
         }
         
     }
+    
+    func startGame() {
+        if(items.isEmpty) {
+            let item = SavedData(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+            context.insert(item)
+        }
+    }
+    
 }

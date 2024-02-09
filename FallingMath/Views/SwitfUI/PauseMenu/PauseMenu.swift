@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PauseMenu: View {
     
     @Environment(GameController.self) var gameController
+    @Environment(\.modelContext) private var context
+    
+    @Query private var items: [SavedData]
+    
     @State var isHaptic: Bool = true
+    @State var music: Bool = true
     
     var body: some View {
         VStack {
@@ -26,28 +32,39 @@ struct PauseMenu: View {
                 Image(systemName: "music.note")
                     .foregroundStyle(.white)
                 
-                Toggle(isOn: .constant(true), label: {
+                Toggle(isOn: $music, label: {
                     Text("MUSIC")
                 })
                 .foregroundStyle(.white)
                 .tint(.clear)
+                .onChange(of: items[0].music) { _, newValue in
+                    music = newValue
+                }
+                .onChange(of: music) { _, newValue in
+                    items[0].music = newValue
+                    try? context.save()
+                }
+                .onAppear {
+                    music = !items[0].music
+                    music = items[0].music
+                }
             }
             .padding(.horizontal, 70)
             .padding(.top, 30)
             .padding(.bottom, 30)
             
-            HStack {
-                Image(systemName: "music.note")
-                    .foregroundStyle(.white)
-                
-                Toggle(isOn: .constant(true), label: {
-                    Text("SOUND")
-                })
-                .foregroundStyle(.white)
-                .tint(.clear)
-            }
-            .padding(.horizontal, 70)
-            .padding(.bottom, 30)
+//            HStack {
+//                Image(systemName: "music.note")
+//                    .foregroundStyle(.white)
+//                
+//                Toggle(isOn: .constant(true), label: {
+//                    Text("SOUND")
+//                })
+//                .foregroundStyle(.white)
+//                .tint(.clear)
+//            }
+//            .padding(.horizontal, 70)
+//            .padding(.bottom, 30)
             
             HStack {
                 Image(systemName: "iphone.gen3.radiowaves.left.and.right")
@@ -62,8 +79,9 @@ struct PauseMenu: View {
                     isHaptic = newValue
                 }
                 .onChange(of: isHaptic) { _, newValue in
-                  
                     gameController.configHaptics = newValue
+                    items[0].haptics = newValue
+                    try? context.save()
                 }
                 .onAppear {
                     isHaptic = !gameController.configHaptics
