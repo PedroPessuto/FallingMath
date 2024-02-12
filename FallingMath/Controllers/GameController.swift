@@ -18,7 +18,9 @@ import SwiftUI
     var objective: Float = 0 // N[umero objetivo
     var attempts: Int = 0 // Tentativas para atingir o  objetivo
     var hasLose: Bool = false
-    
+    var number: Float = 0
+    var feedback: Bool? = nil 
+
     // Generation
     var useNumbers: [Float] = []
     var maxAttempt: Int = 0
@@ -110,37 +112,40 @@ import SwiftUI
                     if self.valueTimer >= 1 {
                         
                         if let num2 = self.number2, let num1 = self.number1 {
-                            var number: Float = 0
                             
                             switch self.operation {
                             case "+":
-                                number = num1 + num2
+                                self.number = num1 + num2
                             case "-":
-                                number = num1 - num2
+                                self.number = num1 - num2
                             case "/":
-                                number = num1 / num2
+                                self.number = num1 / num2
                             case "x":
-                                number = num1 * num2
+                                self.number = num1 * num2
                             default:
                                 print("Operação inválida")
                             }
                             
                             // Se ele acertou
-                            if self.objective == number {
+                            if self.objective == self.number {
                                 self.attempts = 0
                                 self.maxAttempt = 0
                                 self.score = self.score + 1
                                 self.generateBlocks()
+                                print("acertou")
+                                self.feedback = true
                             }
                             // Se errou
                             else {
-                                
+                                print("errou")
+                                self.feedback = false
+
                                 // Aumenta o numero de tentativas
                                 self.attempts = self.attempts + 1
                                 
                                 // Gera bloco errado
-                                if number <= -1 || number > 0.009 {
-                                    self.useNumbers.append(number)
+                                if self.number <= -1 || self.number > 0.009 {
+                                    self.useNumbers.append(self.number)
                                 }
                                 
                                 // Se atingiu o limite de tentativas

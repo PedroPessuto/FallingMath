@@ -23,6 +23,7 @@ struct GameView: View {
         return scene
     }
     
+    
     var body: some View {
         ZStack {
             
@@ -44,7 +45,9 @@ struct GameView: View {
                     .ignoresSafeArea()
             }
             
-            
+            if(gameController.configIsPaused) {
+                PauseMenu()
+            }
             
             VStack {
                 ScoreBoardView()
@@ -56,10 +59,17 @@ struct GameView: View {
             }.frame(width: 334)
                 .padding(.bottom, 20)
             
-            
-            
-            if(gameController.configIsPaused) {
-                PauseMenu()
+            VStack{
+                if gameController.feedback == true {
+                    
+                    Text("Acertou")
+                } else if gameController.feedback == false{
+                    
+                    Text("Errou")
+                } else{
+                    
+                    Text("")
+                }
             }
             
             if gameController.hasLose {
@@ -103,3 +113,7 @@ struct GameView: View {
     
 }
 
+#Preview{
+    GameView()
+        .environment(GameController())
+}
