@@ -15,6 +15,10 @@ struct GameView: View {
     @Environment(\.modelContext) private var context
     
     @Query private var items: [SavedData]
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var count: Int = 0
+    
+    
     
     var scene: GameScene {
         let scene = GameScene()
@@ -62,13 +66,19 @@ struct GameView: View {
             VStack{
                 if gameController.feedback == true {
                     
-                    Text("Acertou")
+                    Text("Acertou!")
+                        .onAppear{
+                            timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                        }
+                   
+                    
                 } else if gameController.feedback == false{
                     
-                    Text("Errou")
-                } else{
+                    Text("Errou!")
+                        .onAppear{
+                            timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                        }
                     
-                    Text("")
                 }
             }
             
@@ -78,8 +88,21 @@ struct GameView: View {
             
         }
         .onAppear {
+//            timer.upstream.connect().cancel()
             startGame()
         }
+        .onReceive(timer){ i in
+            count += 1
+            if count == 2{
+                count = 0
+                gameController.feedback = nil
+                timer.upstream.connect().cancel()
+            }
+            print(count)
+            
+        }
+        
+        
     }
     
     func startGame() {
