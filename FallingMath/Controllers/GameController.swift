@@ -35,7 +35,7 @@ import SwiftUI
     var gameScreenSize: CGSize? = nil
     
     // Config
-    var configScreenName: String = "game"
+    var configScreenName: String = "home"
     var configIsPaused: Bool = false
     var configHaptics: Bool = true
     

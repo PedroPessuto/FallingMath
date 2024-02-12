@@ -12,7 +12,6 @@ struct ContentView: View {
     
     @State var gameController: GameController = GameController()
     @State var audioController: AudioController = AudioController()
-    
     @Query private var items: [SavedData]
     
     var body: some View {
@@ -29,9 +28,14 @@ struct ContentView: View {
         .statusBar(hidden: true)
         .persistentSystemOverlays(.hidden)
         .onAppear {
+
             gameController.configHaptics = items[0].haptics
+            
         }
+        
+        
     }
+   
 }
 
 #Preview {

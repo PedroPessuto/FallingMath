@@ -10,6 +10,7 @@ import SwiftData
 
 struct OnboardingView: View {
     
+    @Environment(GameController.self) private var gameController
     @Environment(\.modelContext) private var context
     @Query private var items: [SavedData]
     
@@ -54,6 +55,11 @@ struct OnboardingView: View {
                                             index += 1
                                         }
                                         items[0].onBoarding = false
+                                        if index == 6{
+                                            gameController.configScreenName = "game"
+                                            gameController.startGame()
+                                        }
+                                        
                                     }, label: {
                                         Text(index == 6 ? "JOGAR" : index == 3 || index == 2 ? "" : "PULAR")
                                             .font(.custom("MusticaPro-SemiBold", size: 14))
