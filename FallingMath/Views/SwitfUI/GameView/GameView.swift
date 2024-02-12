@@ -66,18 +66,35 @@ struct GameView: View {
             VStack{
                 if gameController.feedback == true {
                     
-                    Text("Acertou!")
-                        .onAppear{
-                            timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                        }
-                   
+                    HStack{
+                        Text("Parabéns, você acertou!")
+                            .font(.custom("MusticaPro-SemiBold", size: 30))
+                            .animation(.easeInOut(duration: 5.0))
+                            .onAppear{
+                                timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                                
+                            }
+                        Image("personagem1")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                    }.frame(width: 340, height: 220)
+
                     
                 } else if gameController.feedback == false{
                     
-                    Text("Errou!")
-                        .onAppear{
-                            timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                        }
+                    
+                    HStack{
+                        Image("loseFlora")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                        Text("Não foi dessa vez...")
+                            .font(.custom("MusticaPro-SemiBold", size: 30))
+                            .animation(.easeInOut(duration: 5.0))
+                            .onAppear{
+                                timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                                
+                            }
+                    }.frame(width: 340, height: 220)
                     
                 }
             }
@@ -88,7 +105,7 @@ struct GameView: View {
             
         }
         .onAppear {
-//            timer.upstream.connect().cancel()
+            //            timer.upstream.connect().cancel()
             startGame()
         }
         .onReceive(timer){ i in
