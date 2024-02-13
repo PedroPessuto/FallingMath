@@ -14,7 +14,7 @@ class WheelNode: GameObject{
     var node: SKNode
     
     func update() {
-
+   
         
     }
     
@@ -31,6 +31,8 @@ class WheelNode: GameObject{
         let center = SKSpriteNode(imageNamed: "Center")
         center.position = CGPoint(x: NodeParent.frame.midX, y: NodeParent.frame.midY)
         center.zPosition = 1
+        center.xScale = 1/2
+        center.yScale = 1/2
         center.name = "center"
         
         let rightOff = SKSpriteNode(imageNamed: "offRight")
@@ -106,6 +108,8 @@ class WheelNode: GameObject{
         divide.run(hide)
         
         
+        
+        
         NodeParent.position = position
         NodeParent.addChild(center)
         NodeParent.addChild(rightOff)
@@ -120,6 +124,7 @@ class WheelNode: GameObject{
         NodeParent.addChild(plus)
         NodeParent.addChild(multiplier)
         NodeParent.addChild(minus)
+        
         NodeParent.name = "wheel"
         
         self.node = NodeParent

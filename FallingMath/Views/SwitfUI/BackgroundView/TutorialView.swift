@@ -119,6 +119,8 @@ struct OnboardingView: View {
                             }
                             ZStack{
                                 Image("Center")
+                                    .resizable()
+                                    .frame(width: 84, height: 84)
                                     .onLongPressGesture(minimumDuration: .infinity, maximumDistance: .infinity, pressing: { pressing in
                                         
                                         if pressing {
@@ -136,10 +138,9 @@ struct OnboardingView: View {
                                             }
                                         }
                                     }, perform: {})
-                                Text("TAP")
-                                    .font(.custom("MusticaPro-SemiBold", size: 25))
                                     .rotationEffect(.degrees(-degreesInfinity))
-                                    .foregroundStyle(index == 3 ? Color.cyan : Color.red)
+                                    .animation(.bouncy(duration: 0.5), value: index1)
+                               
                             }
                             ZStack{
                                 Image(degrees[index1] == 180 ? "onDown" : "offDown")

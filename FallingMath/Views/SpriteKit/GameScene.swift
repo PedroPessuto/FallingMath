@@ -237,9 +237,15 @@ class GameScene: SKScene {
                                 wheel.node.childNode(withName: "offUp")?.run(hideOn)
                                 gameData?.operation = "+"
                             }
+                            let tapAction = SKAction.rotate(byAngle: (Double.pi / 2) + 0.3, duration: AnimDuration)
+                            let calmaTap = SKAction.rotate(byAngle: -0.35, duration: 0.2)
+                            let calmaTap1 = SKAction.rotate(byAngle: 0.05, duration: 0.25)
                             
+                            let animationTap = SKAction.sequence([tapAction,calmaTap, calmaTap1])
+                        
+                            wheel.node.childNode(withName: "center")?.run(animationTap)
                             wheel.node.run(animationRoullete)
-                            
+                            print(wheel.node.zRotation)
                         }
                     }
                 }
