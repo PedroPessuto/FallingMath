@@ -17,9 +17,13 @@ struct GameView: View {
     @Query private var items: [SavedData]
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var count: Int = 0
+    @State var index: Int = 3
     
     
-    
+    var listaPersonagem: [String] =  ["Flora","Windy", "Celsio", "Walter"]
+    var listaPersonagemLose: [String] =  ["loseFlora","loseWindy", "loseCelsius", "loseWalter"]
+    var personagemWidth = [235.61, 169, 214,217]
+    var personagemHeight = [233.91, 245, 255,190]
     var scene: GameScene {
         let scene = GameScene()
         scene.gameData = gameController
@@ -74,7 +78,7 @@ struct GameView: View {
                                 timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
                                 
                             }
-                        Image("personagem1")
+                        Image(listaPersonagem[index])
                             .resizable()
                             .frame(width: 100, height: 100)
                     }.frame(width: 340, height: 220)
@@ -84,9 +88,10 @@ struct GameView: View {
                     
                     
                     HStack{
-                        Image("loseFlora")
+                        Image(listaPersonagemLose[index])
                             .resizable()
-                            .frame(width: 100, height: 100)
+                            .frame(width: personagemWidth[index]/2, height: personagemHeight[index]/2)
+                            
                         Text("Não foi dessa vez...")
                             .font(.custom("MusticaPro-SemiBold", size: 30))
                             .animation(.easeInOut(duration: 5.0))
@@ -96,6 +101,23 @@ struct GameView: View {
                             }
                     }.frame(width: 340, height: 220)
                     
+                }
+            }
+            .onChange(of: gameController.operation){
+                
+                withAnimation {
+                    switch gameController.operation {
+                    case "+":
+                        index = 3
+                    case "-":
+                        index = 2
+                    case "x":
+                        index = 1
+                    case "/":
+                        index = 0
+                    default:
+                        print("Cor erro")
+                    }
                 }
             }
             
@@ -115,7 +137,7 @@ struct GameView: View {
                 gameController.feedback = nil
                 timer.upstream.connect().cancel()
             }
-            print(count)
+            
             
         }
         

@@ -132,12 +132,12 @@ import SwiftUI
                                 self.maxAttempt = 0
                                 self.score = self.score + 1
                                 self.generateBlocks()
-                                print("acertou")
+                                
                                 self.feedback = true
                             }
                             // Se errou
                             else {
-                                print("errou")
+                               
                                 self.feedback = false
 
                                 // Aumenta o numero de tentativas
