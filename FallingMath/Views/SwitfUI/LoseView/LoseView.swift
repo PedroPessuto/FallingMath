@@ -24,7 +24,7 @@ struct LoseView: View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 334, height: 523)
-                .foregroundStyle(Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.63)))
+                .foregroundStyle(Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)))
                 .shadow(radius: 10)
 //                .background(.ultraThinMaterial)
                 .overlay{
@@ -84,6 +84,7 @@ struct LoseView: View {
 //                            }
 //                    }
 //                    )
+                    Spacer()
                     Button(action: {
 //                        gameController.startGame()
                         gameController.configScreenName = "home"
@@ -108,6 +109,8 @@ struct LoseView: View {
                                 .foregroundStyle(Color(.white))
                             }
                     })
+                    Spacer()
+                    Spacer()
                 }
                 Spacer()
             }

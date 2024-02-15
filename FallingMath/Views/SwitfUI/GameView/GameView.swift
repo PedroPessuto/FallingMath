@@ -54,7 +54,7 @@ struct GameView: View {
                     .ignoresSafeArea()
             }
             
-            if(gameController.configIsPaused) {
+            if(gameController.configIsPaused && !gameController.isSaved) {
                 PauseMenu()
             }
             

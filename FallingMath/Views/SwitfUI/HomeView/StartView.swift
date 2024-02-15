@@ -10,8 +10,8 @@ import SwiftData
 
 struct StartView: View {
     @Environment(GameController.self) private var gameController
-    @Query private var items: [SavedData]
     @Environment(\.modelContext) private var context
+    @Query private var items: [SavedData]
     
     var color1 = Color(red: 131/255, green: 197/255, blue: 223/255)
     var color2 = Color(red: 158/255, green: 205/255, blue: 198/255)
@@ -102,15 +102,15 @@ struct StartView: View {
         .onTapGesture {
             if items.isEmpty{
                 addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
-               
+              
             }
-            gameController.configHaptics = items[0].haptics
+//            gameController.configHaptics = items[0].haptics
            
-            if items[0].onBoarding{
+//            if items[0].onBoarding{
+//                gameController.configScreenName = "tutorial"
+//            }else{
                 gameController.configScreenName = "tutorial"
-            }else{
-                gameController.configScreenName = "o"
-            }
+//            }
         }
     }
     func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
@@ -118,6 +118,7 @@ struct StartView: View {
         let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
         
         context.insert(item)
+        print(items)
     }
 }
 
