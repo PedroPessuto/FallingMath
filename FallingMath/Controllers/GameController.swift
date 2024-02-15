@@ -20,7 +20,8 @@ import SwiftUI
     var hasLose: Bool = false
     var number: Float = 0
     var feedback: Bool? = nil 
-
+    var isSaved: Bool = false
+    
     // Generation
     var useNumbers: [Float] = []
     var maxAttempt: Int = 0
@@ -88,6 +89,7 @@ import SwiftUI
         self.number2 = nil
         self.returnBlock = nil
         self.hasLose = false
+        self.isSaved = false
     }
     
     // Função para fazer operações dos números escolhidos

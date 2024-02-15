@@ -26,6 +26,7 @@ struct GameView: View {
     var personagemHeight = [233.91, 245, 255,190]
     var scene: GameScene {
         let scene = GameScene()
+        scene.items = items
         scene.gameData = gameController
         scene.scaleMode = .resizeFill
         return scene

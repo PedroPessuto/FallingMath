@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct LoseView: View {
     @Environment(GameController.self) private var gameController
+    @Query private var items: [SavedData]
+    @Environment(\.modelContext) private var context
+    
     var characters: [String] = ["loseWalter", "loseCelsius", "loseFlora", "loseWindy"]
     var texts: [String] = ["Ah não! Os blocos \nforam por água baixo... ", "Ah não! Os blocos \nviraram cinzas...", "Ah não! Os blocos \nforam levados...", "Ah não! Os blocos \nforam soterrados..."]
     @State var index: Int = 0
@@ -20,13 +24,16 @@ struct LoseView: View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 334, height: 523)
-                .foregroundStyle(Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.13)))
+                .foregroundStyle(Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.63)))
                 .shadow(radius: 10)
+//                .background(.ultraThinMaterial)
                 .overlay{
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(.white, lineWidth: 4)
-                        .foregroundStyle(.clear)
+                        .stroke(.white, lineWidth: 4, antialiased: true)
+                        
+                        
                 }
+                
                 .offset(y: 50)
             VStack(spacing: 0){
                 Image( gameController.operation == "+" ? "loseWalter" :
@@ -47,6 +54,12 @@ struct LoseView: View {
                         .foregroundStyle(Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.73)))
                     Text("\(gameController.score)")
                         .font(.custom("MusticaPro-SemiBold", size: 64))
+                        .foregroundStyle(.white)
+                    Text("HIGHSCORE")
+                        .font(.custom("MusticaPro-SemiBold", size: 13))
+                        .foregroundStyle(Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.73)))
+                    Text("\(items[0].score)")
+                        .font(.custom("MusticaPro-SemiBold", size: 13))
                         .foregroundStyle(.white)
                     
 //                    Button(action: {
@@ -99,6 +112,11 @@ struct LoseView: View {
                 Spacer()
             }
         }
+        
     }
 }
 
+#Preview {
+    LoseView()
+        .environment(GameController())
+}

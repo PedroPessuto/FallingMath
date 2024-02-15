@@ -11,6 +11,8 @@ import SwiftData
 struct StartView: View {
     @Environment(GameController.self) private var gameController
     @Query private var items: [SavedData]
+    @Environment(\.modelContext) private var context
+    
     var color1 = Color(red: 131/255, green: 197/255, blue: 223/255)
     var color2 = Color(red: 158/255, green: 205/255, blue: 198/255)
     var color3 = Color(red: 182/255, green: 202/255, blue: 129/255)
@@ -18,7 +20,7 @@ struct StartView: View {
     
     @State private var scale = 1.0
     @State var Changesize: Bool = false
-    
+    @State var degrees: Double = 0
     var timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -29,7 +31,8 @@ struct StartView: View {
                     Image("Logo")
                         .resizable()
                         .frame(width: 283.09, height: 165.69)
-                    
+                        .rotationEffect(.degrees(degrees))
+                        .animation(.linear(duration: 1), value: degrees)
                     
                     ZStack{
                         VStack(spacing: -100){
@@ -72,13 +75,18 @@ struct StartView: View {
             .frame(height: 839)
 
             .onReceive(timer, perform: { _ in
+                
+                
                 if Changesize{
+                    degrees += 2
                     scale += 0.1
                     if scale >= 1.5{
                         Changesize = false
                     }
+                   
                 }
                 else{
+                    degrees -= 2
                     scale -= 0.1
                     if scale <= 1{
                         Changesize = true
@@ -92,12 +100,24 @@ struct StartView: View {
         .background(Gradient(colors: [color1, color2, color3, color4]))
         
         .onTapGesture {
+            if items.isEmpty{
+                addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+               
+            }
+            gameController.configHaptics = items[0].haptics
+           
             if items[0].onBoarding{
                 gameController.configScreenName = "tutorial"
             }else{
                 gameController.configScreenName = "o"
             }
         }
+    }
+    func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
+        
+        let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
+        
+        context.insert(item)
     }
 }
 

@@ -7,8 +7,12 @@
 
 import Foundation
 import SpriteKit
+import SwiftData
+import SwiftUI
 
 class GameScene: SKScene {
+    var items: [SavedData]?
+    @Environment(\.modelContext) private var context
     
     var gameData: GameController?
     
@@ -79,8 +83,15 @@ class GameScene: SKScene {
                     if object.node.physicsBody?.velocity == CGVector(dx: 0, dy: 0){
                         if object.node.position.y >= object.node.frame.height * 9 {
                             gameData?.hasLose = true
-                           
-                            
+                            if !gameData!.isSaved{
+                                
+                                if gameData!.score > items![0].score{
+                                    items![0].score = gameData!.score
+                                    try? context.save()
+                                    gameData?.isSaved = true
+                                    gameData?.configIsPaused = true
+                                }
+                            }
                         }
                     }
                 }

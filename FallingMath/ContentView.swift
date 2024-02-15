@@ -30,12 +30,7 @@ struct ContentView: View {
         .environment(audioController)
         .statusBar(hidden: true)
         .persistentSystemOverlays(.hidden)
-        .onAppear {
-
-            gameController.configHaptics = items[0].haptics
-            
-        }
-        
+       
         
     }
    
