@@ -79,8 +79,7 @@ class GameScene: SKScene {
                     if object.node.physicsBody?.velocity == CGVector(dx: 0, dy: 0){
                         if object.node.position.y >= object.node.frame.height * 9 {
                             gameData?.hasLose = true
-                            removeAllNodes()
-                            render()
+                           
                             
                         }
                     }
