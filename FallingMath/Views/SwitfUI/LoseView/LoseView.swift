@@ -49,28 +49,28 @@ struct LoseView: View {
                         .font(.custom("MusticaPro-SemiBold", size: 64))
                         .foregroundStyle(.white)
                     
-                    Button(action: {
-                        gameController.startGame()
-                    }, label: {
-                        RoundedRectangle(cornerRadius: 34)
-                            .frame(width: 236, height: 68)
-                            .foregroundStyle(Color(.white))
-                            .shadow(radius:3)
-                            .overlay{
-                                HStack{
-                                    Image(systemName:"arrow.clockwise")
-                                        .font(.system(size: 24))
-                                        .bold()
-                                    Text("JOGUE NOVAMENTE")
-                                        .font(.system(size: 18))
-                                        .fontWeight(.heavy)
-                                }
-                                .foregroundStyle(
-                                    gameController.operation == "+" ? blue :
-                                        gameController.operation == "-" ? red : gameController.operation == "x" ? cyan : gameController.operation == "/" ? green : .white)
-                            }
-                    }
-                    )
+//                    Button(action: {
+//                        gameController.startGame()
+//                    }, label: {
+//                        RoundedRectangle(cornerRadius: 34)
+//                            .frame(width: 236, height: 68)
+//                            .foregroundStyle(Color(.white))
+//                            .shadow(radius:3)
+//                            .overlay{
+//                                HStack{
+//                                    Image(systemName:"arrow.clockwise")
+//                                        .font(.system(size: 24))
+//                                        .bold()
+//                                    Text("JOGUE NOVAMENTE")
+//                                        .font(.system(size: 18))
+//                                        .fontWeight(.heavy)
+//                                }
+//                                .foregroundStyle(
+//                                    gameController.operation == "+" ? blue :
+//                                        gameController.operation == "-" ? red : gameController.operation == "x" ? cyan : gameController.operation == "/" ? green : .white)
+//                            }
+//                    }
+//                    )
                     Button(action: {
 //                        gameController.startGame()
                         gameController.configScreenName = "home"
@@ -101,3 +101,4 @@ struct LoseView: View {
         }
     }
 }
+

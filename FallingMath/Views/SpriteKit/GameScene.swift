@@ -43,10 +43,10 @@ class GameScene: SKScene {
         addChild(rightBorder)
         
         // Câmera para DEBUG
-//         let camera = SKCameraNode()
-//         camera.setScale(3)
-//         addChild(camera)
-//         scene!.camera = camera
+        //         let camera = SKCameraNode()
+        //         camera.setScale(3)
+        //         addChild(camera)
+        //         scene!.camera = camera
     }
     
     func render(){
@@ -63,6 +63,7 @@ class GameScene: SKScene {
         }
     }
     
+    
     override func didMove(to view: SKView) {
         createBackground()
         gameData?.gameScreenSize = self.frame.size
@@ -73,17 +74,20 @@ class GameScene: SKScene {
     
     func lose(){
         if let objects = gameData?.objects {
-          for object in objects {
-              if object.node.name == "block"{
-                  if object.node.physicsBody?.velocity == CGVector(dx: 0, dy: 0){
-                      if object.node.position.y >= object.node.frame.height * 9 {
-                          gameData?.hasLose = true
-                      }
-                  }
+            for object in objects {
+                if object.node.name == "block"{
+                    if object.node.physicsBody?.velocity == CGVector(dx: 0, dy: 0){
+                        if object.node.position.y >= object.node.frame.height * 9 {
+                            gameData?.hasLose = true
+                            removeAllNodes()
+                            render()
+                            
+                        }
+                    }
+                }
             }
-          }
         }
-      }
+    }
     
     // Função que é chamada para cada renderização
     override func update(_ currentTime: TimeInterval) {
@@ -124,133 +128,143 @@ class GameScene: SKScene {
         
         
     }
-    
-    // Verificar ao clicar na tela
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    func removeAllNodes(){
+        if let objects = gameData?.objects {
+            for object in objects {
+                object.node.removeFromParent()
+            }
+        }
+    }
         
-        if !gameData!.configIsPaused && (gameData?.number1 == nil || gameData?.number2 == nil ) {
-           
-            let touch = touches.first!
+        
+        // Verificar ao clicar na tela
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             
-            if let objects = gameData?.objects {
-                for (index, object) in objects.enumerated() {
-                    
-                    if let blockNode = object as? BlockNode {
-
-                        if blockNode.node.contains(touch.location(in: self))
-                        {
+            if !gameData!.configIsPaused && (gameData?.number1 == nil || gameData?.number2 == nil ) {
+                
+                let touch = touches.first!
+                
+                if let objects = gameData?.objects {
+                    for (index, object) in objects.enumerated() {
+                        
+                        if let blockNode = object as? BlockNode {
                             
-                            if gameData?.number1 != nil && gameData?.number2 == nil {
-                                gameData?.number2 = blockNode.number
+                            if blockNode.node.contains(touch.location(in: self))
+                            {
+                                
+                                if gameData?.number1 != nil && gameData?.number2 == nil {
+                                    gameData?.number2 = blockNode.number
+                                }
+                                
+                                if gameData?.number1 == nil {
+                                    gameData?.number1 = blockNode.number
+                                }
+                                
+                                let action1 = SKAction.scale(by: 0.01, duration: 0.4)
+                                let action2 = SKAction.fadeOut(withDuration: 0.1)
+                                let action3 = SKAction.removeFromParent()
+                                let sequence = SKAction.sequence([action1, action2, action3])
+                                blockNode.node.run(sequence)
+                                gameData?.objects.remove(at: index)
+                                
                             }
-                            
-                            if gameData?.number1 == nil {
-                                gameData?.number1 = blockNode.number
-                            }
-                            
-                            let action1 = SKAction.scale(by: 0.01, duration: 0.4)
-                            let action2 = SKAction.fadeOut(withDuration: 0.1)
-                            let action3 = SKAction.removeFromParent()
-                            let sequence = SKAction.sequence([action1, action2, action3])
-                            blockNode.node.run(sequence)
-                            gameData?.objects.remove(at: index)
-                            
                         }
-                    }
-                    
-                    else if let wheel = object as? WheelNode {
                         
-                        if ((wheel.node.childNode(withName: "center")!.contains(touch.location(in: wheel.node.self)))) {
+                        else if let wheel = object as? WheelNode {
                             
-                            if(gameData?.configHaptics == true) {
-                                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                            if ((wheel.node.childNode(withName: "center")!.contains(touch.location(in: wheel.node.self)))) {
+                                
+                                if(gameData?.configHaptics == true) {
+                                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                                }
+                                
+                                let AnimDuration = 0.3
+                                let rotation = SKAction.rotate(byAngle: (-Double.pi / 2) - 0.3, duration: AnimDuration)
+                                let calma = SKAction.rotate(byAngle: 0.35, duration: 0.2)
+                                let calma1 = SKAction.rotate(byAngle: -0.05, duration: 0.25)
+                                let animationRoullete = SKAction.sequence([rotation,calma, calma1])
+                                let rotation1 = SKAction.rotate(toAngle: -Double.pi / 2, duration: 0)
+                                // faz a troca do plus
+                                
+                                if (gameData?.operation == "+"){
+                                    let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "onUp")?.run(hideOn)
+                                    wheel.node.childNode(withName: "plus")?.run(hideOn)
+                                    
+                                    let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "offUp")?.run(showOff)
+                                    
+                                    wheel.node.childNode(withName: "onLeft")?.run(showOff)
+                                    wheel.node.childNode(withName: "minus")?.run(rotation1)
+                                    wheel.node.childNode(withName: "minus")?.run(showOff)
+                                    wheel.node.childNode(withName: "offLeft")?.run(hideOn)
+                                    
+                                    gameData?.operation = "-"
+                                }
+                                else if (gameData?.operation == "-") {
+                                    let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "onLeft")?.run(hideOn)
+                                    wheel.node.childNode(withName: "minus")?.run(hideOn)
+                                    
+                                    let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "offLeft")?.run(showOff)
+                                    
+                                    wheel.node.childNode(withName: "onDown")?.run(showOff)
+                                    wheel.node.childNode(withName: "multiplier")?.run(showOff)
+                                    wheel.node.childNode(withName: "offDown")?.run(hideOn)
+                                    gameData?.operation = "x"
+                                }
+                                else if (gameData?.operation == "x") {
+                                    let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "onDown")?.run(hideOn)
+                                    wheel.node.childNode(withName: "multiplier")?.run(hideOn)
+                                    
+                                    let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "offDown")?.run(showOff)
+                                    
+                                    wheel.node.childNode(withName: "onRight")?.run(showOff)
+                                    wheel.node.childNode(withName: "divide")?.run(rotation1)
+                                    wheel.node.childNode(withName: "divide")?.run(showOff)
+                                    wheel.node.childNode(withName: "offRight")?.run(hideOn)
+                                    gameData?.operation = "/"
+                                }
+                                else if (gameData?.operation == "/"){
+                                    let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "onRight")?.run(hideOn)
+                                    wheel.node.childNode(withName: "divide")?.run(hideOn)
+                                    
+                                    let showOff = SKAction.fadeIn(withDuration: AnimDuration)
+                                    
+                                    wheel.node.childNode(withName: "offRight")?.run(showOff)
+                                    
+                                    wheel.node.childNode(withName: "onUp")?.run(showOff)
+                                    wheel.node.childNode(withName: "plus")?.run(showOff)
+                                    wheel.node.childNode(withName: "offUp")?.run(hideOn)
+                                    gameData?.operation = "+"
+                                }
+                                let tapAction = SKAction.rotate(byAngle: (Double.pi / 2) + 0.3, duration: AnimDuration)
+                                let calmaTap = SKAction.rotate(byAngle: -0.35, duration: 0.2)
+                                let calmaTap1 = SKAction.rotate(byAngle: 0.05, duration: 0.25)
+                                
+                                let animationTap = SKAction.sequence([tapAction,calmaTap, calmaTap1])
+                                
+                                wheel.node.childNode(withName: "center")?.run(animationTap)
+                                wheel.node.run(animationRoullete)
+                                
                             }
-                            
-                            let AnimDuration = 0.3
-                            let rotation = SKAction.rotate(byAngle: (-Double.pi / 2) - 0.3, duration: AnimDuration)
-                            let calma = SKAction.rotate(byAngle: 0.35, duration: 0.2)
-                            let calma1 = SKAction.rotate(byAngle: -0.05, duration: 0.25)
-                            let animationRoullete = SKAction.sequence([rotation,calma, calma1])
-                            let rotation1 = SKAction.rotate(toAngle: -Double.pi / 2, duration: 0)
-                            // faz a troca do plus
-                            
-                            if (gameData?.operation == "+"){
-                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
-                              
-                                wheel.node.childNode(withName: "onUp")?.run(hideOn)
-                                wheel.node.childNode(withName: "plus")?.run(hideOn)
-                                
-                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
-                                
-                                wheel.node.childNode(withName: "offUp")?.run(showOff)
-                                
-                                wheel.node.childNode(withName: "onLeft")?.run(showOff)
-                                wheel.node.childNode(withName: "minus")?.run(rotation1)
-                                wheel.node.childNode(withName: "minus")?.run(showOff)
-                                wheel.node.childNode(withName: "offLeft")?.run(hideOn)
-                                
-                                gameData?.operation = "-"
-                            }
-                            else if (gameData?.operation == "-") {
-                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
-                              
-                                wheel.node.childNode(withName: "onLeft")?.run(hideOn)
-                                wheel.node.childNode(withName: "minus")?.run(hideOn)
-                                
-                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
-                                
-                                wheel.node.childNode(withName: "offLeft")?.run(showOff)
-                                
-                                wheel.node.childNode(withName: "onDown")?.run(showOff)
-                                wheel.node.childNode(withName: "multiplier")?.run(showOff)
-                                wheel.node.childNode(withName: "offDown")?.run(hideOn)
-                                gameData?.operation = "x"
-                            }
-                            else if (gameData?.operation == "x") {
-                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
-                              
-                                wheel.node.childNode(withName: "onDown")?.run(hideOn)
-                                wheel.node.childNode(withName: "multiplier")?.run(hideOn)
-                                
-                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
-                                
-                                wheel.node.childNode(withName: "offDown")?.run(showOff)
-                                
-                                wheel.node.childNode(withName: "onRight")?.run(showOff)
-                                wheel.node.childNode(withName: "divide")?.run(rotation1)
-                                wheel.node.childNode(withName: "divide")?.run(showOff)
-                                wheel.node.childNode(withName: "offRight")?.run(hideOn)
-                                gameData?.operation = "/"
-                            }
-                            else if (gameData?.operation == "/"){
-                                let hideOn = SKAction.fadeOut(withDuration: AnimDuration)
-                              
-                                wheel.node.childNode(withName: "onRight")?.run(hideOn)
-                                wheel.node.childNode(withName: "divide")?.run(hideOn)
-                                
-                                let showOff = SKAction.fadeIn(withDuration: AnimDuration)
-                                
-                                wheel.node.childNode(withName: "offRight")?.run(showOff)
-                                
-                                wheel.node.childNode(withName: "onUp")?.run(showOff)
-                                wheel.node.childNode(withName: "plus")?.run(showOff)
-                                wheel.node.childNode(withName: "offUp")?.run(hideOn)
-                                gameData?.operation = "+"
-                            }
-                            let tapAction = SKAction.rotate(byAngle: (Double.pi / 2) + 0.3, duration: AnimDuration)
-                            let calmaTap = SKAction.rotate(byAngle: -0.35, duration: 0.2)
-                            let calmaTap1 = SKAction.rotate(byAngle: 0.05, duration: 0.25)
-                            
-                            let animationTap = SKAction.sequence([tapAction,calmaTap, calmaTap1])
-                        
-                            wheel.node.childNode(withName: "center")?.run(animationTap)
-                            wheel.node.run(animationRoullete)
-                            print(wheel.node.zRotation)
                         }
                     }
                 }
             }
         }
-    }
+        
+    
     
 }
