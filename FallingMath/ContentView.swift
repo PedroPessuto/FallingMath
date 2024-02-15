@@ -19,6 +19,9 @@ struct ContentView: View {
             if gameController.configScreenName == "home" {
                 HomeView()
             }
+            else if gameController.configScreenName == "tutorial"{
+                OnboardingView()
+            }
             else {
                 GameView()
             }
@@ -40,4 +43,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        
 }

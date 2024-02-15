@@ -12,7 +12,7 @@ struct HomeView: View {
     @Environment(GameController.self) private var gameController
     
     var body: some View {
-        OnboardingView()
+        StartView()
         
     }
 }

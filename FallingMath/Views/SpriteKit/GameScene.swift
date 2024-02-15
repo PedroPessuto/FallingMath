@@ -76,7 +76,7 @@ class GameScene: SKScene {
           for object in objects {
               if object.node.name == "block"{
                   if object.node.physicsBody?.velocity == CGVector(dx: 0, dy: 0){
-                      if object.node.position.y >= object.node.frame.height * 5 {
+                      if object.node.position.y >= object.node.frame.height * 9 {
                           gameData?.hasLose = true
                       }
                   }

@@ -72,8 +72,8 @@ struct LoseView: View {
                     }
                     )
                     Button(action: {
-                        gameController.startGame()
-//                        gameController.configScreenName = "home"
+//                        gameController.startGame()
+                        gameController.configScreenName = "home"
                     },
                            label: {
                         RoundedRectangle(cornerRadius: 34)
