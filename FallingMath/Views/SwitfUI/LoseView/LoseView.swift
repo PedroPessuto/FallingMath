@@ -118,8 +118,3 @@ struct LoseView: View {
         
     }
 }
-
-#Preview {
-    LoseView()
-        .environment(GameController())
-}

@@ -100,29 +100,29 @@ struct StartView: View {
         .background(Gradient(colors: [color1, color2, color3, color4]))
         
         .onTapGesture {
-            if items.isEmpty{
-                addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
-              
-            }
+//            if items.isEmpty{
+//                addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+//              
+//            }
 //            gameController.configHaptics = items[0].haptics
            
 //            if items[0].onBoarding{
 //                gameController.configScreenName = "tutorial"
 //            }else{
+            if gameController.configOnBoarding {
                 gameController.configScreenName = "tutorial"
+            }
+            else {
+                gameController.configScreenName = "game"
+            }
 //            }
         }
     }
-    func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
-        
-        let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
-        
-        context.insert(item)
-        print(items)
-    }
-}
-
-#Preview {
-    StartView()
-        .environment(GameController())
+//    func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
+//        
+//        let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
+//        
+//        context.insert(item)
+//        print(items)
+//    }
 }

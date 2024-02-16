@@ -41,6 +41,7 @@ import SwiftUI
     var configScreenName: String = "home"
     var configIsPaused: Bool = false
     var configHaptics: Bool = true
+    var configOnBoarding: Bool = true
     
     func startBlock() {
         createBlock()

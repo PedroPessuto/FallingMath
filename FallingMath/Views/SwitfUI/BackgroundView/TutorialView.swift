@@ -11,9 +11,8 @@ import SwiftData
 struct OnboardingView: View {
     
     @Environment(GameController.self) private var gameController
-    @Environment(\.modelContext) private var context
-    @Query private var items: [SavedData]
-    
+    @Environment(DataController.self) private var dataController
+ 
     var texts: [String] = ["Oi, sou a Flora! Vamos lá, nós precisamos da sua ajuda!", "Esse é o número que você precisa chegar.", "Você pode escolher os blocos caindo tocando neles.", "E tocar no botão circular para trocar a operação.", "Perfeito!", "O equilíbrio dos 4 elementos está perdendo o controle", "Não deixe os blocos completarem a tela e proteja nossa terra do desequilíbrio!"]
     
     var characters: [String] = ["personagem1", "personagem2", "personagem3", "personagem4", "personagem5", "personagem6", "personagem7"]
@@ -54,8 +53,11 @@ struct OnboardingView: View {
                                         if index < characters.count - 1{
                                             index += 1
                                         }
-                                        items[0].onBoarding = false
-                                        if index == 6{
+                                        
+                                       
+                                        if index == 6 {
+                                            print(6)
+                                            dataController.setOnBoarding(value: false)
                                             gameController.configScreenName = "game"
                                             gameController.startGame()
                                         }
@@ -185,8 +187,4 @@ struct OnboardingView: View {
         }
         .ignoresSafeArea()
     }
-}
-
-#Preview {
-    OnboardingView()
 }

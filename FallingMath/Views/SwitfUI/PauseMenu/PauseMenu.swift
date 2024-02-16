@@ -11,6 +11,7 @@ import SwiftData
 struct PauseMenu: View {
     
     @Environment(GameController.self) var gameController
+    @Environment(AudioController.self) var audioController
     @Environment(\.modelContext) private var context
     
     @Query private var items: [SavedData]
@@ -43,6 +44,9 @@ struct PauseMenu: View {
                 .onChange(of: music) { _, newValue in
                     items[0].music = newValue
                     try? context.save()
+                    audioController.musicEnabled = newValue
+                    audioController.check()
+                    
                 }
                 .onAppear {
                     music = !items[0].music

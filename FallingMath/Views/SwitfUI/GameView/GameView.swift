@@ -54,7 +54,7 @@ struct GameView: View {
                     .ignoresSafeArea()
             }
             
-            if(gameController.configIsPaused && !gameController.isSaved) {
+            if(gameController.configIsPaused) {
                 PauseMenu()
             }
             
@@ -129,7 +129,7 @@ struct GameView: View {
         }
         .onAppear {
             //            timer.upstream.connect().cancel()
-            startGame()
+//            startGame()
         }
         .onReceive(timer){ i in
             count += 1
@@ -144,39 +144,34 @@ struct GameView: View {
         
         
     }
-    
-    func startGame() {
-        if(items.isEmpty) {
-            let item = SavedData(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
-            context.insert(item)
-        }
-        
-        
-    }
-    
-    // Vai no botão de play
-    func firstPlay() {
-        if items.isEmpty {
-            addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
-        }
-    }
-    
-    func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
-        
-        let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
-        
-        context.insert(item)
-    }
-    
-    // Rodado toda vez que terminar o jogo
-    func updateItem(_ item: SavedData) {
-        item.onBoarding = false
-        try? context.save()
-    }
-    
-}
-
-#Preview{
-    GameView()
-        .environment(GameController())
+//    
+//    func startGame() {
+//        if(items.isEmpty) {
+//            let item = SavedData(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+//            context.insert(item)
+//        }
+//        
+//        
+//    }
+//    
+//    // Vai no botão de play
+//    func firstPlay() {
+//        if items.isEmpty {
+//            addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+//        }
+//    }
+//    
+//    func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
+//        
+//        let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
+//        
+//        context.insert(item)
+//    }
+//    
+//    // Rodado toda vez que terminar o jogo
+//    func updateItem(_ item: SavedData) {
+//        item.onBoarding = false
+//        try? context.save()
+//    }
+//    
 }

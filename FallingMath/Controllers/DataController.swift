@@ -7,30 +7,46 @@
 
 import Foundation
 import SwiftData
-//
-//class DataController {
-//    
-//    var context: ModelContext
-//    var items: [SavedData]
-//    
-//    // Vai no botão de play
-//    func firstPlay() {
-//        if items.isEmpty {
-//            addItem(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
-//        }
-//    }
-//    
-//    func addItem(score: Int, sound: Bool, music: Bool, haptics: Bool, onBoarding: Bool) {
-//        
-//        let item = SavedData(score: score, sound: sound, music: music, haptics: haptics, onBoarding: onBoarding)
-//        
-//        context.insert(item)
-//    }
-//    
-//    // Rodado toda vez que terminar o jogo
-//    func updateItem(_ item: SavedData) {
-//            item.onBoarding = false
-//            try? context.save()
-//        }
-//    
-//}
+
+@Observable class DataController {
+    
+    var context: ModelContext? = nil
+    var items: [SavedData]? = nil
+    
+    
+    // Atualiza o onBoarding
+    func setOnBoarding(value: Bool) {
+       
+        if let items = self.items {
+            if !items.isEmpty {
+                items[0].onBoarding = value
+            }
+            do {
+                if let context = self.context {
+                    print("save")
+                    try context.save()
+                }
+            }
+            catch {
+                print("Erro ao salvar")
+            }
+        }
+        
+    }
+    
+
+    init(context: ModelContext? = nil, items: [SavedData]? = nil) {
+        self.context = context
+        self.items = items
+        if let items = self.items {
+            if items.isEmpty {
+                let item = SavedData(score: 0, sound: true, music: true, haptics: true, onBoarding: true)
+                
+                if let context = self.context {
+                    context.insert(item)
+                }
+            }
+        }
+    }
+    
+}

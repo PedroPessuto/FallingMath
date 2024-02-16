@@ -90,8 +90,3 @@ struct OperationsView: View {
 
     }
 }
-
-#Preview {
-    OperationsView()
-        .environment(GameController())
-}

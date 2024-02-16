@@ -75,8 +75,3 @@ struct ScoreBoardView: View {
         
     }
 }
-
-#Preview {
-    ScoreBoardView()
-        .environment(GameController())
-}

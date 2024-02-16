@@ -10,7 +10,7 @@ import AVFoundation
 
 @Observable class AudioController {
 
-    var musicEnabled: Bool = true
+    var musicEnabled: Bool = false
     
     var musicPlayer: AVAudioPlayer?
 
@@ -37,10 +37,16 @@ import AVFoundation
         }
     }
     
-    init() {
-        // Inicia a música
+    func check() {
         if musicEnabled {
             self.startMusic()
         }
+        else {
+            self.toggleMuteMusic()
+        }
+    }
+    
+    init() {
+       check()
     }
 }
