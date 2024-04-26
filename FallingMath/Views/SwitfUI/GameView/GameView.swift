@@ -65,45 +65,61 @@ struct GameView: View {
                 OperationsView()
                     .frame(height: 400)
                     .padding(.bottom, 260)
-            }.frame(width: 334)
-                .padding(.bottom, 20)
+            }
+            .frame(width: 334)
+            .padding(.bottom, 20)
             
-            VStack{
+            VStack {
+                
+                
                 if gameController.feedback == true {
                     
-                    HStack{
-                        Text("Parabéns, você acertou!")
-                            .font(.custom("MusticaPro-SemiBold", size: 30))
-                            .animation(.easeInOut(duration: 5.0))
-                            .onAppear{
-                                timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                                
-                            }
+                    VStack {
+                        
                         Image(listaPersonagem[index])
                             .resizable()
-                            .frame(width: 100, height: 100)
-                    }.frame(width: 340, height: 220)
-
-                    
-                } else if gameController.feedback == false{
-                    
-                    
-                    HStack{
-                        Image(listaPersonagemLose[index])
-                            .resizable()
-                            .frame(width: personagemWidth[index]/2, height: personagemHeight[index]/2)
-                            
-                        Text("Não foi dessa vez...")
+                            .frame(width: 200, height: 200)
+                        
+                        Text("Parabéns, você acertou!")
                             .font(.custom("MusticaPro-SemiBold", size: 30))
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.white)
                             .animation(.easeInOut(duration: 5.0))
                             .onAppear{
                                 timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                                
                             }
-                    }.frame(width: 340, height: 220)
+                    }
+                    .frame(width: 334, height: 424)
+
+                    
+                } 
+                
+                else if gameController.feedback == false{
+                    
+                    
+                    VStack {
+                        
+                        
+                        Image(listaPersonagem[index])
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                        
+                        Text("Não foi dessa vez...")
+                            .font(.custom("MusticaPro-SemiBold", size: 30))
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.white)
+                            .animation(.easeInOut(duration: 5.0))
+                            .onAppear{
+                                timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                            }
+                    }
+                    .frame(width: 334, height: 424)
+                   
+                    
                     
                 }
             }
+            .padding(.bottom, 142)
             .onChange(of: gameController.operation){
                 
                 withAnimation {
@@ -126,10 +142,6 @@ struct GameView: View {
                 LoseView()
             }
             
-        }
-        .onAppear {
-            //            timer.upstream.connect().cancel()
-//            startGame()
         }
         .onReceive(timer){ i in
             count += 1

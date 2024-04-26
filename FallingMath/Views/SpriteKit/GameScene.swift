@@ -17,7 +17,7 @@ class GameScene: SKScene {
     var gameData: GameController?
     
     // Cria o cenario do jogo
-    func createBackground(){
+    func createBackground() {
         physicsWorld.gravity.dy = -1.2
         backgroundColor = .clear
         

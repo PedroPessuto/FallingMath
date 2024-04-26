@@ -16,6 +16,7 @@ struct LoseView: View {
     var characters: [String] = ["loseWalter", "loseCelsius", "loseFlora", "loseWindy"]
     var texts: [String] = ["Ah não! Os blocos \nforam por água baixo... ", "Ah não! Os blocos \nviraram cinzas...", "Ah não! Os blocos \nforam levados...", "Ah não! Os blocos \nforam soterrados..."]
     @State var index: Int = 0
+    
     var red: Color = Color(red: 255/255, green: 131/255, blue: 114/255)
     var green: Color = Color(red: 217/255, green: 189/255, blue: 102/255)
     var blue: Color = Color(red: 117/255, green: 201/255, blue: 255/255)
@@ -35,6 +36,7 @@ struct LoseView: View {
                 }
                 
                 .offset(y: 50)
+            
             VStack(spacing: 0){
                 Image( gameController.operation == "+" ? "loseWalter" :
                         gameController.operation == "-" ? "loseCelsius" : gameController.operation == "x" ? "loseWindy" : "loseFlora")
